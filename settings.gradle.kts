@@ -13,7 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "LocaGest"
-include(":app")
+rootProject.name = "User_pdm"
 include(":app")
  

@@ -1,4 +1,4 @@
-package tn.sim.locagest
+package com.example.user_pdm
 
 import org.junit.Test
 

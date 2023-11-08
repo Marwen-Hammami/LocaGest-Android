@@ -1,4 +1,4 @@
-package tn.sim.locagest
+package com.example.user_pdm
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("tn.sim.locagest", appContext.packageName)
+        assertEquals("com.example.user_pdm", appContext.packageName)
     }
 }
