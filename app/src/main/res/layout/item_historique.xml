@@ -31,19 +31,18 @@
                 android:text="@string/voiture"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-            <EditText
+            <TextView
                 android:id="@+id/DateD"
                 android:layout_width="364dp"
                 android:layout_height="31dp"
-                android:ems="10"
                 android:inputType="date" />
 
-            <EditText
+            <TextView
                 android:id="@+id/DateF"
                 android:layout_width="364dp"
                 android:layout_height="30dp"
-                android:ems="10"
                 android:inputType="date" />
+
 
             <TextView
                 android:id="@+id/newsDescription2"

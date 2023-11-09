@@ -20,6 +20,10 @@
         <string name="voiture"> Voiture N</string>
         <string name="date_reser_debut_fin"> 17 Nov 2023, 20 Nov 2023</string>
         <string name="etat_reser"> Etat reservation</string>
+    <string name="DateD"> Date Début</string>
+    <string name="DateF"> Date Fin</string>
+    <string name="Total"> Total</string>
+
 
 
 
