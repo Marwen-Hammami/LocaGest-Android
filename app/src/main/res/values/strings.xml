@@ -1,3 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-    <string name="app_name">LocaGest</string>
+    <string name="app_name">chiheb_s_application7</string>
+    <string name="loading">Loading…</string>
+    <string name="no_internet_connection">No internet connection!</string>
+<string name="lbl_nom_d_outils">Nom d\u2019outils</string>
+<string name="lbl_type_d_outils">Type d\u2019outils</string>
+<string name="msg_ajouter_des_out">Ajouter des outils</string>
+<string name="lbl_marque">Marque</string>
+<string name="lbl_prix">Prix </string>
+<string name="lbl_mohamed_mansour">Mohamed Mansour</string>
+<string name="msg_fiches_r_parati">Fiches Réparations</string>
+<string name="msg_fiche_voiture2">Fiche voiture : kia rio</string>
+<string name="lbl_nov_1_2023">Nov 1,2023</string>
+<string name="msg_1_nov_2023_16">1 Nov 2023, 16:50</string>
+<string name="lbl_livrer_voiture">Livrer voiture</string>
+<string name="lbl_upload_image">Upload image</string>
+<string name="lbl_ajouter">Ajouter</string>
+<string name="lbl_stock">Stock</string>
+<string name="lbl_livr">Livré</string>
+<string name="msg_ajouter_r_parat">Ajouter réparations</string>
+<string name="lbl_en_cours">En cours</string>
+<string name="msg_fiche_voiture">Fiche voiture : peugeot 206</string>
+<string name="msg_chiheb_ben_abde">Chiheb ben abdelkader</string>
+<string name="lbl_done">Done</string>
 </resources>
