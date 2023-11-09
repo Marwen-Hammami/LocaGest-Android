@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        tools:layout="@layout/fragmen_conversation_one" />
+        tools:layout="@layout/fragment_conversation_one" />
 
     <!-- Bottom send Text -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,7 +33,7 @@
         android:orientation="vertical"
         android:paddingVertical="9dp"
         android:paddingHorizontal="10dp"
-        android:background="@color/transparent_main_color"
+        android:background="@color/main_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -43,7 +43,6 @@
             android:id="@+id/imageView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@tools:sample/avatars"
             app:srcCompat="@drawable/ic_attach_file"
             app:tint="@color/secondary_color"
             app:layout_constraintTop_toTopOf="parent"
@@ -66,7 +65,6 @@
             android:id="@+id/ic_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@tools:sample/avatars"
             app:srcCompat="@drawable/ic_camera"
             app:tint="@color/secondary_color"
             android:layout_marginEnd="10dp"
