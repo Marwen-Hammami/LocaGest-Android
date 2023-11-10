@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import tn.sim.locagest.Model.Historique
+import tn.sim.locagest.Model.MethodeP
 import java.util.Date
 
 class MyStatics {
@@ -22,6 +23,16 @@ class MyStatics {
                 Historique(2, DateD, DateF, 200.0f),
                 Historique(3, DateD, DateF, 300.0f),
                 Historique(4, DateD, DateF, 400.0f)
+            )
+        }
+
+
+
+        fun getListPaiement() : MutableList<MethodeP> {
+            val DateD = Date()
+            val DateF = Date()
+            return mutableListOf(
+             TODO()
             )
         }
 

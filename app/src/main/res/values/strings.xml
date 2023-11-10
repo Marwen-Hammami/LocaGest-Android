@@ -24,13 +24,15 @@
     <string name="DateF"> Date Fin</string>
     <string name="Total"> Total</string>
     <string name="item_history">Historique</string>
+    <string name="payer">Payer</string>
 
 
 
 
 
 
-        <!--  Inputs | Labels | Buttons -->
+
+    <!--  Inputs | Labels | Buttons -->
         <string name="input_suffix_Email">\@esprit.tn</string>
         <string name="input_email">Email</string>
         <string name="input_email_or_phone">Email/Phone</string>

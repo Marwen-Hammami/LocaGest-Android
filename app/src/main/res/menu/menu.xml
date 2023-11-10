@@ -5,5 +5,15 @@
         android:title="History"
         android:enabled="true" />
 
+    <item
+        android:id="@+id/action_paiement"
+        android:title="Payment"
+        android:enabled="true" />
+
+    <item
+        android:id="@+id/action_methodes"
+        android:title="Methods"
+        android:enabled="true" />
+
 
 </menu>
