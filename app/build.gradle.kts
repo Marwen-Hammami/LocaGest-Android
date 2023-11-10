@@ -50,6 +50,9 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    //google.android.material
+    implementation ("com.google.android.material:material:1.4.0")
+
     // Architectural Components
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
 

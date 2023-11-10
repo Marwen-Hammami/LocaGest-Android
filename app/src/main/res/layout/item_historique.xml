@@ -26,9 +26,9 @@
 
             <TextView
                 android:id="@+id/Title1"
-                android:layout_width="293dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/voiture"
+                android:text="Voiture une"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
@@ -43,13 +43,12 @@
                 android:layout_height="30dp"
                 android:inputType="date" />
 
-
             <TextView
                 android:id="@+id/newsDescription2"
-                android:layout_width="154dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/etat_reser"
+                android:text="Complete"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="?android:attr/textColorSecondary" />
 
@@ -58,7 +57,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Total :" />
-
 
         </LinearLayout>
 
