@@ -8,13 +8,5 @@ class ConversationOneViewHolder(val cardMessageSentBinding: CardMessageSentBindi
     RecyclerView.ViewHolder(cardMessageSentBinding.root){
 
     val textView = cardMessageSentBinding.messageText
-//        fun setData(message: Message) {
-//            cardMessageSentBinding.messageText.text = message.text
-////            if (!message.text.isNullOrBlank()) {
-////                cardMessageSentBinding.messageText.text = message.text
-////            }
-////            if (!message.file.isNullOrEmpty()) {
-//////                cardMessageSentBinding.aImage1.setImageResource(message.file[0])
-////            }
-//        }
+
 }

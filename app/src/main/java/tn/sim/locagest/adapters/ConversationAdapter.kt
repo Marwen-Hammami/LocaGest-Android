@@ -27,13 +27,26 @@ class ConversationAdapter(val message: Array<Message>): RecyclerView.Adapter<Con
     override fun getItemCount(): Int = message.size
 
     override fun onBindViewHolder(holder: ConversationOneViewHolder, position: Int) {
-//        val mess = message[position]
-        holder.textView.text = message[position].text
-//        binding.aImage1.visibility = View.GONE
-//        binding.bLayout.visibility = View.GONE
-//        binding.cLayout.visibility = View.GONE
+        val mess = message[position]
 
-//        holder.setData(message[position])
+        if (mess.text?.isEmpty() == true) {
+            binding.messageText.visibility = View.GONE
+        } else {
+            holder.textView.text = mess.text
+        }
+
+        if (mess.file?.isEmpty() == true) {
+            binding.aImage1.visibility = View.GONE
+        } else {
+
+        }
+
+
+
+
+        binding.bLayout.visibility = View.GONE
+        binding.cLayout.visibility = View.GONE
+
     }
 
 }
