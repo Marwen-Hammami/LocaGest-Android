@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">User_pdm</string>
+<<<<<<< HEAD
     <string name="facebook_app_id">263445033367830</string>
 
+=======
+>>>>>>> 655d87fa58469948ff6608fb63f028d3e715463a
 </resources>

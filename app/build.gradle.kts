@@ -35,9 +35,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+<<<<<<< HEAD
     }
     viewBinding {
         //enabled = true
+=======
+>>>>>>> 655d87fa58469948ff6608fb63f028d3e715463a
     }
 }
 
@@ -52,6 +55,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+<<<<<<< HEAD
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("androidx.appcompat:appcompat:1.4.1")
@@ -59,3 +63,6 @@ dependencies {
     implementation ("com.facebook.android:facebook-login:12.0.0")
 
 }
+=======
+}
+>>>>>>> 655d87fa58469948ff6608fb63f028d3e715463a

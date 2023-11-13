@@ -11,10 +11,17 @@
         android:id="@+id/imageView"
         android:layout_width="231dp"
         android:layout_height="410dp"
+<<<<<<< HEAD
         android:contentDescription="logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_pdm" />
+=======
+        app:srcCompat="@drawable/logo_pdm"
+        tools:layout_editor_absoluteX="92dp"
+        tools:layout_editor_absoluteY="145dp"
+        android:contentDescription="logo"/>
+>>>>>>> 655d87fa58469948ff6608fb63f028d3e715463a
 </androidx.constraintlayout.widget.ConstraintLayout>

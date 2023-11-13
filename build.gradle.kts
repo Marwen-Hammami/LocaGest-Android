@@ -2,4 +2,8 @@
 plugins {
     id("com.android.application") version "8.1.1" apply false
     id("org.jetbrains.kotlin.android") version "1.9.0" apply false
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 655d87fa58469948ff6608fb63f028d3e715463a

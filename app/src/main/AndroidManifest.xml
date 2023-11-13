@@ -14,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.User_pdm"
+<<<<<<< HEAD
         android:usesCleartextTraffic="true"
+=======
+>>>>>>> 655d87fa58469948ff6608fb63f028d3e715463a
         tools:targetApi="31">
         <activity android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -31,6 +34,10 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 655d87fa58469948ff6608fb63f028d3e715463a
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

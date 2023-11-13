@@ -12,7 +12,11 @@
         android:src="@drawable/logo_pdm" />
 
     <com.google.android.material.textfield.TextInputLayout
+<<<<<<< HEAD
         android:id="@+id/emailTextInputLayout"
+=======
+        android:id="@+id/usernameTextInputLayout"
+>>>>>>> 655d87fa58469948ff6608fb63f028d3e715463a
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:boxStrokeColor="@color/bleu">
@@ -63,7 +67,11 @@
     </LinearLayout>
 
     <Button
+<<<<<<< HEAD
         android:id="@+id/signInButton"
+=======
+        android:id="@+id/loginButton"
+>>>>>>> 655d87fa58469948ff6608fb63f028d3e715463a
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login" />
@@ -99,7 +107,11 @@
         android:layout_marginTop="24dp">
 
         <ImageView
+<<<<<<< HEAD
             android:id="@+id/facebookLoginButton"
+=======
+            android:id="@+id/facebookLogo"
+>>>>>>> 655d87fa58469948ff6608fb63f028d3e715463a
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:src="@drawable/ic_btn_facebook"

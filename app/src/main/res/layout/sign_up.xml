@@ -60,11 +60,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign Up"
+<<<<<<< HEAD
         android:textColor="#000000"
         android:background="#FFFFFF"
     android:layout_marginTop="16dp"
     android:paddingVertical="12dp" />
 
+=======
+        android:textColor="@android:color/white"
+        android:background="#229652"
+        android:layout_marginTop="16dp"
+        android:paddingVertical="12dp" />
+>>>>>>> 655d87fa58469948ff6608fb63f028d3e715463a
 
     <LinearLayout
         android:layout_width="match_parent"
