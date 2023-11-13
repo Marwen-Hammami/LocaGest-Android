@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">LocaGest</string>
+    <string name="app_name">User_pdm</string>
+    <string name="facebook_app_id">263445033367830</string>
+
 </resources>
