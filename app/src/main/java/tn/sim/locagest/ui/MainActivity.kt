@@ -1,37 +1,26 @@
 package tn.sim.locagest.ui
 
-import androidx.appcompat.app.AppCompatActivity
+import android.R
 import android.os.Bundle
-import android.util.Log
-import androidx.recyclerview.widget.LinearLayoutManager
-import tn.sim.locagest.R
-import tn.sim.locagest.adapters.ConversationAdapter
-import tn.sim.locagest.databinding.ActivityConversationOneBinding
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import tn.sim.locagest.databinding.ActivityMainBinding
-import tn.sim.locagest.models.Message
-import java.util.Date
+import tn.sim.locagest.ui.fragments.ConversationListFragment
+
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityConversationOneBinding
+    private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityConversationOneBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val dataset = arrayOf(
-            Message("id123","id554", "Hello1", arrayListOf(), Date(), Date()),
-            Message("id123","id554", "", arrayListOf("test", "test2"), Date(), Date()),
-            Message("id123","id554", "Hello3", arrayListOf(), Date(), Date()),
-            Message("id123","id554", "Hello4", arrayListOf(), Date(), Date()),
-        )
+        val manager: FragmentManager = supportFragmentManager
+        val transaction: FragmentTransaction = manager.beginTransaction()
+        transaction.replace(tn.sim.locagest.R.id.fragmentListConvsContainerView, ConversationListFragment()).commit()
 
-        val myAdapter = ConversationAdapter(dataset.reversed().toTypedArray())  //to get the latest message at the bottom
-
-        binding.rvMessages.adapter = myAdapter
-        val layoutManager = LinearLayoutManager(this)
-        layoutManager.reverseLayout = true                                      //to get the latest message at the bottom
-        binding.rvMessages.layoutManager = layoutManager
     }
 }

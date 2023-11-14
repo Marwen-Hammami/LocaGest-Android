@@ -19,7 +19,6 @@ class ConversationAdapter(val message: Array<Message>): RecyclerView.Adapter<Con
         binding = CardMessageSentBinding.inflate(
             LayoutInflater.from(parent.context)
             , parent, false)
-        Log.w("messageslist", "in Adapter")
 
         return ConversationOneViewHolder(binding)
     }

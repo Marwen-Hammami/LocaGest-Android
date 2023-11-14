@@ -5,7 +5,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="@color/accent_color"><!-- Changer avec le code to primary -->
+    android:layout_gravity="right"
+    app:cardBackgroundColor="@color/accent_color"><!-- Changer avec le code to primary et left -->
 
     <LinearLayout
         android:layout_width="match_parent"
