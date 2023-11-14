@@ -1,17 +1,26 @@
 package tn.sim.locagest.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import tn.sim.locagest.adapters.ConversationsListAdapter
 import tn.sim.locagest.databinding.FragmentConversationListBinding
-import tn.sim.locagest.models.User
+import tn.sim.locagest.models.Conversation
+import tn.sim.locagest.viewmodel.ConversationViewModel
 
 class ConversationListFragment : Fragment() {
     private lateinit var binding : FragmentConversationListBinding
+
+    //For Subjects ViwModel
+    lateinit var conversationViewModel: ConversationViewModel
+    lateinit var listConversations: MutableList<Conversation>
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -19,23 +28,33 @@ class ConversationListFragment : Fragment() {
 
         binding = FragmentConversationListBinding.inflate(layoutInflater)
 
-        initRecyclerView()
+        initViewModel()
 
         return binding.root
     }
 
-    fun initRecyclerView() {
-        //init static data
-        val listUsers = arrayListOf<User>(
-            User("123456789","username","youremail@gmail.com", "12345678", "Ahmed", "Tounsi", 123456789, "GOOD", "Client", 3, "client", true, "path/to/img.png"),
-            User("123456789","username","youremail@gmail.com", "12345678", "Samir", "Hammami", 123456789, "GOOD", "Client", 3, "client", false, "path/to/img.png"),
-            User("123456789","username","youremail@gmail.com", "12345678", "Amira", "Jrad", 123456789, "GOOD", "Client", 3, "client", true, "path/to/img.png"),
-            User("123456789","username","youremail@gmail.com", "12345678", "Khaled", "Arbi", 123456789, "GOOD", "Client", 3, "client", false, "path/to/img.png"),
-            User("123456789","username","youremail@gmail.com", "12345678", "Youssef", "Hammami", 123456789, "GOOD", "Client", 3, "client", false, "path/to/img.png"),
-            User("123456789","username","youremail@gmail.com", "12345678", "Maher", "Shiri", 123456789, "GOOD", "Client", 3, "client", true, "path/to/img.png"),
-        )
+    private fun initViewModel() {
+        var idUser = "654d09c7968050b602138f3f"     //Static à changer
 
-        val newsAdapter = ConversationsListAdapter(listUsers)
+        listConversations = mutableListOf()
+        conversationViewModel = ViewModelProvider(this).get(ConversationViewModel::class.java)
+
+        conversationViewModel.getLessonConversation(idUser)
+
+        conversationViewModel.getConversationListOfAUserObservable().observe(viewLifecycleOwner, Observer<List<Conversation>?> {
+            if(it == null) {
+                Log.w("MyApp", "There is no Conversations")
+            }else {
+                Log.w("MyApp", "convs : "+it.toString())
+                listConversations = it.toMutableList()
+                initRecyclerView()
+            }
+        })
+    }
+
+    fun initRecyclerView() {
+        Log.w("MyApp", "convs in rv : "+listConversations.toString())
+        val newsAdapter = ConversationsListAdapter(listConversations)
         binding.conversationListRV.adapter = newsAdapter
         binding.conversationListRV.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }

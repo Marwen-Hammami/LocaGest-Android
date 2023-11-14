@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import tn.sim.locagest.databinding.CardConversationUserBinding
-import tn.sim.locagest.models.Conversation
+import tn.sim.locagest.models.User
 import tn.sim.locagest.ui.activity.ConversationOneActivity
 import tn.sim.locagest.viewholder.ConversationsListViewHolder
 
-class ConversationsListAdapter(val conversations: MutableList<Conversation>): RecyclerView.Adapter<ConversationsListViewHolder>() {
+class ConversationUserListAdapter(val users: ArrayList<User>): RecyclerView.Adapter<ConversationsListViewHolder>() {
 
     lateinit var binding: CardConversationUserBinding
 
@@ -21,19 +21,15 @@ class ConversationsListAdapter(val conversations: MutableList<Conversation>): Re
         return ConversationsListViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = conversations.size
+    override fun getItemCount(): Int = users.size
 
     override fun onBindViewHolder(holder: ConversationsListViewHolder, position: Int) {
-        val conv = conversations[position]
+        val user = users[position]
 
-        if (conv.isGroup){
-            binding.nomPrenom.text = conv.name
-        } else {
-            //id du membre different du current user
-            binding.nomPrenom.text = conv.members[0]
-        }
+        binding.nomPrenom.text = user.firstName + " " + user.lastName
 
         binding.root.setOnClickListener {
+            //create conversation if not exist
             val context = binding.root.context
             val intent = Intent(context, ConversationOneActivity::class.java)
             //intent.putExtra("userId", user._id)

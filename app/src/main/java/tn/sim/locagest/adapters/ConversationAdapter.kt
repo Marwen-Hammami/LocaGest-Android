@@ -1,12 +1,9 @@
 package tn.sim.locagest.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import tn.sim.locagest.databinding.CardMessageSentBinding
 import tn.sim.locagest.models.Message
 import tn.sim.locagest.viewholder.ConversationOneViewHolder

@@ -7,7 +7,7 @@ import tn.sim.locagest.adapters.ConversationAdapter
 import tn.sim.locagest.databinding.ActivityConversationOneBinding
 import tn.sim.locagest.models.Message
 import java.util.Date
-class OnversationOneActivity : AppCompatActivity() {
+class ConversationOneActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityConversationOneBinding
 
@@ -17,10 +17,10 @@ class OnversationOneActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val dataset = arrayOf(
-            Message("id123","id554", "Hello1", arrayListOf(), Date(), Date()),
-            Message("id123","id554", "", arrayListOf("test", "test2"), Date(), Date()),
-            Message("id123","id554", "Hello3", arrayListOf(), Date(), Date()),
-            Message("id123","id554", "Hello4", arrayListOf(), Date(), Date()),
+            Message("id123","id554", "idSender", "Hello1", arrayListOf(), Date(), Date()),
+            Message("id123","id554", "idSender", null, arrayListOf("test", "test2"), Date(), Date()),
+            Message("id123","id554", "idSender","Hello3", arrayListOf(), Date(), Date()),
+            Message("id123","id554", "idSender","Hello4", arrayListOf(), Date(), Date()),
         )
 
         val myAdapter = ConversationAdapter(dataset.reversed().toTypedArray())  //to get the latest message at the bottom
