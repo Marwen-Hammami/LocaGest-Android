@@ -36,7 +36,7 @@ class ConversationsListAdapter(val conversations: MutableList<Conversation>): Re
         binding.root.setOnClickListener {
             val context = binding.root.context
             val intent = Intent(context, ConversationOneActivity::class.java)
-            //intent.putExtra("userId", user._id)
+            intent.putExtra("convId", conversations[position]._id)
             context.startActivity(intent)
         }
     }

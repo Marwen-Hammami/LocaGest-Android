@@ -34,7 +34,7 @@ class ConversationListFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        var idUser = "654d09c7968050b602138f3f"     //Static à changer
+        var idUser = "654bee233415c8cea0e3557c"     //Static à changer
 
         listConversations = mutableListOf()
         conversationViewModel = ViewModelProvider(this).get(ConversationViewModel::class.java)
@@ -45,7 +45,6 @@ class ConversationListFragment : Fragment() {
             if(it == null) {
                 Log.w("MyApp", "There is no Conversations")
             }else {
-                Log.w("MyApp", "convs : "+it.toString())
                 listConversations = it.toMutableList()
                 initRecyclerView()
             }
@@ -53,7 +52,6 @@ class ConversationListFragment : Fragment() {
     }
 
     fun initRecyclerView() {
-        Log.w("MyApp", "convs in rv : "+listConversations.toString())
         val newsAdapter = ConversationsListAdapter(listConversations)
         binding.conversationListRV.adapter = newsAdapter
         binding.conversationListRV.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

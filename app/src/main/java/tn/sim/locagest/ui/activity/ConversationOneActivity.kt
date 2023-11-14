@@ -16,6 +16,8 @@ class ConversationOneActivity : AppCompatActivity() {
         binding = ActivityConversationOneBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //récupérer l'id de la conv passé en intent
+
         val dataset = arrayOf(
             Message("id123","id554", "idSender", "Hello1", arrayListOf(), Date(), Date()),
             Message("id123","id554", "idSender", null, arrayListOf("test", "test2"), Date(), Date()),
