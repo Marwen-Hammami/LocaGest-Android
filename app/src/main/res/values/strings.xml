@@ -24,6 +24,8 @@
     <string name="DateF"> Date Fin</string>
     <string name="Total"> Total</string>
     <string name="item_history">Historique</string>
+    <string name="item_payment">Paiement</string>
+    <string name="item_methods">Methodes de paiements</string>
     <string name="payer">Payer</string>
 
 

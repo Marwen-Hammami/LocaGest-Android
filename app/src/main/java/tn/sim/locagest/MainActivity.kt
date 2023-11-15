@@ -8,8 +8,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import tn.sim.locagest.databinding.ActivityMainBinding
 import tn.sim.locagest.fragments.HistoriqueFragment
-import tn.sim.locagest.fragments.MethodePaiementFragment
 import tn.sim.locagest.ui.PaiementActivity
+import tn.sim.locagest.ui.ReservationActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,11 +33,21 @@ class MainActivity : AppCompatActivity() {
         changeFragment(historiqueFragment, "historiqueFragment")
 
 
-
+       // val intent = Intent(this, ReservationActivity::class.java)
+       // startActivity(intent)
 
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
+
+
+                R.id.action_reservations -> {
+                    val intent = Intent(this, ReservationActivity::class.java)
+                    startActivity(intent)
+                    toolbarTitle.text = "Reservations"
+                }
+
+
                 R.id.action_historique -> {
                     val historiqueFragment = HistoriqueFragment()
                     changeFragment(historiqueFragment, "historiqueFragment")
@@ -45,11 +55,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
 
-                R.id.action_methodes -> {
-                    val methodeP = MethodePaiementFragment()
-                    changeFragment(methodeP, "methodPaiementFragment")
-                    toolbarTitle.text = "Méthode de paiement"
-                }
 
                 R.id.action_paiement -> {
                     val intent = Intent(this, PaiementActivity::class.java)

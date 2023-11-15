@@ -3,17 +3,22 @@
     <item
         android:id="@+id/action_historique"
         android:title="History"
-        android:enabled="true" />
+        android:enabled="true"
+        android:textColor="@color/black"
+        android:background="@color/white"/>
 
     <item
         android:id="@+id/action_paiement"
         android:title="Payment"
-        android:enabled="true" />
+        android:enabled="true"
+        android:textColor="@color/black"
+        android:background="@color/white"/>
+
 
     <item
-        android:id="@+id/action_methodes"
-        android:title="Methods"
-        android:enabled="true" />
-
-
+        android:id="@+id/action_reservations"
+        android:title="Reservations"
+        android:enabled="true"
+        android:textColor="@color/black"
+        android:background="@color/white"/>
 </menu>
