@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import tn.sim.locagest.adapters.ConversationsListAdapter
 import tn.sim.locagest.databinding.FragmentConversationListBinding
 import tn.sim.locagest.models.Conversation
+import tn.sim.locagest.models.User
 import tn.sim.locagest.viewmodel.ConversationViewModel
 
 class ConversationListFragment : Fragment() {
@@ -34,12 +35,10 @@ class ConversationListFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        var idUser = "654bee233415c8cea0e3557c"     //Static à changer
-
         listConversations = mutableListOf()
         conversationViewModel = ViewModelProvider(this).get(ConversationViewModel::class.java)
 
-        conversationViewModel.getLessonConversation(idUser)
+        User.currentUser._id?.let { conversationViewModel.getLessonConversation(it) }
 
         conversationViewModel.getConversationListOfAUserObservable().observe(viewLifecycleOwner, Observer<List<Conversation>?> {
             if(it == null) {

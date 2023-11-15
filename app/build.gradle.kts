@@ -80,4 +80,8 @@ dependencies {
     // Glide is an image loading and caching library
     implementation ("com.github.bumptech.glide:glide:4.11.0")
     kapt ("com.github.bumptech.glide:compiler:4.11.0")
+
+    //to display image from url
+    implementation ("com.squareup.picasso:picasso:2.71828")
+
 }
