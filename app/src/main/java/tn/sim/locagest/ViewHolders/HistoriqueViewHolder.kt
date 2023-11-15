@@ -11,8 +11,8 @@ class HistoriqueViewHolder(private val binding: ItemHistoriqueBinding) : Recycle
     private val format = SimpleDateFormat("dd/MM/yyyy")
 
     fun setData(historique: Historique) {
-        binding.DateD.text = format.format(historique.DateD)
-        binding.DateF.text = format.format(historique.DateF)
+        //binding.DateD.text = format.format(historique.DateD)
+        //binding.DateF.text = format.format(historique.DateF)
         binding.Total.text = historique.Total.toString()
     }
 }

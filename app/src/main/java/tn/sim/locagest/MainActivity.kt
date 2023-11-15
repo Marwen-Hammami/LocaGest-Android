@@ -1,5 +1,6 @@
 package tn.sim.locagest
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import tn.sim.locagest.databinding.ActivityMainBinding
 import tn.sim.locagest.fragments.HistoriqueFragment
+import tn.sim.locagest.fragments.MethodePaiementFragment
+import tn.sim.locagest.ui.PaiementActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         toolbar = findViewById(R.id.app_bar)
-        toolbarTitle = findViewById(R.id.toolbar_title) // Ajoutez cette ligne
+        toolbarTitle = findViewById(R.id.toolbar_title)
 
        // toolbarTitle.text = " Historique Des Réservations "
 
@@ -29,6 +32,10 @@ class MainActivity : AppCompatActivity() {
         val historiqueFragment = HistoriqueFragment()
         changeFragment(historiqueFragment, "historiqueFragment")
 
+
+
+
+
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.action_historique -> {
@@ -36,10 +43,25 @@ class MainActivity : AppCompatActivity() {
                     changeFragment(historiqueFragment, "historiqueFragment")
                     toolbarTitle.text = "Historique Reservation"
                 }
+
+
+                R.id.action_methodes -> {
+                    val methodeP = MethodePaiementFragment()
+                    changeFragment(methodeP, "methodPaiementFragment")
+                    toolbarTitle.text = "Méthode de paiement"
+                }
+
+                R.id.action_paiement -> {
+                    val intent = Intent(this, PaiementActivity::class.java)
+                    startActivity(intent)
+                    toolbarTitle.text = "Paiement"
+                }
+
             }
             true
         }
     }
+
 
 
     private fun changeFragment(fragment: Fragment, tag: String) {

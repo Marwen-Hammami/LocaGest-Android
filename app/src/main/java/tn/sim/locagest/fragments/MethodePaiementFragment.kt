@@ -10,7 +10,7 @@ import tn.sim.locagest.Adapters.MethodePaiementAdapter
 import tn.sim.locagest.databinding.FragmentMethodePaiementBinding
 import utils.MyStatics
 
-class MethodePaiementFragment : Fragment() {
+class   MethodePaiementFragment : Fragment() {
 
     private lateinit var binding: FragmentMethodePaiementBinding
 
