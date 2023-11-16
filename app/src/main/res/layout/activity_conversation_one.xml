@@ -103,7 +103,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:paddingVertical="9dp"
-        android:paddingLeft="20dp"
+        android:paddingHorizontal="20dp"
         android:background="@color/transparent_main_color"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -166,6 +166,15 @@
             app:layout_constraintTop_toBottomOf="@+id/nomPrenom"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="4dp"/>
+
+        <ImageView
+            android:id="@+id/videoCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_call"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
