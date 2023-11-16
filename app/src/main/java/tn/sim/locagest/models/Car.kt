@@ -8,5 +8,5 @@ data class Car (
     val modèle: String?,
     val carburant: String?,
     val boite: String?
-    ): Serializable
+    ):Serializable
 

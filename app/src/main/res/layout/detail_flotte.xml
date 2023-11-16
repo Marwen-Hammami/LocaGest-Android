@@ -35,7 +35,7 @@
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnAjout"
         android:layout_width="308dp"
         android:layout_height="48dp"
         android:backgroundTint="#009688"

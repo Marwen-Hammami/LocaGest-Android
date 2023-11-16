@@ -13,26 +13,23 @@
         android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="75dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-48dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="136dp"
             android:orientation="horizontal"
             android:padding="5dp"
-            tools:layout_editor_absoluteX="6dp"
-            tools:layout_editor_absoluteY="109dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints">
 
-            <ImageView
-                android:id="@+id/eventImage1"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/karhba" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constL1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -43,12 +40,23 @@
                     android:id="@+id/eventTitle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="Voir la Flotte"
                     android:textAppearance="?attr/textAppearanceTitleMedium"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.555"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/voiture" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -66,19 +74,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="5dp"
-            tools:layout_editor_absoluteY="434dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints">
-
-            <ImageView
-                android:id="@+id/eventImage4"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/gps" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -99,24 +102,29 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="66dp"
+                    android:layout_height="52dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/localisation" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="160dp"
             android:orientation="horizontal"
             android:padding="5dp"
-            tools:layout_editor_absoluteY="270dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints">
-
-            <ImageView
-                android:id="@+id/eventImage2"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/kolleb" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -129,12 +137,22 @@
                     android:id="@+id/eventTitle2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="Historique entretiens/accidents"
                     android:textAppearance="?attr/textAppearanceTitleMedium"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.751"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="58dp"
+                    android:layout_height="52dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/kolleb2" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
