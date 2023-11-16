@@ -11,6 +11,14 @@ import tn.sim.locagest.models.Message
 interface MessageService {
     @POST("messages/")
     fun createMessage(@Body params: Message): Call<Message>
+    /*
+    @Multipart
+    @POST("messages/uploadImage/{messageId}")
+    fun uploadImage(
+        @Path("messageId") messageId: String,
+        @Part image: MultipartBody.Part
+    ): Call<YourResponseModel>
+     */
 
     @GET("messages/{id}")
     fun getMessagesOfAConversation(@Path("id") id: String): Call<List<Message>>

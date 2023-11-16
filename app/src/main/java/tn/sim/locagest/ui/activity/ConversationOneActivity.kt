@@ -1,9 +1,13 @@
 package tn.sim.locagest.ui.activity
 
+import android.app.Activity
 import android.app.Application
 import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +31,23 @@ class ConversationOneActivity : AppCompatActivity() {
     lateinit var listMessagess: MutableList<Message>
 
     lateinit var conv: Conversation
+
+    //for image pick
+    private val changeImage =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                val data = it.data
+                val imgUri = data?.data
+//                selectedImage.setImageURI(imgUri)
+                /*
+                yourRepository.uploadImage(messageId, imgUri) { response ->
+                    // Handle the response
+                }
+                 */
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,36 +135,14 @@ class ConversationOneActivity : AppCompatActivity() {
             finish()
         }
 
-        //videoCall
-        initvideoCall()
-
         binding.videoCall.setOnClickListener {
             videoCall()
         }
-    }
 
-    //init video call so you can receive call from the moment you log in
-    private fun initvideoCall() {
-//        val username = User.currentUser.username
-//
-//        val application: Application = application // Android's application context
-//        val appID: Long = 988207839 // yourAppID
-//        val appSign: String = "c855361eabefa96a3cbe617ffaf228d73272c68c029a260774d38b3448af8e7f" // yourAppSign
-//
-//        val callInvitationConfig = ZegoUIKitPrebuiltCallInvitationConfig()
-//        callInvitationConfig.notifyWhenAppRunningInBackgroundOrQuit = true
-//        val notificationConfig = ZegoNotificationConfig()
-//        notificationConfig.sound = "zego_uikit_sound_call"
-//        notificationConfig.channelID = conv._id
-//        notificationConfig.channelName = conv._id   //if group pass name else other member name
-//        ZegoUIKitPrebuiltCallInvitationService.init(
-//            application,
-//            appID,
-//            appSign,
-//            username,
-//            username,
-//            callInvitationConfig
-//        )
+        //Select File
+        binding.importFile.setOnClickListener {
+            pickImage()
+        }
     }
 
     private fun videoCall() {
@@ -180,6 +179,12 @@ class ConversationOneActivity : AppCompatActivity() {
             callInvitationConfig
         )
     }
+
+    private fun pickImage() {
+        val pickImg = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+        changeImage.launch(pickImg)
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()

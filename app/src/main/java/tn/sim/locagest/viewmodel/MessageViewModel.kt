@@ -84,6 +84,25 @@ class MessageViewModel: ViewModel() {
             }
         })
     }
+    /*
+    fun uploadImage(messageId: String, imgUri: Uri, callback: (Response<YourResponseModel>) -> Unit) {
+        val imageFile = File(imgUri.path)
+        val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imageFile)
+        val imagePart = MultipartBody.Part.createFormData("image", imageFile.name, requestFile)
+
+        val call: Call<YourResponseModel> = messageService.uploadImage(messageId, imagePart)
+
+        call.enqueue(object : Callback<YourResponseModel> {
+            override fun onResponse(call: Call<YourResponseModel>, response: Response<YourResponseModel>) {
+                callback(response)
+            }
+
+            override fun onFailure(call: Call<YourResponseModel>, t: Throwable) {
+                // Handle failure
+            }
+        })
+    }
+     */
 
     fun deleteMessage(_id: String) {
         val retroInstance = RetroInstance.getRetroInstance().create(MessageService::class.java)
