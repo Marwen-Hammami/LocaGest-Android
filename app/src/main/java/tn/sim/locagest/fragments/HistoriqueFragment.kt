@@ -22,6 +22,37 @@ class HistoriqueFragment : Fragment() {
     lateinit var historiqueViewModel: HistoriqueViewModel
     lateinit var listHistorique: MutableList<Historique>
 
+   /* private fun démarrerPaiementActivity() {
+        val intent = Intent(requireActivity(), PaiementActivity::class.java)
+        startActivity(intent)
+    }
+
+
+
+
+    private fun démarrerReservationActivity() {
+        val intent = Intent(requireActivity(), ReservationActivity::class.java)
+        startActivity(intent)
+    }
+
+
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_paiement -> {
+                démarrerPaiementActivity()
+                return true
+            }
+            R.id.action_reservations -> {
+                démarrerReservationActivity()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+*/
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
