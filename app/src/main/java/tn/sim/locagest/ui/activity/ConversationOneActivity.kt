@@ -115,12 +115,47 @@ class ConversationOneActivity : AppCompatActivity() {
         }
 
         //videoCall
+        initvideoCall()
+
         binding.videoCall.setOnClickListener {
             videoCall()
         }
     }
 
+    //init video call so you can receive call from the moment you log in
+    private fun initvideoCall() {
+//        val username = User.currentUser.username
+//
+//        val application: Application = application // Android's application context
+//        val appID: Long = 988207839 // yourAppID
+//        val appSign: String = "c855361eabefa96a3cbe617ffaf228d73272c68c029a260774d38b3448af8e7f" // yourAppSign
+//
+//        val callInvitationConfig = ZegoUIKitPrebuiltCallInvitationConfig()
+//        callInvitationConfig.notifyWhenAppRunningInBackgroundOrQuit = true
+//        val notificationConfig = ZegoNotificationConfig()
+//        notificationConfig.sound = "zego_uikit_sound_call"
+//        notificationConfig.channelID = conv._id
+//        notificationConfig.channelName = conv._id   //if group pass name else other member name
+//        ZegoUIKitPrebuiltCallInvitationService.init(
+//            application,
+//            appID,
+//            appSign,
+//            username,
+//            username,
+//            callInvitationConfig
+//        )
+    }
+
     private fun videoCall() {
+        //add if conv use groupid
+        //the other person you want to call
+        var otherusername = ""
+        if (conv.members[0] == User.currentUser._id) {
+            otherusername = conv.members[1]
+        } else {
+            otherusername = conv.members[0]
+        }
+
         val username = User.currentUser.username
 
         val intent = Intent(this, CallingActivity::class.java)
@@ -134,8 +169,8 @@ class ConversationOneActivity : AppCompatActivity() {
         callInvitationConfig.notifyWhenAppRunningInBackgroundOrQuit = true
         val notificationConfig = ZegoNotificationConfig()
         notificationConfig.sound = "zego_uikit_sound_call"
-        notificationConfig.channelID = conv._id
-        notificationConfig.channelName = conv._id   //if group pass name else other member name
+        notificationConfig.channelID = otherusername
+        notificationConfig.channelName = otherusername   //if group pass name else other member name
         ZegoUIKitPrebuiltCallInvitationService.init(
             application,
             appID,
