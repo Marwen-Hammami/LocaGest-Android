@@ -41,11 +41,13 @@ class ConversationOneActivity : AppCompatActivity() {
                 val data = it.data
                 val imgUri = data?.data
 //                selectedImage.setImageURI(imgUri)
-                /*
-                yourRepository.uploadImage(messageId, imgUri) { response ->
-                    // Handle the response
+                binding.icSend.setOnClickListener {
+                    var mess = Message(null, conv._id!!, User.currentUser._id!!
+                        , binding.textToSend.text.toString()
+                        , null, null, null
+                    )
+                    messageViewModel.createMessageWithImage(mess, imgUri!!)
                 }
-                 */
             }
         }
 

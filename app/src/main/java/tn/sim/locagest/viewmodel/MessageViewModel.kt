@@ -1,8 +1,16 @@
 package tn.sim.locagest.viewmodel
 
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.gson.Gson
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -11,6 +19,7 @@ import tn.sim.locagest.api.MessageService
 import tn.sim.locagest.api.retrofit.RetroInstance
 import tn.sim.locagest.models.Conversation
 import tn.sim.locagest.models.Message
+import java.io.File
 
 class MessageViewModel: ViewModel() {
     lateinit var recyclerListData: MutableLiveData<List<Message>?>
@@ -84,25 +93,43 @@ class MessageViewModel: ViewModel() {
             }
         })
     }
-    /*
-    fun uploadImage(messageId: String, imgUri: Uri, callback: (Response<YourResponseModel>) -> Unit) {
+    fun createMessageWithImage(mess: Message, imgUri: Uri){
+        val retroInstance = RetroInstance.getRetroInstance().create(MessageService::class.java)
+
+        // Convert Message object to RequestBody
+        val paramsRequestBody = Gson().toJson(mess).toRequestBody("application/json".toMediaTypeOrNull())
+
+//        // Use ContentResolver to open an input stream for the content URI
+//        val inputStream = contentResolver.openInputStream(imgUri)
+//        val requestFile = inputStream?.use { it.readBytes().toRequestBody("multipart/form-data".toMediaTypeOrNull()) }
+
         val imageFile = File(imgUri.path)
-        val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imageFile)
-        val imagePart = MultipartBody.Part.createFormData("image", imageFile.name, requestFile)
+        val mediaType = "multipart/form-data".toMediaTypeOrNull()
+        val requestFile = imageFile.asRequestBody(mediaType)
+        val imagePart = MultipartBody.Part.createFormData("file", imageFile.name, requestFile)
 
-        val call: Call<YourResponseModel> = messageService.uploadImage(messageId, imagePart)
+        val call = retroInstance.createMessageWithImage(paramsRequestBody, imagePart)
+        call.enqueue(object : Callback<Message> {
+            override fun onResponse(
+                call: Call<Message>,
+                response: Response<Message>
+            ) {
+                if (response.isSuccessful) {
+                    createLiveData.postValue(response.body())
+                }else {
+                    createLiveData.postValue(null)
+                }
 
-        call.enqueue(object : Callback<YourResponseModel> {
-            override fun onResponse(call: Call<YourResponseModel>, response: Response<YourResponseModel>) {
-                callback(response)
             }
 
-            override fun onFailure(call: Call<YourResponseModel>, t: Throwable) {
-                // Handle failure
+            override fun onFailure(call: Call<Message>, t: Throwable?) {
+                createLiveData.postValue(null)
+                if (t != null) {
+                    Log.d("MyApp", "Message create: "+ t.message.toString())
+                }
             }
         })
     }
-     */
 
     fun deleteMessage(_id: String) {
         val retroInstance = RetroInstance.getRetroInstance().create(MessageService::class.java)
