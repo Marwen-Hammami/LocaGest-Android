@@ -11,6 +11,7 @@ import tn.sim.locagest.fragments.HistoriqueFragment
 import tn.sim.locagest.ui.PaiementActivity
 import tn.sim.locagest.ui.ReservationActivity
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -33,8 +34,8 @@ class MainActivity : AppCompatActivity() {
         changeFragment(historiqueFragment, "historiqueFragment")
 
 
-       // val intent = Intent(this, ReservationActivity::class.java)
-       // startActivity(intent)
+        val intent = Intent(this, ReservationActivity::class.java)
+        startActivity(intent)
 
 
         binding.bottomNavigationView.setOnItemSelectedListener {

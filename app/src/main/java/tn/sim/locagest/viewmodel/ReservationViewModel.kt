@@ -6,14 +6,14 @@ import androidx.lifecycle.ViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import tn.sim.locagest.Model.Historique
-import tn.sim.locagest.api.HistoriqueService
+import tn.sim.locagest.Model.Reservation
+import tn.sim.locagest.api.ReservationService
 import tn.sim.locagest.api.retrofit.RetroInstance
 
-class HistoriqueViewModel:  ViewModel() {
-    lateinit var recyclerListData: MutableLiveData<List<Historique>?>
-    lateinit var createLiveData: MutableLiveData<Historique?>
-    lateinit var updateLiveData: MutableLiveData<Historique?>
+class ReservationViewModel:  ViewModel() {
+    lateinit var recyclerListData: MutableLiveData<List<Reservation>?>
+    lateinit var createLiveData: MutableLiveData<Reservation?>
+    lateinit var updateLiveData: MutableLiveData<Reservation?>
     lateinit var deleteLiveData: MutableLiveData<Boolean>
 
     init {
@@ -23,55 +23,58 @@ class HistoriqueViewModel:  ViewModel() {
         deleteLiveData = MutableLiveData()
     }
 
-    fun getHistoriqueListObservable(): MutableLiveData<List<Historique>?> {
+    fun getReservationListObservable(): MutableLiveData<List<Reservation>?> {
         return recyclerListData
     }
 
-    fun getCreateNewHistoriqueObservable(): MutableLiveData<Historique?> {
+    fun getCreateNewReservationObservable(): MutableLiveData<Reservation?> {
         return createLiveData
     }
 
-    fun getUpdateHistoriqueObservable(): MutableLiveData<Historique?> {
+    fun getUpdateReservationObservable(): MutableLiveData<Reservation?> {
         return updateLiveData
     }
 
-    fun deleteHistoriqueObservable(): MutableLiveData<Boolean> {
+    fun deleteReservationObservable(): MutableLiveData<Boolean> {
         return deleteLiveData
     }
 
-    fun getHistoriqueList() {
-        val retroInstance = RetroInstance.getRetroInstance().create(HistoriqueService::class.java)
-        val call = retroInstance.getHistoriques()
-        call.enqueue(object : Callback<List<Historique>> {
+    fun getReservationList() {
+        val retroInstance = RetroInstance.getRetroInstance().create(ReservationService::class.java)
+        val call = retroInstance.getReservations()
+        call.enqueue(object : Callback<List<Reservation>> {
             override fun onResponse(
-                call: Call<List<Historique>>,
-                response: Response<List<Historique>>
+                call: Call<List<Reservation>>,
+                response: Response<List<Reservation>>
             ) {
                 Log.w("response, ",response.toString())
                 if (response.isSuccessful) {
                     recyclerListData.postValue(response.body())
+                    Log.d("res", recyclerListData.toString())
+
                 }else {
                     recyclerListData.postValue(null)
                 }
 
             }
 
-            override fun onFailure(call: Call<List<Historique>>, t: Throwable?) {
+            override fun onFailure(call: Call<List<Reservation>>, t: Throwable?) {
                 recyclerListData.postValue(null)
                 if (t != null) {
-                    Log.d("MyApp", "Historique list: "+ t.message.toString())
+                    Log.d("MyApp", "Reservation list: "+ t.message.toString())
                 }
             }
         })
     }
 
-    fun createHistorique(histo: Historique){
-        val retroInstance = RetroInstance.getRetroInstance().create(HistoriqueService::class.java)
-        val call = retroInstance.createHistoriques(histo)
-        call.enqueue(object : Callback<Historique> {
+    fun createReservation(res: Reservation){
+        Log.w("in viewmodel ",res.toString())
+        val retroInstance = RetroInstance.getRetroInstance().create(ReservationService::class.java)
+        val call = retroInstance.createReservations(res)
+        call.enqueue(object : Callback<Reservation> {
             override fun onResponse(
-                call: Call<Historique>,
-                response: Response<Historique>
+                call: Call<Reservation>,
+                response: Response<Reservation>
             ) {
                 Log.w("response, ",response.toString())
                 if (response.isSuccessful) {
@@ -82,7 +85,7 @@ class HistoriqueViewModel:  ViewModel() {
 
             }
 
-            override fun onFailure(call: Call<Historique>, t: Throwable?) {
+            override fun onFailure(call: Call<Reservation>, t: Throwable?) {
                 createLiveData.postValue(null)
                 if (t != null) {
                     Log.d("MyApp", "Subject create: "+ t.message.toString())
@@ -91,13 +94,13 @@ class HistoriqueViewModel:  ViewModel() {
         })
     }
 
-    fun updateHistorique(_id: String, res: Historique){
-        val retroInstance = RetroInstance.getRetroInstance().create(HistoriqueService::class.java)
-        val call = retroInstance.updateHistoriques(_id, res)
-        call.enqueue(object : Callback<Historique> {
+    fun updateReservation(_id: String, res: Reservation){
+        val retroInstance = RetroInstance.getRetroInstance().create(ReservationService::class.java)
+        val call = retroInstance.updateReservations(_id, res)
+        call.enqueue(object : Callback<Reservation> {
             override fun onResponse(
-                call: Call<Historique>,
-                response: Response<Historique>
+                call: Call<Reservation>,
+                response: Response<Reservation>
             ) {
                 if (response.isSuccessful) {
                     updateLiveData.postValue(response.body())
@@ -107,7 +110,7 @@ class HistoriqueViewModel:  ViewModel() {
 
             }
 
-            override fun onFailure(call: Call<Historique>, t: Throwable?) {
+            override fun onFailure(call: Call<Reservation>, t: Throwable?) {
                 updateLiveData.postValue(null)
                 if (t != null) {
                     Log.d("MyApp", "Subject Update: "+ t.message.toString())
@@ -116,9 +119,9 @@ class HistoriqueViewModel:  ViewModel() {
         })
     }
 
-    fun deleteHistorique(_id: String) {
-        val retroInstance = RetroInstance.getRetroInstance().create(HistoriqueService::class.java)
-        val call = retroInstance.deleteHistoriques(_id)
+    fun deleteReservation(_id: String) {
+        val retroInstance = RetroInstance.getRetroInstance().create(ReservationService::class.java)
+        val call = retroInstance.deleteReservations(_id)
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
@@ -129,7 +132,7 @@ class HistoriqueViewModel:  ViewModel() {
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
-                Log.d("MyApp", "Historique Delete: "+ t.message.toString())
+                Log.d("MyApp", "Reservation Delete: "+ t.message.toString())
                 deleteLiveData.postValue(false) // Handle network or other failures
             }
         })

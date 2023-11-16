@@ -11,14 +11,14 @@ import tn.sim.locagest.Model.Historique
 
 interface HistoriqueService {
     @GET("res")
-    fun getReservations(): Call<List<Historique>>
+    fun getHistoriques(): Call<List<Historique>>
 
     @POST("res")
-    fun createReservations(@Body params: Historique): Call<Historique>
+    fun createHistoriques(@Body params: Historique): Call<Historique>
 
     @PUT("res/{id}")
-    fun updateReservations(@Path("id") id: String, @Body params: Historique): Call<Historique>
+    fun updateHistoriques(@Path("id") id: String, @Body params: Historique): Call<Historique>
 
     @DELETE("res/{id}")
-    fun deleteReservations(@Path("id") id: String): Call<Void>
+    fun deleteHistoriques(@Path("id") id: String): Call<Void>
 }
