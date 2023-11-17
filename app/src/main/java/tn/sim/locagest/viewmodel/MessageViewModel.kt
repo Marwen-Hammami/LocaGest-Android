@@ -1,23 +1,16 @@
 package tn.sim.locagest.viewmodel
 
-import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.gson.Gson
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import tn.sim.locagest.api.ConversationService
 import tn.sim.locagest.api.MessageService
 import tn.sim.locagest.api.retrofit.RetroInstance
-import tn.sim.locagest.models.Conversation
 import tn.sim.locagest.models.Message
 import java.io.File
 
@@ -25,6 +18,8 @@ class MessageViewModel: ViewModel() {
     lateinit var recyclerListData: MutableLiveData<List<Message>?>
     lateinit var createLiveData: MutableLiveData<Message?>
     lateinit var deleteLiveData: MutableLiveData<Boolean>
+
+    private val READ_EXTERNAL_STORAGE_PERMISSION_CODE = 123
 
     init {
         recyclerListData = MutableLiveData()
@@ -93,42 +88,40 @@ class MessageViewModel: ViewModel() {
             }
         })
     }
-    fun createMessageWithImage(mess: Message, imgUri: Uri){
+    fun createMessageWithImage(mess: Message, path: String?){
         val retroInstance = RetroInstance.getRetroInstance().create(MessageService::class.java)
 
-        // Convert Message object to RequestBody
-        val paramsRequestBody = Gson().toJson(mess).toRequestBody("application/json".toMediaTypeOrNull())
+        val imageFile = File(path)
+                    val mediaType = "multipart/form-data".toMediaTypeOrNull()
+                    val requestFile = imageFile.asRequestBody(mediaType)
+                    val imagePart =
+                        requestFile?.let { MultipartBody.Part.createFormData("file", "testName", it) }
 
-//        // Use ContentResolver to open an input stream for the content URI
-//        val inputStream = contentResolver.openInputStream(imgUri)
-//        val requestFile = inputStream?.use { it.readBytes().toRequestBody("multipart/form-data".toMediaTypeOrNull()) }
+        val call = imagePart?.let { mess.text?.let { it1 ->
+            retroInstance.createMessageWithImage(mess.conversationId, mess.sender,
+                it1, it)
+        } }
+        if (call != null) {
+            call.enqueue(object : Callback<Message> {
+                override fun onResponse(
+                    call: Call<Message>,
+                    response: Response<Message>
+                ) {
+                    if (response.isSuccessful) {
+                        createLiveData.postValue(response.body())
+                    }else {
+                        createLiveData.postValue(null)
+                    }
 
-        val imageFile = File(imgUri.path)
-        val mediaType = "multipart/form-data".toMediaTypeOrNull()
-        val requestFile = imageFile.asRequestBody(mediaType)
-        val imagePart = MultipartBody.Part.createFormData("file", imageFile.name, requestFile)
-
-        val call = retroInstance.createMessageWithImage(paramsRequestBody, imagePart)
-        call.enqueue(object : Callback<Message> {
-            override fun onResponse(
-                call: Call<Message>,
-                response: Response<Message>
-            ) {
-                if (response.isSuccessful) {
-                    createLiveData.postValue(response.body())
-                }else {
-                    createLiveData.postValue(null)
                 }
 
-            }
-
-            override fun onFailure(call: Call<Message>, t: Throwable?) {
-                createLiveData.postValue(null)
-                if (t != null) {
-                    Log.d("MyApp", "Message create: "+ t.message.toString())
+                override fun onFailure(call: Call<Message>, t: Throwable?) {
+                    if (t != null) {
+                        Log.e("MyApp", "Message create: "+ t.message.toString())    //MyApp tn.sim.locagest D  Message create: /storage/emulated/0/Pictures/Screenshots/Screenshot_20231116-221709.png: open failed: EACCES (Permission denied)
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 
     fun deleteMessage(_id: String) {

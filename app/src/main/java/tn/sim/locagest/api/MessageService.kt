@@ -19,8 +19,10 @@ interface MessageService {
     @Multipart
     @POST("messages/")
     fun createMessageWithImage(
-        @Part("params") params: RequestBody,
-        @Part image: MultipartBody.Part
+        @Part("conversationId") conversationId: String,
+        @Part("sender") sender: String,
+        @Part("text") text: String,
+        @Part file: MultipartBody.Part
     ): Call<Message>
 
     @GET("messages/{id}")
