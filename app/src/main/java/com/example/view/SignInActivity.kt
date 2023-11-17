@@ -70,17 +70,26 @@ class SignInActivity : AppCompatActivity() {
             }
 
             viewModel.signInUser(email, password)
+
         }
 
         viewModel.signedInUser.observe(this) { user ->
             if (user != null) {
+                val intent = Intent(this, ProfileActivity::class.java).apply {
+                    putExtra("userId", user.id ?: "")
+                }
+                startActivity(intent)
                 // Handle successful sign-in
                 Log.d("SIGN_IN_BUTTON", "User signed in successfully: $user")
+                Log.d("SIGN_IN_BUTTON", "Starting ProfileActivity")
+
+
             } else {
                 // Handle sign-in failure
-                Log.d("SIGN_IN_BUTTON", "Sign-in failed" )
+                Log.d("SIGN_IN_BUTTON", "Sign-in failed")
             }
         }
+
 
         val signUpTextView: TextView = findViewById(R.id.signUpTextView)
 
@@ -90,6 +99,14 @@ class SignInActivity : AppCompatActivity() {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
+        val forgotPasswordTextView: TextView = findViewById(R.id.forgotPasswordTextView)
+
+        forgotPasswordTextView.setOnClickListener {
+            // Handle the click event, navigate to ForgotPasswordActivity or show a dialog
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
 
         // Initialize Facebook login
         callbackManager = CallbackManager.Factory.create()
@@ -106,6 +123,7 @@ class SignInActivity : AppCompatActivity() {
                 // Handle successful login
                 val accessToken = loginResult.accessToken
                 Log.d("FACEBOOK_LOGIN", "Facebook login successful, AccessToken: $accessToken")
+
             }
 
             override fun onCancel() {

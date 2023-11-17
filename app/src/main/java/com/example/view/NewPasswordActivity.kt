@@ -1,13 +1,22 @@
+
 package com.example.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.user_pdm.R
+import com.example.viewmodel.UserViewModel
 
 class NewPasswordActivity : AppCompatActivity() {
-  /*  private lateinit var passwordEditText: EditText
+
+    private lateinit var userViewModel: UserViewModel
+    private lateinit var otpEditText: EditText
+    private lateinit var newPasswordEditText: EditText
     private lateinit var confirmPasswordEditText: EditText
     private lateinit var saveButton: Button
 
@@ -15,38 +24,53 @@ class NewPasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.new_password)
 
-        passwordEditText = findViewById(R.id.passwordEditText)
+        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+
+        otpEditText = findViewById(R.id.passwordEditText)
+        newPasswordEditText = findViewById(R.id.confirmPasswordEditText)
         confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText)
         saveButton = findViewById(R.id.saveButton)
 
         saveButton.setOnClickListener {
-            val password = passwordEditText.text.toString()
-            val confirmPassword = confirmPasswordEditText.text.toString()
-
-            if (password.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(
-                    this@NewPasswordActivity,
-                    "Please enter both password fields",
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else if (password != confirmPassword) {
-                Toast.makeText(
-                    this@NewPasswordActivity,
-                    "Passwords do not match",
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else {
-                // Passwords match, perform save logic here
-                // You can save the new password to your database or perform any desired action
-                Toast.makeText(
-                    this@NewPasswordActivity,
-                    "Password saved successfully",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                // Finish the activity or navigate to the next screen
-                finish()
-            }
+            savePassword()
+            val intent = Intent(this,SignInActivity::class.java)
+            startActivity(intent)
         }
-    }*/
+
+        // Observe the resetPasswordResponse LiveData
+        userViewModel.resetPasswordResponse.observe(this, Observer { response ->
+            // Handle the response here
+            if (response != null) {
+                if (response.error != null) {
+                    // Handle error case
+                    Toast.makeText(this, "Password reset failed: ${response.error}", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Handle success case
+                    Toast.makeText(this, "Password reset successful", Toast.LENGTH_SHORT).show()
+                    // Optionally, you can navigate to the next screen or finish the activity
+                    // finish()
+                }
+            }
+        })
+    }
+
+    private fun savePassword() {
+        val otpCode = otpEditText.text.toString().trim()
+        val newPassword = newPasswordEditText.text.toString().trim()
+        val confirmPassword = confirmPasswordEditText.text.toString().trim()
+
+        if (otpCode.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+            Toast.makeText(this, "All fields must be filled", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (newPassword != confirmPassword) {
+            Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Call the resetPassword function from the ViewModel
+        val email = "maher.karoui@esprit.tn" // replace with the actual email
+        userViewModel.resetPassword(email, otpCode, newPassword)
+    }
 }
