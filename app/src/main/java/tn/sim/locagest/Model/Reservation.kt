@@ -10,10 +10,9 @@ enum class StatutRes {
 
 data class Reservation(
     val _id: String?,
-    val DateD: Date,
-    val DateF: Date,
-    val HeureD: String,
-    val HeureF: String,
-    val Statut: StatutRes,
+    val DateDebut: String,
+    val DateFin: String,
+    val HeureDebut: String,
+    val HeureFin: String,
     val Total: Float
 )

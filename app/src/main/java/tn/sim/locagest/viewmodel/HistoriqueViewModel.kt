@@ -6,22 +6,17 @@ import androidx.lifecycle.ViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import tn.sim.locagest.App
 import tn.sim.locagest.Model.Historique
 import tn.sim.locagest.api.HistoriqueService
-import tn.sim.locagest.api.retrofit.RetroInstance
 
 class HistoriqueViewModel:  ViewModel() {
-    lateinit var recyclerListData: MutableLiveData<List<Historique>?>
-    lateinit var createLiveData: MutableLiveData<Historique?>
-    lateinit var updateLiveData: MutableLiveData<Historique?>
-    lateinit var deleteLiveData: MutableLiveData<Boolean>
+    var recyclerListData: MutableLiveData<List<Historique>?> = MutableLiveData()
+    var createLiveData: MutableLiveData<Historique?> = MutableLiveData()
+    var updateLiveData: MutableLiveData<Historique?> = MutableLiveData()
+    var deleteLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
-    init {
-        recyclerListData = MutableLiveData()
-        createLiveData = MutableLiveData()
-        updateLiveData = MutableLiveData()
-        deleteLiveData = MutableLiveData()
-    }
+    private val retroInstance = App.HistoriqueServiceRetroInstance
 
     fun getHistoriqueListObservable(): MutableLiveData<List<Historique>?> {
         return recyclerListData
@@ -40,7 +35,6 @@ class HistoriqueViewModel:  ViewModel() {
     }
 
     fun getHistoriqueList() {
-        val retroInstance = RetroInstance.getRetroInstance().create(HistoriqueService::class.java)
         val call = retroInstance.getHistoriques()
         call.enqueue(object : Callback<List<Historique>> {
             override fun onResponse(
@@ -66,7 +60,6 @@ class HistoriqueViewModel:  ViewModel() {
     }
 
     fun createHistorique(histo: Historique){
-        val retroInstance = RetroInstance.getRetroInstance().create(HistoriqueService::class.java)
         val call = retroInstance.createHistoriques(histo)
         call.enqueue(object : Callback<Historique> {
             override fun onResponse(
@@ -92,7 +85,6 @@ class HistoriqueViewModel:  ViewModel() {
     }
 
     fun updateHistorique(_id: String, res: Historique){
-        val retroInstance = RetroInstance.getRetroInstance().create(HistoriqueService::class.java)
         val call = retroInstance.updateHistoriques(_id, res)
         call.enqueue(object : Callback<Historique> {
             override fun onResponse(
@@ -117,7 +109,6 @@ class HistoriqueViewModel:  ViewModel() {
     }
 
     fun deleteHistorique(_id: String) {
-        val retroInstance = RetroInstance.getRetroInstance().create(HistoriqueService::class.java)
         val call = retroInstance.deleteHistoriques(_id)
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {

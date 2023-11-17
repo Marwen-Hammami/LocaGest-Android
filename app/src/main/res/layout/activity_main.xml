@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
     <include layout="@layout/toolbar" />
 
     <androidx.fragment.app.FragmentContainerView
@@ -28,7 +26,7 @@
         android:layout_width="409dp"
         android:layout_height="50dp"
         app:itemIconSize="35dp"
-        app:itemTextColor="@color/transparent_main_color"
+        app:itemTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

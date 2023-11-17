@@ -1,6 +1,5 @@
 package tn.sim.locagest
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +13,7 @@ import tn.sim.locagest.ui.ReservationActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+     lateinit var binding: ActivityMainBinding
     private lateinit var toolbar: Toolbar
     private lateinit var toolbarTitle: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,41 +25,25 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.app_bar)
         toolbarTitle = findViewById(R.id.toolbar_title)
 
-       // toolbarTitle.text = " Historique Des Réservations "
-
         setSupportActionBar(toolbar)
 
         val historiqueFragment = HistoriqueFragment()
-        changeFragment(historiqueFragment, "historiqueFragment")
-
-
-        val intent = Intent(this, ReservationActivity::class.java)
-        startActivity(intent)
-
+        changeFragment(historiqueFragment, "historiqueFragment","Historique Reservation")
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
-
-
                 R.id.action_reservations -> {
-                    val intent = Intent(this, ReservationActivity::class.java)
-                    startActivity(intent)
-                    toolbarTitle.text = "Reservations"
+                    val reservationActivity = ReservationActivity()
+                    changeFragment(reservationActivity, "reservationActivity","Reservations")
                 }
-
-
                 R.id.action_historique -> {
                     val historiqueFragment = HistoriqueFragment()
-                    changeFragment(historiqueFragment, "historiqueFragment")
-                    toolbarTitle.text = "Historique Reservation"
+                    changeFragment(historiqueFragment, "historiqueFragment","Historique Reservation")
                 }
 
-
-
                 R.id.action_paiement -> {
-                    val intent = Intent(this, PaiementActivity::class.java)
-                    startActivity(intent)
-                    toolbarTitle.text = "Paiement"
+                    val paiementActivity = PaiementActivity()
+                    changeFragment(paiementActivity, "reservationActivity","Paiement")
                 }
 
             }
@@ -68,22 +51,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun changeFragment(fragment: Fragment, tag: String, tileText:String) {
 
-
-    private fun changeFragment(fragment: Fragment, tag: String) {
         val transaction = supportFragmentManager.beginTransaction()
 
-        if (tag != null && tag.isNotEmpty()) {
+        if (tag.isNotEmpty()) {
             transaction.replace(binding.fragmentContainerView.id, fragment, tag).addToBackStack(tag)
         } else {
             transaction.replace(binding.fragmentContainerView.id, fragment)
         }
         transaction.commit()
 
+        toolbarTitle.text = tileText
     }
-
-
-
-
 
 }

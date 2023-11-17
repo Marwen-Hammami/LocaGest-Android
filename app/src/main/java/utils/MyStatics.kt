@@ -19,10 +19,10 @@ class MyStatics {
             val DateD = Date()
             val DateF = Date()
             return mutableListOf(
-                Historique(1, DateD, DateF, 100.0f),
-                Historique(2, DateD, DateF, 200.0f),
-                Historique(3, DateD, DateF, 300.0f),
-                Historique(4, DateD, DateF, 400.0f)
+            //   Historique(1, DateD, DateF, 100.0f),
+             //   Historique(2, DateD, DateF, 200.0f),
+              //  Historique(3, DateD, DateF, 300.0f),
+              //  Historique(4, DateD, DateF, 400.0f)
             )
         }
 

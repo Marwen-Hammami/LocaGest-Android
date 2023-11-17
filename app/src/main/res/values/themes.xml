@@ -8,29 +8,6 @@
         <item name="colorOnPrimaryContainer">@color/transparent_main_color</item>
         <item name="colorSecondary">@color/secondary_color</item>
         <item name="colorOnSecondary">@color/white</item>
-        <item name="colorSecondaryContainer">@color/transparent_secondary_color</item>
-        <item name="colorOnSecondaryContainer">@color/white</item>
-        <item name="colorTertiary">@color/accent_color</item>
-        <item name="colorOnTertiary">@color/white</item>
-        <item name="colorTertiaryContainer">@color/transparent_accent_color</item>
-        <item name="colorOnTertiaryContainer">@color/white</item>
-        <item name="colorError">@color/black</item>
-        <item name="colorErrorContainer">@color/black</item>
-        <item name="colorOnError">@color/black</item>
-        <item name="colorOnErrorContainer">@color/black</item>
-        <item name="android:colorBackground">@color/white</item>
-        <item name="colorOnBackground">@color/main_color</item>
-        <item name="colorSurface">@color/main_color</item>
-        <item name="colorOnSurface">@color/main_color</item>
-        <item name="colorSurfaceVariant">@color/white</item>
-        <item name="colorOnSurfaceVariant">@color/secondary_color</item>
-        <item name="colorOutline">@color/secondary_color</item>
-        <item name="colorOnSurfaceInverse">@color/white</item>
-        <item name="colorSurfaceInverse">@color/secondary_color</item>
-        <item name="colorPrimaryInverse">@color/main_color</item>
-        <item name="android:statusBarColor">@color/main_color</item>
-        <item name="android:textColorHighlight">@color/secondary_color</item>
-        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 
     <style name="Theme.LocaGest" parent="Base.Theme.LocaGest" />

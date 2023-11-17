@@ -7,14 +7,15 @@ import androidx.recyclerview.widget.RecyclerView
 import tn.sim.locagest.Model.Historique
 import tn.sim.locagest.ViewHolders.HistoriqueViewHolder
 import tn.sim.locagest.databinding.ItemHistoriqueBinding
+import tn.sim.locagest.viewmodel.ReservationViewModel
 
 
-class HistoriqueAdapter(val historiquelist : List<Historique>) : RecyclerView.Adapter<HistoriqueViewHolder>(){
+class HistoriqueAdapter(val historiquelist : List<Historique>,private val viewModel: ReservationViewModel) : RecyclerView.Adapter<HistoriqueViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoriqueViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemHistoriqueBinding.inflate(inflater, parent, false)
-        return HistoriqueViewHolder(binding)
+        return HistoriqueViewHolder(binding,viewModel)
     }
 
 

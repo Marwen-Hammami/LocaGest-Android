@@ -10,9 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/transparent_main_color"
-        app:title="@string/app_name"
         app:menu="@menu/toolbar_menu"
-        app:titleTextColor="@color/white">
+        app:titleTextColor="@color/transparent">
 
         <TextView
             android:id="@+id/toolbar_title"
@@ -22,8 +21,7 @@
             android:textStyle="bold"
             android:textSize="19dp"
             android:gravity="center"
-            app:titleTextColor="@color/secondary_color"/>
-
+            app:titleTextColor="@color/secondary_color" />
 
     </androidx.appcompat.widget.Toolbar>
 

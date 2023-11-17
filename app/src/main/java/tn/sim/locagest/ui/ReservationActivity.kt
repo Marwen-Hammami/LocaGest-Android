@@ -3,84 +3,107 @@ package tn.sim.locagest.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
+import tn.sim.locagest.MainActivity
 import tn.sim.locagest.Model.Historique
+import tn.sim.locagest.Model.Reservation
+import tn.sim.locagest.Model.StatutRes
 import tn.sim.locagest.R
+import tn.sim.locagest.databinding.ActivityReservationBinding
+import tn.sim.locagest.databinding.FragmentHistoriqueBinding
+import tn.sim.locagest.fragments.HistoriqueFragment
 import tn.sim.locagest.viewmodel.HistoriqueViewModel
+import tn.sim.locagest.viewmodel.ReservationViewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-class ReservationActivity : AppCompatActivity() {
+class ReservationActivity : Fragment() {
 
     //For Subjects ViwModel
     lateinit var historiqueViewModel: HistoriqueViewModel
+
+    private lateinit var binding: ActivityReservationBinding
 
     private lateinit var btnStartDate: Button
     private lateinit var btnRes: Button
     private lateinit var btnStartTime: Button
     private lateinit var btnEndDate: Button
     private lateinit var btnEndTime: Button
-    private lateinit var tvStartDate: TextView
-    private lateinit var tvStartTime: TextView
-    private lateinit var tvEndDate: TextView
-    private lateinit var tvEndTime: TextView
     private lateinit var radioGroup: RadioGroup
     private lateinit var radioHourlyRate: RadioButton
     private lateinit var radioDailyRate: RadioButton
+    lateinit var  startDate:String
+    lateinit var  startTime:String
+    lateinit var  endDate:String
+    lateinit var  endTime:String
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setTheme(R.style.Theme_LocaGest) // Appliquer le thème personnalisé
-        setContentView(R.layout.activity_reservation)
+    lateinit var reservationViewModel: ReservationViewModel
 
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ActivityReservationBinding.inflate(layoutInflater)
+        return binding.root
+    }
 
-        btnStartDate = findViewById(R.id.btn_start_date)
-        btnStartTime = findViewById(R.id.btn_start_time)
-        btnEndDate = findViewById(R.id.btn_end_date)
-        btnEndTime = findViewById(R.id.btn_end_time)
-        tvStartDate = findViewById(R.id.tv_start_date)
-        tvStartTime = findViewById(R.id.tv_start_time)
-        tvEndDate = findViewById(R.id.tv_end_date)
-        tvEndTime = findViewById(R.id.tv_end_time)
-        radioGroup = findViewById(R.id.radio_group)
-        radioHourlyRate = findViewById(R.id.radio_hourly_rate)
-        radioDailyRate = findViewById(R.id.radio_daily_rate)
-        btnRes = findViewById(R.id.btn_reserve)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        historiqueViewModel = ViewModelProvider(this)[HistoriqueViewModel::class.java]
+        reservationViewModel = ViewModelProvider(this)[ReservationViewModel::class.java]
+
+        btnStartDate = binding.btnStartDate
+        btnStartTime = binding.btnStartTime
+        btnEndDate = binding.btnEndDate
+        btnEndTime = binding.btnEndTime
+        radioGroup = binding.radioGroup
+        radioHourlyRate = binding.radioHourlyRate
+        radioDailyRate = binding.radioDailyRate
+        btnRes = binding.btnReserve
 
 
         // Remplir les champs TextView avec des valeurs statiques
-        tvStartDate.text = "2023-11-16T13:45:00.000Z"
-        tvStartTime.text = "13:45:00.000Z"
-        tvEndDate.text = "2023-11-17T14:30:00.000Z"
-        tvEndTime.text = "14:30:00.000Z"
+//        tvStartDate.text = "2023-11-16T13:45:00.000Z"
+//        tvStartTime.text = "13:45:00.000Z"
+//        tvEndDate.text = "2023-11-17T14:30:00.000Z"
+//        tvEndTime.text = "14:30:00.000Z"
+
+
 
 
         btnStartDate.setOnClickListener { view ->
-            showDatePickerDialog(view, tvStartDate)
+            showDatePickerDialog(btnStartDate)
         }
 
         btnStartTime.setOnClickListener { view ->
-            showTimePickerDialog(view, tvStartTime)
+            showTimePickerDialog(btnStartTime)
         }
 
         btnEndDate.setOnClickListener { view ->
-            showDatePickerDialog(view, tvEndDate)
+            showDatePickerDialog(btnEndDate)
         }
 
         btnEndTime.setOnClickListener { view ->
-            showTimePickerDialog(view, tvEndTime)
+            showTimePickerDialog(btnEndTime)
         }
 
         radioGroup.setOnCheckedChangeListener { group, checkedId ->
@@ -88,6 +111,7 @@ class ReservationActivity : AppCompatActivity() {
                 R.id.radio_hourly_rate -> {
                     // Gérer la sélection du tarif horaire
                 }
+
                 R.id.radio_daily_rate -> {
                     // Gérer la sélection du tarif journalier
                 }
@@ -95,15 +119,25 @@ class ReservationActivity : AppCompatActivity() {
         }
 
         btnRes.setOnClickListener {
-            historiqueViewModel = ViewModelProvider(this).get(HistoriqueViewModel::class.java)
-
-//            var res = Reservation("null", Date(), Date(), "21", "23", StatutRes.Reservee, 21F)
-            var his = Historique(2222, Date(), Date(), 21F)
-            historiqueViewModel.getHistoriqueList()
+            val res = Reservation(
+                "jou12345678",
+                startDate,
+                endDate,
+                startTime,
+                endTime,
+                30F
+            )
+            reservationViewModel.createReservation(res)
+            Toast.makeText(requireContext(),"the reservation has been added" ,Toast.LENGTH_LONG).show()
+            gotToHistoryListView()
         }
     }
 
-    private fun showDatePickerDialog(view: View, textView: TextView) {
+    private fun gotToHistoryListView(){
+        (activity as MainActivity).binding.bottomNavigationView.selectedItemId = R.id.action_historique
+    }
+
+    private fun showDatePickerDialog(selectedButton: Button) {
         val builder = MaterialDatePicker.Builder.datePicker()
         val picker = builder.build()
 
@@ -112,17 +146,30 @@ class ReservationActivity : AppCompatActivity() {
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = selection
 
-            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+          //  val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             val date = dateFormat.format(calendar.time)
-            textView.text = "Date de début sélectionnée : $date" // Mettre à jour le TextView avec la date sélectionnée
+
+            if(selectedButton == btnStartDate){
+                startDate = date
+                btnStartDate.text =
+                    "Date de début sélectionnée : $date" // Mettre à jour le TextView avec la date sélectionnée
+                Log.d("toto", "showDatePickerDialog startDate: $startDate")
+            }
+            if(selectedButton == btnEndDate){
+                endDate = date
+                btnEndDate.text =
+                    "Date de fin sélectionnée : $date" // Mettre à jour le TextView avec la date sélectionnée
+                Log.d("toto", "showDatePickerDialog endDate: $endDate")
+            }
 
             Log.d("DatePicker", "Date sélectionnée : $date")
         }
 
-        picker.show(supportFragmentManager, picker.toString())
+        fragmentManager?.let { picker.show(it, picker.toString()) }
     }
 
-    private fun showTimePickerDialog(view: View, textView: TextView) {
+    private fun showTimePickerDialog(selectedButton: Button) {
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
@@ -139,13 +186,24 @@ class ReservationActivity : AppCompatActivity() {
             val minute = picker.minute
 
             val formattedTime = "%02d:%02d".format(hourOfDay, minute)
-            textView.text = "Heure de début sélectionnée : $formattedTime" // Mettre à jour le TextView avec l'heure sélectionnée
 
+            if(selectedButton ==btnStartTime){
+                startTime = formattedTime
+                btnStartTime.text =
+                    "Heure de début sélectionnée : $formattedTime" // Mettre à jour le TextView avec l'heure sélectionnée
+                Log.d("toto", "showTimePickerDialog: startTime $startTime")
+            }
+            if(selectedButton == btnEndTime){
+                endTime = formattedTime
+                btnEndTime.text =
+                    "Heure de fin sélectionnée : $formattedTime" // Mettre à jour le TextView avec l'heure sélectionnée
+                Log.d("toto", "showTimePickerDialog: endTime $endTime")
+
+            }
             Log.d("TimePicker", "Heure sélectionnée : $formattedTime")
         }
 
-        picker.show(supportFragmentManager, picker.toString())
+        fragmentManager?.let { picker.show(it, picker.toString()) }
     }
-
 
 }

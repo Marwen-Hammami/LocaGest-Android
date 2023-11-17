@@ -23,23 +23,14 @@
             android:layout_height="wrap_content"
             android:text="Choisir la date de début" />
 
-        <TextView
-            android:id="@+id/tv_start_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Date de début sélectionnée : " />
 
         <Button
             android:id="@+id/btn_start_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Choisir l'heure de début" />
+            android:text="Choisir l'heure de début"
+            android:layout_marginTop="16dp"/>
 
-        <TextView
-            android:id="@+id/tv_start_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Heure de début sélectionnée : " />
 
         <Button
             android:id="@+id/btn_end_date"
@@ -48,11 +39,6 @@
             android:text="Choisir la date de fin"
             android:layout_marginTop="16dp"/>
 
-        <TextView
-            android:id="@+id/tv_end_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Date de fin sélectionnée : " />
 
         <Button
             android:id="@+id/btn_end_time"
@@ -61,11 +47,6 @@
             android:text="Choisir l'heure de fin"
             android:layout_marginTop="16dp"/>
 
-        <TextView
-            android:id="@+id/tv_end_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Heure de fin sélectionnée : " />
 
         <RadioGroup
             android:id="@+id/radio_group"

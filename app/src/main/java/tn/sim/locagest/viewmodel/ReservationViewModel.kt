@@ -6,22 +6,17 @@ import androidx.lifecycle.ViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import tn.sim.locagest.App
 import tn.sim.locagest.Model.Reservation
 import tn.sim.locagest.api.ReservationService
-import tn.sim.locagest.api.retrofit.RetroInstance
 
 class ReservationViewModel:  ViewModel() {
-    lateinit var recyclerListData: MutableLiveData<List<Reservation>?>
-    lateinit var createLiveData: MutableLiveData<Reservation?>
-    lateinit var updateLiveData: MutableLiveData<Reservation?>
-    lateinit var deleteLiveData: MutableLiveData<Boolean>
+    var recyclerListData: MutableLiveData<List<Reservation>?> = MutableLiveData()
+    var createLiveData: MutableLiveData<Reservation?> = MutableLiveData()
+    var updateLiveData: MutableLiveData<Reservation?> = MutableLiveData()
+    var deleteLiveData: MutableLiveData<Boolean> = MutableLiveData()
 
-    init {
-        recyclerListData = MutableLiveData()
-        createLiveData = MutableLiveData()
-        updateLiveData = MutableLiveData()
-        deleteLiveData = MutableLiveData()
-    }
+    private val retroInstance = App.ReservationServiceRetroInstance
 
     fun getReservationListObservable(): MutableLiveData<List<Reservation>?> {
         return recyclerListData
@@ -40,7 +35,6 @@ class ReservationViewModel:  ViewModel() {
     }
 
     fun getReservationList() {
-        val retroInstance = RetroInstance.getRetroInstance().create(ReservationService::class.java)
         val call = retroInstance.getReservations()
         call.enqueue(object : Callback<List<Reservation>> {
             override fun onResponse(
@@ -69,7 +63,7 @@ class ReservationViewModel:  ViewModel() {
 
     fun createReservation(res: Reservation){
         Log.w("in viewmodel ",res.toString())
-        val retroInstance = RetroInstance.getRetroInstance().create(ReservationService::class.java)
+
         val call = retroInstance.createReservations(res)
         call.enqueue(object : Callback<Reservation> {
             override fun onResponse(
@@ -95,7 +89,6 @@ class ReservationViewModel:  ViewModel() {
     }
 
     fun updateReservation(_id: String, res: Reservation){
-        val retroInstance = RetroInstance.getRetroInstance().create(ReservationService::class.java)
         val call = retroInstance.updateReservations(_id, res)
         call.enqueue(object : Callback<Reservation> {
             override fun onResponse(
@@ -120,7 +113,6 @@ class ReservationViewModel:  ViewModel() {
     }
 
     fun deleteReservation(_id: String) {
-        val retroInstance = RetroInstance.getRetroInstance().create(ReservationService::class.java)
         val call = retroInstance.deleteReservations(_id)
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {

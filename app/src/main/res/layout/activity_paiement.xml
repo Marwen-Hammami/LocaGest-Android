@@ -11,7 +11,7 @@
         android:id="@+id/btn_methodeP"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="10dp"
         android:background="@color/main_color"
         android:text="Méthodes de paiement"
         android:textColor="@android:color/white"
@@ -116,8 +116,8 @@
 
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_width="403dp"
-        android:layout_height="104dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="56dp"
         android:background="@drawable/rectangle_7"
         android:padding="16dp"
