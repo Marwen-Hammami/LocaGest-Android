@@ -91,9 +91,6 @@ class MessageViewModel: ViewModel() {
     fun createMessageWithImage(mess: Message, path: String?){
         val retroInstance = RetroInstance.getRetroInstance().create(MessageService::class.java)
 
-        // Convert Message object to RequestBody
-//        val paramsRequestBody = Gson().toJson(mess).toRequestBody("application/json".toMediaTypeOrNull())
-
         val imageFile = File(path)
                     val mediaType = "multipart/form-data".toMediaTypeOrNull()
                     val requestFile = imageFile.asRequestBody(mediaType)
