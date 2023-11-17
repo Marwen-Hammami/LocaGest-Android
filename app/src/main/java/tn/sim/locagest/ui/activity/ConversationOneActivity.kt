@@ -2,13 +2,15 @@ package tn.sim.locagest.ui.activity
 
 import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,11 +22,24 @@ import tn.sim.locagest.databinding.ActivityConversationOneBinding
 import tn.sim.locagest.models.Conversation
 import tn.sim.locagest.models.Message
 import tn.sim.locagest.models.User
+import tn.sim.locagest.util.RealPathUtil
 import tn.sim.locagest.viewmodel.MessageViewModel
+
 
 class ConversationOneActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityConversationOneBinding
+
+    var path: String? = null
+
+    private val READ_EXTERNAL_STORAGE_PERMISSION_CODE = 123
+
+    private val REQUEST_EXTERNAL_STORAGE = 1
+    private val PERMISSIONS_STORAGE = arrayOf<String>(
+        android.Manifest.permission.READ_EXTERNAL_STORAGE,
+        android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        android.Manifest.permission.READ_MEDIA_IMAGES
+    )
 
     //For Subjects ViwModel
     lateinit var messageViewModel: MessageViewModel
@@ -40,21 +55,39 @@ class ConversationOneActivity : AppCompatActivity() {
             if (it.resultCode == Activity.RESULT_OK) {
                 val data = it.data
                 val imgUri = data?.data
-//                selectedImage.setImageURI(imgUri)
+                val context: Context = this
+                path = RealPathUtil.getRealPath(context, imgUri)
+                Log.w("f",imgUri.toString())
                 binding.icSend.setOnClickListener {
                     var mess = Message(null, conv._id!!, User.currentUser._id!!
                         , binding.textToSend.text.toString()
                         , null, null, null
                     )
-                    messageViewModel.createMessageWithImage(mess, imgUri!!)
+
+                    messageViewModel.createMessageWithImage(mess, path)
                 }
             }
         }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityConversationOneBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //get storage permission
+        val permission =
+            ActivityCompat.checkSelfPermission(this@ConversationOneActivity, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                this@ConversationOneActivity,
+                PERMISSIONS_STORAGE,
+                REQUEST_EXTERNAL_STORAGE
+            )
+        }
+        //Message create: /storage/emulated/0/Pictures/IMG_20231116_162629.jpg: open failed: EACCES (Permission denied)
 
         //récupérer l'id de la conv passé en intent
         conv = (intent.getSerializableExtra("conv") as? Conversation)!!
@@ -183,10 +216,16 @@ class ConversationOneActivity : AppCompatActivity() {
     }
 
     private fun pickImage() {
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+            READ_EXTERNAL_STORAGE_PERMISSION_CODE
+        )
+
+
         val pickImg = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
         changeImage.launch(pickImg)
     }
-
 
     override fun onDestroy() {
         super.onDestroy()
