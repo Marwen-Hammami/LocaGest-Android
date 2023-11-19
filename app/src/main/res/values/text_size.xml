@@ -2,6 +2,8 @@
 <resources>
 <!--    A faire-->
     <dimen name="Title">23.5sp</dimen>
+    <dimen name="subTitle">17sp</dimen>
+    <dimen name="normal">14sp</dimen>
 <!--    <dimen name="InputSingleNumber">36sp</dimen>-->
 <!--    <dimen name="buttonSize">20sp</dimen>-->
 </resources>

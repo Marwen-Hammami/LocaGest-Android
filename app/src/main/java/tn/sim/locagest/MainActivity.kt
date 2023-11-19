@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import tn.sim.locagest.databinding.ActivityMainBinding
+import tn.sim.locagest.databinding.ActivityMainReservationBinding
 import tn.sim.locagest.fragments.HistoriqueFragment
 import tn.sim.locagest.ui.PaiementActivity
 import tn.sim.locagest.ui.ReservationActivity
@@ -13,14 +14,14 @@ import tn.sim.locagest.ui.ReservationActivity
 
 class MainActivity : AppCompatActivity() {
 
-     lateinit var binding: ActivityMainBinding
+    lateinit var binding: ActivityMainReservationBinding
     private lateinit var toolbar: Toolbar
     private lateinit var toolbarTitle: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainReservationBinding.inflate(layoutInflater)
         setContentView(binding.root)
         toolbar = findViewById(R.id.app_bar)
         toolbarTitle = findViewById(R.id.toolbar_title)

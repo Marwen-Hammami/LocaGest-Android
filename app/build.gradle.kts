@@ -35,7 +35,7 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-    buildFeatures {
+    buildFeatures{
         viewBinding = true
     }
 }
@@ -86,4 +86,12 @@ dependencies {
     // Glide is an image loading and caching library
     implementation ("com.github.bumptech.glide:glide:4.11.0")
     kapt ("com.github.bumptech.glide:compiler:4.11.0")
+
+    //to display image from url
+    implementation ("com.squareup.picasso:picasso:2.71828")
+
+    implementation ("com.github.ZEGOCLOUD:zego_uikit_prebuilt_call_android:+")    // Add this line to your module-level build.gradle file's dependencies, usually named [app].
+    implementation ("com.github.ZEGOCLOUD:zego_uikit_signaling_plugin_android:+")  // Add this line to your module-level build.gradle file's dependencies, usually named [app].
+
+
 }
