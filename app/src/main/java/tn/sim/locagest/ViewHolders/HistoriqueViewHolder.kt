@@ -1,9 +1,8 @@
 package tn.sim.locagest.ViewHolders
 
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import tn.sim.locagest.Model.Historique
+import tn.sim.locagest.models.Historique
 import tn.sim.locagest.databinding.ItemHistoriqueBinding
 import tn.sim.locagest.viewmodel.ReservationViewModel
 import java.text.SimpleDateFormat

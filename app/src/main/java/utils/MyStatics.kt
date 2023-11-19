@@ -3,8 +3,8 @@ package utils
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import tn.sim.locagest.Model.Historique
-import tn.sim.locagest.Model.MethodeP
+import tn.sim.locagest.models.Historique
+import tn.sim.locagest.models.MethodeP
 import java.util.Date
 
 class MyStatics {

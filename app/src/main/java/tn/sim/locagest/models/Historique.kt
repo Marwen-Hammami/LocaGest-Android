@@ -1,4 +1,4 @@
-package tn.sim.locagest.Model
+package tn.sim.locagest.models
 
 import java.util.Date
 

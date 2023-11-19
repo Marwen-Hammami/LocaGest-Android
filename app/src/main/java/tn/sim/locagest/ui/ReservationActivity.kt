@@ -9,27 +9,20 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
-import tn.sim.locagest.MainActivity
-import tn.sim.locagest.Model.Historique
-import tn.sim.locagest.Model.Reservation
-import tn.sim.locagest.Model.StatutRes
+import tn.sim.locagest.MainActivityReservation
+import tn.sim.locagest.models.Reservation
 import tn.sim.locagest.R
 import tn.sim.locagest.databinding.ActivityReservationBinding
-import tn.sim.locagest.databinding.FragmentHistoriqueBinding
-import tn.sim.locagest.fragments.HistoriqueFragment
 import tn.sim.locagest.viewmodel.HistoriqueViewModel
 import tn.sim.locagest.viewmodel.ReservationViewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Date
 import java.util.Locale
 
 class ReservationActivity : Fragment() {
@@ -134,7 +127,7 @@ class ReservationActivity : Fragment() {
     }
 
     private fun gotToHistoryListView(){
-        (activity as MainActivity).binding.bottomNavigationView.selectedItemId = R.id.action_historique
+        (activity as MainActivityReservation).binding.bottomNavigationView.selectedItemId = R.id.action_historique
     }
 
     private fun showDatePickerDialog(selectedButton: Button) {

@@ -7,8 +7,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import tn.sim.locagest.App
-import tn.sim.locagest.Model.Historique
-import tn.sim.locagest.api.HistoriqueService
+import tn.sim.locagest.models.Historique
 
 class HistoriqueViewModel:  ViewModel() {
     var recyclerListData: MutableLiveData<List<Historique>?> = MutableLiveData()

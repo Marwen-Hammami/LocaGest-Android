@@ -1,7 +1,7 @@
 package tn.sim.locagest.ViewHolders
 
 import androidx.recyclerview.widget.RecyclerView
-import tn.sim.locagest.Model.MethodeP
+import tn.sim.locagest.models.MethodeP
 import tn.sim.locagest.databinding.ItemMethodePaiementBinding
 import java.text.SimpleDateFormat
 

@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
-import tn.sim.locagest.Model.Reservation
+import tn.sim.locagest.models.Reservation
 
 interface ReservationService {
     @GET("res")
