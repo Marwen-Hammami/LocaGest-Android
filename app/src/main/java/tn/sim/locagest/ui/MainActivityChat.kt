@@ -2,6 +2,7 @@ package tn.sim.locagest.ui
 
 import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -11,11 +12,17 @@ import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationS
 import tn.sim.locagest.databinding.ActivityMainChatBinding
 import tn.sim.locagest.models.User
 import tn.sim.locagest.ui.fragments.ConversationListFragment
+import io.socket.client.IO;
+import io.socket.client.Socket;
+import java.net.URISyntaxException
 
 
 class MainActivityChat : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainChatBinding
+
+    //socket
+    private lateinit var mSocket : Socket
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +32,29 @@ class MainActivityChat : AppCompatActivity() {
         //init video call so you can receive call from the moment you log in
         initvideoCall()
 
+        //init socket
+        initSocket()
+
         val manager: FragmentManager = supportFragmentManager
         val transaction: FragmentTransaction = manager.beginTransaction()
         transaction.replace(tn.sim.locagest.R.id.fragmentListConvsContainerView, ConversationListFragment()).commit()
 
+    }
+
+    private fun initSocket() {
+        try {
+            mSocket = IO.socket("http://10.0.2.2:9090")
+            Log.w("socket", mSocket.toString())
+
+            // Listen for the 'connect' event
+            mSocket.on(Socket.EVENT_CONNECT) {
+                Log.w("socket", "Socket connected")
+                mSocket.emit("addUser", User.currentUser._id)
+            }
+
+            // Connect the socket
+            mSocket.connect()
+        } catch (e: URISyntaxException ) {}
     }
 
     private fun initvideoCall() {
