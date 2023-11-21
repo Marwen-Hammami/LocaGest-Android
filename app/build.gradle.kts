@@ -90,8 +90,15 @@ dependencies {
     //to display image from url
     implementation ("com.squareup.picasso:picasso:2.71828")
 
+    //Video Call
     implementation ("com.github.ZEGOCLOUD:zego_uikit_prebuilt_call_android:+")    // Add this line to your module-level build.gradle file's dependencies, usually named [app].
     implementation ("com.github.ZEGOCLOUD:zego_uikit_signaling_plugin_android:+")  // Add this line to your module-level build.gradle file's dependencies, usually named [app].
 
+    //User
+    implementation ("com.facebook.android:facebook-android-sdk:12.0.0")
+    implementation ("com.facebook.android:facebook-login:12.0.0")
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+    implementation ("com.google.android.gms:play-services-auth:20.0.0")
 
 }

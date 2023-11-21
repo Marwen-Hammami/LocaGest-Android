@@ -7,7 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
-import tn.sim.locagest.Model.Historique
+import tn.sim.locagest.models.Historique
 
 interface HistoriqueService {
     @GET("res")

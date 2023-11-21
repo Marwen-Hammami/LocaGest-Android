@@ -7,8 +7,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import tn.sim.locagest.App
-import tn.sim.locagest.Model.Reservation
-import tn.sim.locagest.api.ReservationService
+import tn.sim.locagest.models.Reservation
 
 class ReservationViewModel:  ViewModel() {
     var recyclerListData: MutableLiveData<List<Reservation>?> = MutableLiveData()

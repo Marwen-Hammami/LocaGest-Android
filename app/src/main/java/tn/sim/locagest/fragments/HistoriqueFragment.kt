@@ -6,23 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import tn.sim.locagest.Adapters.HistoriqueAdapter
-import tn.sim.locagest.MainActivity
-import tn.sim.locagest.Model.Historique
-import tn.sim.locagest.R
+import tn.sim.locagest.MainActivityReservation
+import tn.sim.locagest.models.Historique
 import tn.sim.locagest.databinding.FragmentHistoriqueBinding
 import tn.sim.locagest.ui.ReservationActivity
 import tn.sim.locagest.viewmodel.HistoriqueViewModel
 import tn.sim.locagest.viewmodel.ReservationViewModel
-import java.sql.Date
 import java.text.SimpleDateFormat
 import java.util.Locale
-import kotlin.math.log
 
 class HistoriqueFragment : Fragment() {
 
@@ -155,7 +151,7 @@ class HistoriqueFragment : Fragment() {
 
     private fun gotToReservationView(){
         val reservationActivity = ReservationActivity()
-        (activity as MainActivity).changeFragment(reservationActivity, "reservationActivity","Reservations")
+        (activity as MainActivityReservation).changeFragment(reservationActivity, "reservationActivity","Reservations")
     }
 
 }

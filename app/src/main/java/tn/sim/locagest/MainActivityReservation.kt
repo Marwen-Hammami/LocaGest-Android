@@ -5,21 +5,20 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import tn.sim.locagest.databinding.ActivityMainBinding
 import tn.sim.locagest.databinding.ActivityMainReservationBinding
 import tn.sim.locagest.fragments.HistoriqueFragment
 import tn.sim.locagest.ui.PaiementActivity
 import tn.sim.locagest.ui.ReservationActivity
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivityReservation : AppCompatActivity() {
 
     lateinit var binding: ActivityMainReservationBinding
     private lateinit var toolbar: Toolbar
     private lateinit var toolbarTitle: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_chat)
 
         binding = ActivityMainReservationBinding.inflate(layoutInflater)
         setContentView(binding.root)

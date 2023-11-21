@@ -3,7 +3,7 @@ package tn.sim.locagest.Adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import tn.sim.locagest.Model.MethodeP
+import tn.sim.locagest.models.MethodeP
 import tn.sim.locagest.ViewHolders.MethodePaiementViewHolder
 import tn.sim.locagest.databinding.ItemMethodePaiementBinding
 

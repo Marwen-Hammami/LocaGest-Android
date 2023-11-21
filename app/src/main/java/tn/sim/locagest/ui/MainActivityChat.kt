@@ -1,6 +1,5 @@
 package tn.sim.locagest.ui
 
-import android.R
 import android.app.Application
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -9,18 +8,18 @@ import androidx.fragment.app.FragmentTransaction
 import com.zegocloud.uikit.prebuilt.call.config.ZegoNotificationConfig
 import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationConfig
 import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationService
-import tn.sim.locagest.databinding.ActivityMainBinding
+import tn.sim.locagest.databinding.ActivityMainChatBinding
 import tn.sim.locagest.models.User
 import tn.sim.locagest.ui.fragments.ConversationListFragment
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivityChat : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding : ActivityMainChatBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //init video call so you can receive call from the moment you log in
