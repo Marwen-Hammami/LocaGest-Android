@@ -10,6 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import tn.sim.locagest.api.MessageService
+import tn.sim.locagest.api.SocketManager
 import tn.sim.locagest.api.retrofit.RetroInstance
 import tn.sim.locagest.models.Message
 import java.io.File
@@ -64,7 +65,7 @@ class MessageViewModel: ViewModel() {
         })
     }
 
-    fun createMessage(mess: Message){
+    fun createMessage(mess: Message, receiver: String){
         val retroInstance = RetroInstance.getRetroInstance().create(MessageService::class.java)
         val call = retroInstance.createMessage(mess)
         call.enqueue(object : Callback<Message> {
@@ -74,6 +75,8 @@ class MessageViewModel: ViewModel() {
             ) {
                 if (response.isSuccessful) {
                     createLiveData.postValue(response.body())
+                    //send message update via socket
+                    SocketManager.sendMessage(mess.sender, receiver, mess.text.toString())
                 }else {
                     createLiveData.postValue(null)
                 }

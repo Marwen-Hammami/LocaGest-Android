@@ -11,11 +11,17 @@ import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationS
 import tn.sim.locagest.databinding.ActivityMainChatBinding
 import tn.sim.locagest.models.User
 import tn.sim.locagest.ui.fragments.ConversationListFragment
+import io.socket.client.Socket;
+import tn.sim.locagest.api.SocketManager
+import java.net.URISyntaxException
 
 
 class MainActivityChat : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainChatBinding
+
+    //socket
+    private lateinit var mSocket : Socket
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +31,24 @@ class MainActivityChat : AppCompatActivity() {
         //init video call so you can receive call from the moment you log in
         initvideoCall()
 
+        //init socket
+        initSocket()
+
         val manager: FragmentManager = supportFragmentManager
         val transaction: FragmentTransaction = manager.beginTransaction()
         transaction.replace(tn.sim.locagest.R.id.fragmentListConvsContainerView, ConversationListFragment()).commit()
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        SocketManager.disconnect()
+    }
+
+    private fun initSocket() {
+        try {
+            SocketManager.connect()
+        } catch (e: URISyntaxException ) {}
     }
 
     private fun initvideoCall() {

@@ -60,54 +60,58 @@ class ConversationAdapter(val message: Array<Message>, val messageViewModel: Mes
     }
 
     private fun manageFiles(mess: Message) {
-        when (mess.file?.size) {
-            1 -> {
-                binding.aImage1.visibility = View.VISIBLE
-                binding.bLayout.visibility = View.GONE
-                binding.cLayout.visibility = View.GONE
+        try {
+            when (mess.file?.size) {
+                1 -> {
+                    binding.aImage1.visibility = View.VISIBLE
+                    binding.bLayout.visibility = View.GONE
+                    binding.cLayout.visibility = View.GONE
 
-                val imageUrl = mess.file[0]
-                val modifiedimageUrl = imageUrl.replace("localhost", "10.0.2.2")
-                Picasso.get().load(modifiedimageUrl).into(binding.aImage1)
-            }
-            2 -> {
-                binding.aImage1.visibility = View.GONE
-                binding.bLayout.visibility = View.VISIBLE
-                binding.cLayout.visibility = View.GONE
+                    val imageUrl = mess.file[0]
+                    val modifiedimageUrl = imageUrl.replace("localhost", "10.0.2.2")
+                    Picasso.get().load(modifiedimageUrl).into(binding.aImage1)
+                }
+                2 -> {
+                    binding.aImage1.visibility = View.GONE
+                    binding.bLayout.visibility = View.VISIBLE
+                    binding.cLayout.visibility = View.GONE
 
-                //premiere image
-                val imageUrl1 = mess.file[0]
-                val modifiedimageUrl1 = imageUrl1.replace("localhost", "10.0.2.2")
-                Picasso.get().load(modifiedimageUrl1).into(binding.bImage1)
-                //deuxieme image
-                val imageUrl2 = mess.file[1]
-                val modifiedimageUrl2 = imageUrl2.replace("localhost", "10.0.2.2")
-                Picasso.get().load(modifiedimageUrl2).into(binding.bImage2)
-            }
-            3 -> {
-                binding.aImage1.visibility = View.GONE
-                binding.bLayout.visibility = View.GONE
-                binding.cLayout.visibility = View.VISIBLE
+                    //premiere image
+                    val imageUrl1 = mess.file[0]
+                    val modifiedimageUrl1 = imageUrl1.replace("localhost", "10.0.2.2")
+                    Picasso.get().load(modifiedimageUrl1).into(binding.bImage1)
+                    //deuxieme image
+                    val imageUrl2 = mess.file[1]
+                    val modifiedimageUrl2 = imageUrl2.replace("localhost", "10.0.2.2")
+                    Picasso.get().load(modifiedimageUrl2).into(binding.bImage2)
+                }
+                3 -> {
+                    binding.aImage1.visibility = View.GONE
+                    binding.bLayout.visibility = View.GONE
+                    binding.cLayout.visibility = View.VISIBLE
 
-                //premiere image
-                val imageUrl11 = mess.file[0]
-                val modifiedimageUrl11 = imageUrl11.replace("localhost", "10.0.2.2")
-                Picasso.get().load(modifiedimageUrl11).into(binding.cImage1)
-                //deuxieme image
-                val imageUrl2 = mess.file[1]
-                val modifiedimageUrl2 = imageUrl2.replace("localhost", "10.0.2.2")
-                Picasso.get().load(modifiedimageUrl2).into(binding.cImage2)
-                //troisieme image
-                val imageUrl3 = mess.file[2]
-                val modifiedimageUrl3 = imageUrl3.replace("localhost", "10.0.2.2")
-                Picasso.get().load(modifiedimageUrl3).into(binding.cImage3)
+                    //premiere image
+                    val imageUrl11 = mess.file[0]
+                    val modifiedimageUrl11 = imageUrl11.replace("localhost", "10.0.2.2")
+                    Picasso.get().load(modifiedimageUrl11).into(binding.cImage1)
+                    //deuxieme image
+                    val imageUrl2 = mess.file[1]
+                    val modifiedimageUrl2 = imageUrl2.replace("localhost", "10.0.2.2")
+                    Picasso.get().load(modifiedimageUrl2).into(binding.cImage2)
+                    //troisieme image
+                    val imageUrl3 = mess.file[2]
+                    val modifiedimageUrl3 = imageUrl3.replace("localhost", "10.0.2.2")
+                    Picasso.get().load(modifiedimageUrl3).into(binding.cImage3)
+                }
+                else -> {
+                    //aucun fichier
+                    binding.aImage1.visibility = View.GONE
+                    binding.bLayout.visibility = View.GONE
+                    binding.cLayout.visibility = View.GONE
+                }
             }
-            else -> {
-                //aucun fichier
-                binding.aImage1.visibility = View.GONE
-                binding.bLayout.visibility = View.GONE
-                binding.cLayout.visibility = View.GONE
-            }
+        }catch (e: Exception){
+
         }
     }
 
