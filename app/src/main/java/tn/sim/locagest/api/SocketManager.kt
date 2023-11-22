@@ -1,12 +1,9 @@
 package tn.sim.locagest.api
 import android.util.Log
-import androidx.lifecycle.ViewModelProvider
 import io.socket.client.IO
 import io.socket.client.Socket
 import tn.sim.locagest.models.Message
 import tn.sim.locagest.models.User
-import tn.sim.locagest.ui.MainActivityChat
-import tn.sim.locagest.ui.activity.ConversationOneActivity
 import tn.sim.locagest.viewmodel.MessageViewModel
 import java.net.URISyntaxException
 import java.util.Date
@@ -48,22 +45,32 @@ object SocketManager {
         mSocket.emit("sendMessage", mapOf("senderId" to senderId, "receiverId" to receiverId, "text" to text))
         Log.w("SocketManager", "Send message")
     }
+    fun sendMessageWithImage(senderId: String, receiverId: String, text: String) {
+        mSocket.emit("sendMessage", mapOf("senderId" to senderId, "receiverId" to receiverId, "text" to text))
+        Log.w("SocketManager", "Send message with image")
+    }
 
     fun listenForGetMessageEvent(
-        messageViewModel: MessageViewModel
+        messageViewModel: MessageViewModel,
+        idSender: String
     ) {
         mSocket.on("getMessage") {
             // Handle the received message
             val receivedMessage = it[0].toString()
-            Log.w("SocketManager", "Received message: $receivedMessage")
+            val senderId = it[1].toString()
+            Log.w("SocketManager", "Received message: $receivedMessage / $senderId")
             // Add your logic to process the received message
-            val newMessage = Message("","","",receivedMessage, listOf(), Date(),Date())
+            Log.w("send", "$idSender == $senderId")
+            if (idSender == senderId) {
+                val newMessage =
+                    Message("", "", senderId, receivedMessage, listOf(), Date(), Date())
 
-            var currentMessages = messageViewModel.recyclerListData.value?.toMutableList()
+                var currentMessages = messageViewModel.recyclerListData.value?.toMutableList()
 
-            currentMessages?.add(newMessage)
+                currentMessages?.add(newMessage)
 
-            messageViewModel.recyclerListData.postValue(currentMessages)
+                messageViewModel.recyclerListData.postValue(currentMessages)
+            }
         }
     }
 

@@ -99,7 +99,17 @@ class ConversationOneActivity : AppCompatActivity() {
 
         initSecondToolbar(conv)
 
-        SocketManager.listenForGetMessageEvent(messageViewModel)
+        //to receive socket messages
+        if (!conv.isGroup){
+            if (conv.members[0] == User.currentUser._id){
+                SocketManager.listenForGetMessageEvent(messageViewModel, conv.members[1])
+            } else {
+                SocketManager.listenForGetMessageEvent(messageViewModel, conv.members[0])
+            }
+        } else {
+
+        }
+
     }
 
     private fun initViewModel(convId: String) {
