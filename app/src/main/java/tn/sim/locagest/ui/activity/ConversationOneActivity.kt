@@ -18,6 +18,7 @@ import com.zegocloud.uikit.prebuilt.call.config.ZegoNotificationConfig
 import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationConfig
 import com.zegocloud.uikit.prebuilt.call.invite.ZegoUIKitPrebuiltCallInvitationService
 import tn.sim.locagest.adapters.ConversationAdapter
+import tn.sim.locagest.api.SocketManager
 import tn.sim.locagest.databinding.ActivityConversationOneBinding
 import tn.sim.locagest.models.Conversation
 import tn.sim.locagest.models.Message
@@ -98,6 +99,7 @@ class ConversationOneActivity : AppCompatActivity() {
 
         initSecondToolbar(conv)
 
+        SocketManager.listenForGetMessageEvent(messageViewModel)
     }
 
     private fun initViewModel(convId: String) {
@@ -128,6 +130,13 @@ class ConversationOneActivity : AppCompatActivity() {
     }
 
     private fun sendIconClick() {
+        //get other person id for socket
+        var receiver = ""
+        if (User.currentUser._id == conv.members[0]){
+            receiver = conv.members[1]
+        } else {
+            receiver = conv.members[0]
+        }
         binding.icSend.setOnClickListener{
             val newMessage = Message(
                 null,
@@ -139,7 +148,7 @@ class ConversationOneActivity : AppCompatActivity() {
                 null,
                 )
 
-            messageViewModel.createMessage(newMessage)
+            messageViewModel.createMessage(newMessage,receiver)
 
             binding.textToSend.text.clear()
 

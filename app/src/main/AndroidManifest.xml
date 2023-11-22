@@ -82,6 +82,9 @@
         <activity android:name=".ui.activity.ForgotPasswordActivity" />
         <activity android:name=".ui.activity.NewPasswordActivity" />
 <!--        <activity android:name=".ui.activity.ProfileActivity" />-->
+
+        <!-- Chat Activities -->
+        <activity android:name=".ui.activity.CallingActivity" />
     </application>
 
 </manifest>
