@@ -2,6 +2,7 @@ package tn.sim.locagest.api.retrofit
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import tn.sim.locagest.api.FlotteService
 
 class RetroInstance {
     companion object {

@@ -1,5 +1,6 @@
 package tn.sim.locagest.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -26,9 +27,13 @@ class detail_flotte: AppCompatActivity() {
         initViewModel()
 
         binding.btnAjout.setOnClickListener {
-            var c = Car("4444","Renault","Model","Hybride", "Manuelle")
+            var c = Car("4444","Renault","Model","Hybride", "Manuelle", "Disponible")
 
             messageViewModel.createMessage(c)
+        }
+        binding.btnAjout.setOnClickListener {
+            val intent = Intent(this, ajouter_voiture::class.java)
+            startActivity(intent)
         }
     }
     private fun initViewModel() {

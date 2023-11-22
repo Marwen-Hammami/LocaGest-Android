@@ -27,6 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ImmatriculationText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Immatriculation" />
@@ -41,6 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextMarque"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Marque" />
@@ -55,6 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextModele"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Modèle" />
@@ -69,6 +72,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextCarburant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Carburant" />
@@ -83,20 +87,23 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextTransmission"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Boite" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnAddCar"
         android:layout_width="298dp"
         android:layout_height="48dp"
         android:backgroundTint="#009688"
         android:text="Ajouter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
+        app:layout_constraintVertical_bias="0.333" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

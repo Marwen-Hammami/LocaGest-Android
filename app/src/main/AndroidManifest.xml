@@ -36,6 +36,22 @@
         <activity
             android:name=".ui.activity.detail_flotte"
             android:exported="false" />
+        <activity
+            android:name=".ui.activity.ajouter_voiture"
+            android:exported='false'/>
+        <activity
+            android:name=".ui.activity.cardview_voiture"
+            android:exported='false'/>
+        <activity
+            android:name=".ui.activity.detail_voiture"
+            android:exported='false'/>
+        <activity
+            android:name=".ui.activity.page_entretien"
+            android:exported='false'/>
+        <activity
+            android:name=".ui.activity.ajouter_entretien"
+            android:exported='false'/>
+
     </application>
 
 </manifest>

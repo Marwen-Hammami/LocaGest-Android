@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import tn.sim.locagest.R
 import tn.sim.locagest.databinding.DashboardBinding
 
@@ -22,7 +21,12 @@ class dashboard : AppCompatActivity() {
             val intent2 = Intent(this, detail_flotte::class.java)
             startActivity(intent2)
         }
+        binding.imageView8.setOnClickListener{
+            Log.w("d","d")
+            val intent3 = Intent(this, page_entretien::class.java )
+            startActivity(intent3)
+        }
 
-        // Ajoutez d'autres écouteurs de clic si nécessaire pour d'autres éléments
+
     }
 }
