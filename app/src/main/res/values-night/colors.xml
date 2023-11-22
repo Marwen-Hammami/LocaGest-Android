@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">@color/secondary_color</color>
+    <color name="white">@color/black</color>
+
+    <!-- Normal colors -->
+    <color name="main_color">#2AB5B6</color>
+    <color name="secondary_color">#F4FBFB</color>
+    <color name="accent_color">#229652</color>
+
+    <!-- Transparent colors -->
+    <color name="transparent_main_color">#A02AB5B6</color>
+    <color name="transparent_secondary_color">#A0F4FBFB</color>
+    <color name="transparent_accent_color">#A0229652</color>
+
+    <!-- Hyper Transparent colors (more transparent)-->
+    <color name="hyper_transparent_main_color">#172AB5B6</color>
+    <color name="hyper_transparent_secondary_color">#17F4FBFB</color>
+    <color name="hyper_transparent_accent_color">#17229652</color>
+</resources>

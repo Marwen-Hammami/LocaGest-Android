@@ -5,7 +5,11 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@drawable/gradient_background"
+<<<<<<< HEAD
     tools:context=".VerificationMailMobileActivity">
+=======
+    tools:context=".ui.activity.VerificationMailMobileActivity">
+>>>>>>> 75575245090f143978c9921245a7d30626fd2e57
 
     <TextView
         android:layout_width="match_parent"

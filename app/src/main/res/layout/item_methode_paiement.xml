@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/transparent_secondary_color">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@color/main_color"
+        >
+
+        <TextView
+            android:id="@+id/Title1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cash"
+            android:textColor="@color/white"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <RadioButton
+            android:id="@+id/radio_cash"
+            android:layout_width="371dp"
+            android:layout_height="82dp"
+            android:text="Sélectionner"
+
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+
