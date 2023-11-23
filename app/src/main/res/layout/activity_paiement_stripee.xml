@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvPaymentDetails"
+        android:layout_width="254dp"
+        android:layout_height="68dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:text="Détails du paiement"
+        android:textSize="21dp"
+        android:textStyle="bold" />
+
+    <!-- Exemple d'éléments d'interface utilisateur pour afficher des informations sur le paiement -->
+
+    <!-- Bouton pour confirmer le paiement -->
+
+    <TextView
+        android:id="@+id/tvAmount"
+        android:layout_width="350dp"
+        android:layout_height="67dp"
+        android:layout_below="@id/tvPaymentDetails"
+        android:layout_marginTop="105dp"
+        android:text="Montant à payer : $100.00"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvPaymentMethod"
+        android:layout_width="353dp"
+        android:layout_height="53dp"
+        android:layout_below="@id/tvAmount"
+        android:layout_marginTop="31dp"
+        android:textSize="18sp"
+        android:text="Méthode de paiement : Carte de crédit" />
+
+    <Button
+        android:id="@+id/btnConfirmPayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPaymentMethod"
+        android:layout_marginTop="252dp"
+        android:text="Confirmer le paiement" />
+
+</RelativeLayout>

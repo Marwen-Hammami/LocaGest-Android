@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.stripe.android.PaymentConfiguration
 import tn.sim.locagest.databinding.ActivityMainReservationBinding
 import tn.sim.locagest.fragments.HistoriqueFragment
 import tn.sim.locagest.ui.PaiementActivity
@@ -19,6 +20,14 @@ class MainActivityReservation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_chat)
+
+
+
+        PaymentConfiguration.init(
+            applicationContext,
+            publishableKey = "pk_test_51OF1qTCCAcch0OaOh4RBDmMrgB2H2fldhAv7VHVTcSVMAMyryPXrYSoZ5Yd4UMGt9PSKhmXSe3b4rzDVp2Jnf61P00LBqL30Oe"
+        )
+
 
         binding = ActivityMainReservationBinding.inflate(layoutInflater)
         setContentView(binding.root)

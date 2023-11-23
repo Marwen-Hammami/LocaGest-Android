@@ -1,5 +1,6 @@
 package tn.sim.locagest.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.stripe.android.paymentsheet.PaymentSheet
+import com.stripe.android.paymentsheet.PaymentSheetResult
 import tn.sim.locagest.R
 import tn.sim.locagest.databinding.ActivityPaiementBinding
 import tn.sim.locagest.databinding.FragmentHistoriqueBinding
@@ -17,7 +20,7 @@ import tn.sim.locagest.fragments.MethodePaiementFragment
 
 class PaiementActivity : Fragment() {
 
-
+    private lateinit var paymentSheet: PaymentSheet
     private lateinit var binding: ActivityPaiementBinding
 
     override fun onCreateView(
@@ -49,7 +52,9 @@ class PaiementActivity : Fragment() {
         }
 
         btnPayer.setOnClickListener {
-            // Ajoutez ici le code pour gérer le clic sur le bouton "Payer"
+            val intent = Intent(requireContext(), PaiementStripeeActivity::class.java)
+            startActivity(intent)
+
         }
-    }
-}
+    }}
+

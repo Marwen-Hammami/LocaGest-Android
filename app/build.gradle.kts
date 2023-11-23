@@ -7,11 +7,11 @@ plugins {
 
 android {
     namespace = "tn.sim.locagest"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "tn.sim.locagest"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -42,8 +42,15 @@ android {
 
 dependencies {
 
-
+    implementation("com.stripe:stripeterminal:3.2.0")
     implementation ("com.google.android.material:material:1.5.0")
+    // Stripe Android SDK
+    implementation("com.stripe:stripe-android:20.34.4")
+    implementation ("com.github.kittinunf.fuel:fuel:2.3.1")
+   implementation ("com.github.kittinunf.fuel:fuel-json:2.3.1")
+
+
+
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

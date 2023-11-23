@@ -1,5 +1,6 @@
 package tn.sim.locagest.models
 
+import com.google.gson.annotations.SerializedName
 import java.util.Date
 
 enum class StatutRes {
@@ -14,5 +15,9 @@ data class Reservation(
     val DateFin: String,
     val HeureDebut: String,
     val HeureFin: String,
-    val Total: Float
+    val Total: Float,
+
+    @SerializedName("client_secret")
+    val clientSecret: String? = null
+
 )

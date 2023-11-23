@@ -28,11 +28,6 @@
     <string name="payer">Payer</string>
 
 
-
-
-
-
-
     <!--  Inputs | Labels | Buttons -->
     <string name="input_suffix_Email">\@esprit.tn</string>
     <string name="input_email">Email</string>

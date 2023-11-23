@@ -12,7 +12,6 @@
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
-        android:background="@color/main_color"
         android:text="Méthodes de paiement"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -152,7 +151,7 @@
         android:id="@+id/btn_payer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+
         android:text="Payer maintenant"
         android:textColor="@color/white"
         android:layout_marginBottom="50dp"
@@ -160,5 +159,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
