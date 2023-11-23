@@ -11,8 +11,4 @@
         <domain includeSubdomains="true">graph.facebook.com</domain>
         <!-- Add more domains as needed -->
     </domain-config>
-<<<<<<< HEAD
 </network-security-config>
-=======
-</network-security-config>
->>>>>>> 75575245090f143978c9921245a7d30626fd2e57

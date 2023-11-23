@@ -1,9 +1,4 @@
 <resources>
-<<<<<<< HEAD
-    <string name="app_name">User_pdm</string>
-    <string name="facebook_app_id">263445033367830</string>
-
-=======
     <string name="app_name">LocaGest</string>
     <string name="facebook_app_id">263445033367830</string>
 
@@ -220,5 +215,4 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
->>>>>>> 75575245090f143978c9921245a7d30626fd2e57
 </resources>

@@ -1,17 +1,16 @@
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    // 1 Add plugin kapt
+    id("org.jetbrains.kotlin.kapt")
 }
 
-
-
 android {
-    namespace = "com.example.user_pdm"
+    namespace = "tn.sim.locagest"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.user_pdm"
+        applicationId = "tn.sim.locagest"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
@@ -30,14 +29,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    viewBinding {
-        //enabled = true
+        jvmTarget = "17"
     }
     buildFeatures{
         viewBinding = true
@@ -51,35 +47,22 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.8.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.tracing:tracing-perfetto-handshake:1.0.0")
-    implementation("androidx.databinding:databinding-runtime:8.1.3")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("androidx.appcompat:appcompat:1.4.1")
-    implementation ("com.facebook.android:facebook-android-sdk:12.0.0")
-    implementation ("com.facebook.android:facebook-login:12.0.0")
-    implementation("com.squareup.okhttp3:okhttp:4.9.0")
-    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
-    implementation ("com.google.android.gms:play-services-auth:20.0.0")
 
-<<<<<<< HEAD
-=======
     //google.android.material
     implementation ("com.google.android.material:material:1.4.0")
 
     // Architectural Components
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
->>>>>>> 75575245090f143978c9921245a7d30626fd2e57
 
+    // Room
+    implementation ("androidx.room:room-runtime:2.5.0")
+    kapt("androidx.room:room-compiler:2.5.0")
 
-<<<<<<< HEAD
-}
-=======
     // Kotlin Extensions and Coroutines support for Room
     implementation ("androidx.room:room-ktx:2.5.0")
 
@@ -117,9 +100,10 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
     implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
     implementation ("com.google.android.gms:play-services-auth:20.0.0")
+    implementation("com.google.android.material:material:1.9.0")
+
 
     //SocketIo
     implementation ("io.socket:socket.io-client:2.0.0")
 
 }
->>>>>>> 75575245090f143978c9921245a7d30626fd2e57

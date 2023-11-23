@@ -1,3 +1,6 @@
+
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,18 +9,9 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="16dp"
-<<<<<<< HEAD
-    tools:context=".SignUpActivity">
-=======
-    tools:context=".ui.activity.SignUpActivity">
->>>>>>> 75575245090f143978c9921245a7d30626fd2e57
+    tools:context="tn.sim.locagest.ui.activity.SignInActivity">
 
-    <ImageView
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:src="@drawable/logo_pdm"
-        android:scaleType="centerCrop"
-        android:layout_marginBottom="32dp" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameTextInputLayout"

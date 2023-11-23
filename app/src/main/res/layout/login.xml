@@ -4,11 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-<<<<<<< HEAD
-    tools:context=".LoginActivity">
-=======
-    tools:context=".ui.activity.SignInActivity">
->>>>>>> 75575245090f143978c9921245a7d30626fd2e57
+    tools:context="com.example.view.SignInActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -24,7 +20,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your username" />
+            android:hint="Enter your email" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

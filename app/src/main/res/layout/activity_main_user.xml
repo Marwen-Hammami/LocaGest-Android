@@ -5,11 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F4FBFB"
-<<<<<<< HEAD:app/src/main/res/layout/activity_main.xml
-    tools:context=".MainActivity">
-=======
     tools:context=".ui.activity.MainActivityUser">
->>>>>>> 75575245090f143978c9921245a7d30626fd2e57:app/src/main/res/layout/activity_main_user.xml
 
     <ImageView
         android:id="@+id/imageView"
