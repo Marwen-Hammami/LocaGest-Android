@@ -65,6 +65,28 @@ class UserViewModel : ViewModel() {
         return _resetPasswordMessage
     }
 
+    // LiveData for the user by ID
+    private val _userById = MutableLiveData<User?>()
+    val userById: MutableLiveData<User?> get() = _userById
+
+    // Function to get a user by ID
+    fun getUserById(userId: String) {
+        userRepository.getUserById(userId).enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
+                if (response.isSuccessful) {
+                    _userById.value = response.body()
+                } else {
+                    // Handle API error here if needed
+                    _userById.value = null
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                // Handle network or unexpected errors
+                _userById.value = null
+            }
+        })
+    }
 
     private val _resetPasswordResponse = MutableLiveData<ResetPasswordResponse>()
     val resetPasswordResponse: LiveData<ResetPasswordResponse> get() = _resetPasswordResponse

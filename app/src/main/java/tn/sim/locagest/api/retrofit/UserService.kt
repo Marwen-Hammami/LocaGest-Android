@@ -45,4 +45,7 @@ interface UserService {
         @Field("otpCode") otpCode: String,
         @Field("newPassword") newPassword: String
     ): Call<ResetPasswordResponse>
+
+    @GET("User/{id}")
+    fun getUserById(@Path("id") userId: String): Call<User>
 }

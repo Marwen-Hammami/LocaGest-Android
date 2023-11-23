@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.view.SignInActivity">
+    android:background="@drawable/backkk"
+
+    tools:context="tn.sim.locagest.ui.activity.SignInActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -20,7 +22,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your email" />
+            android:hint="Enter your email"
+            android:textColor="#2196F3"
+            android:textColorHint="#2196F3"
+            app:boxStrokeColor="@color/vert" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -33,8 +38,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Enter your password"
             android:inputType="textPassword"
-            android:hint="Enter your password" />
+            android:textColor="#2196F3" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

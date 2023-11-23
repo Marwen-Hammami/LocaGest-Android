@@ -95,7 +95,7 @@ class SignInActivity : AppCompatActivity() {
                     Log.d("SIGN_IN_OBSERVER", "User ID: $userId")
 
                     // Navigate to ProfileActivity and pass the user token and user ID
-                    val intent = Intent(this@SignInActivity, ProfileActivity::class.java).apply {
+                    val intent = Intent(this@SignInActivity, UserProfileActivity::class.java).apply {
                         putExtra("userToken", userToken)
                         putExtra("userId", userId)
                     }
