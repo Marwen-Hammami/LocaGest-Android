@@ -9,6 +9,7 @@ import com.stripe.android.PaymentConfiguration
 import tn.sim.locagest.databinding.ActivityMainReservationBinding
 import tn.sim.locagest.fragments.HistoriqueFragment
 import tn.sim.locagest.ui.PaiementActivity
+import tn.sim.locagest.ui.PaiementStripeeFragment
 import tn.sim.locagest.ui.ReservationActivity
 
 
@@ -17,6 +18,9 @@ class MainActivityReservation : AppCompatActivity() {
     lateinit var binding: ActivityMainReservationBinding
     private lateinit var toolbar: Toolbar
     private lateinit var toolbarTitle: TextView
+    companion object {
+        private  const val API_KEY ="pk_test_51OF1qTCCAcch0OaOh4RBDmMrgB2H2fldhAv7VHVTcSVMAMyryPXrYSoZ5Yd4UMGt9PSKhmXSe3b4rzDVp2Jnf61P00LBqL30Oe"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_chat)
@@ -25,7 +29,7 @@ class MainActivityReservation : AppCompatActivity() {
 
         PaymentConfiguration.init(
             applicationContext,
-            publishableKey = "pk_test_51OF1qTCCAcch0OaOh4RBDmMrgB2H2fldhAv7VHVTcSVMAMyryPXrYSoZ5Yd4UMGt9PSKhmXSe3b4rzDVp2Jnf61P00LBqL30Oe"
+            publishableKey = API_KEY
         )
 
 

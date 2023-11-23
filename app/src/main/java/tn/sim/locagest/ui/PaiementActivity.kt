@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.stripe.android.paymentsheet.PaymentSheet
 import com.stripe.android.paymentsheet.PaymentSheetResult
+import tn.sim.locagest.MainActivityReservation
 import tn.sim.locagest.R
 import tn.sim.locagest.databinding.ActivityPaiementBinding
 import tn.sim.locagest.databinding.FragmentHistoriqueBinding
@@ -34,6 +35,11 @@ class PaiementActivity : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val paiementStripeFragment = PaiementStripeeFragment()
+
+        binding.btnPayer.setOnClickListener {
+            (activity as MainActivityReservation).changeFragment(paiementStripeFragment, "paiementStripeFragment","Paiement")
+        }
 
        /* val newsImage1 = binding.newsImage1
         val Title1 = binding.Title1
