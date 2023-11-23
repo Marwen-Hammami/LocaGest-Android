@@ -5,6 +5,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import tn.sim.locagest.api.AgenceService
 import tn.sim.locagest.api.HistoriqueService
 import tn.sim.locagest.api.ReservationService
 
@@ -17,6 +18,7 @@ class App :Application() {
 
 
         val BASE_URL = "http://10.0.2.2:9090/"
+//        val BASE_URL = "http://192.168.1.42:9090/"
 
         private val httpClient = OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
@@ -31,6 +33,7 @@ class App :Application() {
 
         val ReservationServiceRetroInstance = getRetroInstance().create(ReservationService::class.java)
         val HistoriqueServiceRetroInstance = getRetroInstance().create(HistoriqueService::class.java)
+        val AgenceServiceRetroInstance = getRetroInstance().create(AgenceService::class.java)
     }
 
 }
