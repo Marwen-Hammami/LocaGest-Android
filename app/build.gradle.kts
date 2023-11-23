@@ -96,7 +96,7 @@ dependencies {
 
     //User
     implementation ("com.facebook.android:facebook-android-sdk:12.0.0")
-    implementation ("com.facebook.android:facebook-login:12.0.0")
+    implementation ("com.facebook.android:facebook-login:latest.release")
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
     implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
     implementation ("com.google.android.gms:play-services-auth:20.0.0")

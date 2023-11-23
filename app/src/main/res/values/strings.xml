@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">LocaGest</string>
-    <string name="facebook_app_id">263445033367830</string>
 
+
+    <string name="facebook_app_id">953964639575730</string>
+    <string name="fb_login_protocol_scheme">c3980f43626416ee1b60f8b254e222dd</string>
+    <string name="facebook_client_token">w5G662mc4o81BUzLaFO2xjZlnHw=</string>
     <string-array name="language_options">
         <item>English</item>
         <item>French</item>
