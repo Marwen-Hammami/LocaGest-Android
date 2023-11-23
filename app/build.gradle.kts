@@ -35,9 +35,15 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
+
+
+    implementation ("com.google.android.material:material:1.5.0")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -46,6 +52,9 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    //google.android.material
+    implementation ("com.google.android.material:material:1.4.0")
 
     // Architectural Components
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
@@ -77,4 +86,25 @@ dependencies {
     // Glide is an image loading and caching library
     implementation ("com.github.bumptech.glide:glide:4.11.0")
     kapt ("com.github.bumptech.glide:compiler:4.11.0")
+
+    //to display image from url
+    implementation ("com.squareup.picasso:picasso:2.71828")
+
+    //Video Call
+    implementation ("com.github.ZEGOCLOUD:zego_uikit_prebuilt_call_android:+")    // Add this line to your module-level build.gradle file's dependencies, usually named [app].
+    implementation ("com.github.ZEGOCLOUD:zego_uikit_signaling_plugin_android:+")  // Add this line to your module-level build.gradle file's dependencies, usually named [app].
+
+    //User
+    implementation ("com.facebook.android:facebook-android-sdk:12.0.0")
+    implementation ("com.facebook.android:facebook-login:12.0.0")
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+    implementation ("com.google.android.gms:play-services-auth:20.0.0")
+
+    // Map
+    implementation("com.mapbox.maps:android:10.4.3") {
+        exclude("group_name", "module_name")
+    }
+    implementation("com.google.android.gms:play-services-location:18.0.0")
+
 }

@@ -1,11 +1,12 @@
-package tn.sim.locagest
+package tn.sim.locagest.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import tn.sim.locagest.R
 
-class MainActivity : AppCompatActivity() {
+class MainActivityUser : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.sign_up)
     }
 }
