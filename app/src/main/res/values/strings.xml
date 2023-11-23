@@ -2,6 +2,14 @@
     <string name="app_name">LocaGest</string>
     <string name="facebook_app_id">263445033367830</string>
 
+    <string-array name="language_options">
+        <item>English</item>
+        <item>French</item>
+        <item>German</item>
+        <!-- Add more language options as needed -->
+    </string-array>
+    ```
+
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

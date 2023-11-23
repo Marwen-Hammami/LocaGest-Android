@@ -207,6 +207,14 @@ class UserRepository(private val userService: UserService = RetrofitClient.insta
         return result
     }
 
+    // In UserRepository
+    fun getUserById(userId: String): Call<User> {
+        return userService.getUserById(userId)
+    }
+
+
+
+
 
 }
 

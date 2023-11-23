@@ -45,6 +45,8 @@
     <activity android:name=".ui.activity.ForgotPasswordActivity" />
     <activity android:name=".ui.activity.NewPasswordActivity" />
     <activity android:name=".ui.activity.ProfileActivity" />
+        <activity android:name=".ui.activity.UserProfileActivity" />
+
         <activity
             android:name=".ui.PaiementActivity"
             android:exported="true">
