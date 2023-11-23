@@ -29,7 +29,7 @@ interface ReservationService {
     fun deleteReservations(@Path("id") id: String): Call<Void>
 
 
-@POST("create-intent")
+@POST("res/create-intent")
 fun createPaiementIntent(): Call<PaymentIntentResponse>
 
 

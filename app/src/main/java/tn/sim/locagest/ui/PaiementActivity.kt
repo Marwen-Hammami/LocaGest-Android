@@ -35,15 +35,15 @@ class PaiementActivity : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val newsImage1 = binding.newsImage1
+       /* val newsImage1 = binding.newsImage1
         val Title1 = binding.Title1
         val newsDescription2 = binding.newsDescription2
         val totalAmountLabel = binding.totalAmountLabel
         val totalAmountValue = binding.totalAmountValue
         val btnMethodeP = binding.btnMethodeP
-        val btnPayer = binding.btnPayer
+        val btnPayer = binding.btnPayer*/
 
-        btnMethodeP.setOnClickListener {
+      /*  btnMethodeP.setOnClickListener {
             val fragment = MethodePaiementFragment()
             val transaction: FragmentTransaction = fragmentManager?.beginTransaction()!!
             transaction.replace(com.google.android.material.R.id.container, fragment)
@@ -55,6 +55,6 @@ class PaiementActivity : Fragment() {
             val intent = Intent(requireContext(), PaiementStripeeActivity::class.java)
             startActivity(intent)
 
-        }
+        }*/
     }}
 
