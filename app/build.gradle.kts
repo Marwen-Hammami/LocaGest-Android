@@ -102,8 +102,12 @@ dependencies {
     implementation ("com.google.android.gms:play-services-auth:20.0.0")
     implementation("com.google.android.material:material:1.9.0")
 
-
     //SocketIo
     implementation ("io.socket:socket.io-client:2.0.0")
 
+    // Map
+    implementation("com.mapbox.maps:android:10.4.3") {
+        exclude("group_name", "module_name")
+    }
+    implementation("com.google.android.gms:play-services-location:18.0.0")
 }
