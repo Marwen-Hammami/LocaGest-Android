@@ -37,20 +37,20 @@ class NewPasswordActivity : AppCompatActivity() {
         }
 
         // Observe the resetPasswordResponse LiveData
-//        userViewModel.resetPasswordResponse.observe(this, Observer { response ->
-//            // Handle the response here
-//            if (response != null) {
-//                if (response.error != null) {
-//                    // Handle error case
-//                    Toast.makeText(this, "Password reset failed: ${response.error}", Toast.LENGTH_SHORT).show()
-//                } else {
-//                    // Handle success case
-//                    Toast.makeText(this, "Password reset successful", Toast.LENGTH_SHORT).show()
-//                    // Optionally, you can navigate to the next screen or finish the activity
-//                    // finish()
-//                }
-//            }
-//        })
+        userViewModel.resetPasswordResponse.observe(this, Observer { response ->
+            // Handle the response here
+            if (response != null) {
+                if (response.error != null) {
+                    // Handle error case
+                    Toast.makeText(this, "Password reset failed: ${response.error}", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Handle success case
+                    Toast.makeText(this, "Password reset successful", Toast.LENGTH_SHORT).show()
+                    // Optionally, you can navigate to the next screen or finish the activity
+                    // finish()
+                }
+            }
+        })
     }
 
     private fun savePassword() {
@@ -70,6 +70,6 @@ class NewPasswordActivity : AppCompatActivity() {
 
         // Call the resetPassword function from the ViewModel
         val email = "maher.karoui@esprit.tn" // replace with the actual email
-//        userViewModel.resetPassword(email, otpCode, newPassword)
+        userViewModel.resetPassword(email, otpCode, newPassword)
     }
 }

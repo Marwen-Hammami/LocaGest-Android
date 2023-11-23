@@ -3,19 +3,16 @@ package tn.sim.locagest.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-//import com.example.model.ResetPasswordResponse
 import tn.sim.locagest.models.User
 import tn.sim.locagest.repository.UserRepository
 import tn.sim.locagest.api.retrofit.RetrofitClient
 import tn.sim.locagest.api.retrofit.UserService
-import com.google.gson.JsonObject
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.concurrent.Flow
+import tn.sim.locagest.models.ResetPasswordResponse
+import tn.sim.locagest.models.SignInResult
 
 
 class UserViewModel : ViewModel() {
@@ -26,9 +23,25 @@ class UserViewModel : ViewModel() {
     private val _createdUser = MutableLiveData<User>()
     val createdUser: LiveData<User> get() = _createdUser
 
-    // LiveData for signed-in user
-    private val _signedInUser = MutableLiveData<User>()
-    val signedInUser: LiveData<User> get() = _signedInUser
+    private val _signInResult = MutableLiveData<SignInResult>()
+    val signInResult: LiveData<SignInResult>
+        get() = _signInResult
+
+    fun signInUser(email: String, password: String) {
+        userRepository.signInUser(email, password, object : UserRepository.SignInCallback {
+            override fun onSuccess(user: User?, token: String?, success: Boolean) {
+                val result = SignInResult(user = user, token = token, success = success)
+                _signInResult.postValue(result)
+            }
+
+            override fun onError(error: String?) {
+                val result = SignInResult(error = error)
+                _signInResult.postValue(result)
+            }
+        })
+    }
+
+
 
     // LiveData for reset password message
     private val _resetPasswordMessage = MutableLiveData<String>()
@@ -42,9 +55,7 @@ class UserViewModel : ViewModel() {
     }
 
     // Function to sign in a user
-    fun signInUser(email: String, password: String) {
-        _signedInUser.value = userRepository.signInUser(email, password).value
-    }
+
 
     // Function to send a reset password request
     fun forgotPassword(email: String): LiveData<String> {
@@ -55,32 +66,32 @@ class UserViewModel : ViewModel() {
     }
 
 
-//    private val _resetPasswordResponse = MutableLiveData<ResetPasswordResponse>()
-//    val resetPasswordResponse: LiveData<ResetPasswordResponse> get() = _resetPasswordResponse
+    private val _resetPasswordResponse = MutableLiveData<ResetPasswordResponse>()
+    val resetPasswordResponse: LiveData<ResetPasswordResponse> get() = _resetPasswordResponse
 
     // Function to reset the password
-//    fun resetPassword(email: String, otpCode: String, newPassword: String) {
-//        userRepository.resetPassword(email, otpCode, newPassword)
-//            .enqueue(object : Callback<ResetPasswordResponse> {
-//                override fun onResponse(
-//                    call: Call<ResetPasswordResponse>,
-//                    response: Response<ResetPasswordResponse>
-//                ) {
-//                    if (response.isSuccessful) {
-//                        _resetPasswordResponse.value = response.body()
-//                    } else {
-//                        // You can handle API error here if needed
-//                        _resetPasswordResponse.value =
-//                            ResetPasswordResponse(error = "Password reset failed.")
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<ResetPasswordResponse>, t: Throwable) {
-//                    // Handle network or unexpected errors
-//                    _resetPasswordResponse.value = ResetPasswordResponse(error = "An error occurred.")
-//                }
-//            })
-//    }
+    fun resetPassword(email: String, otpCode: String, newPassword: String) {
+        userRepository.resetPassword(email, otpCode, newPassword)
+            .enqueue(object : Callback<ResetPasswordResponse> {
+                override fun onResponse(
+                    call: Call<ResetPasswordResponse>,
+                    response: Response<ResetPasswordResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        _resetPasswordResponse.value = response.body()
+                    } else {
+                        // You can handle API error here if needed
+                        _resetPasswordResponse.value =
+                            ResetPasswordResponse(error = "Password reset failed.")
+                    }
+                }
+
+                override fun onFailure(call: Call<ResetPasswordResponse>, t: Throwable) {
+                    // Handle network or unexpected errors
+                    _resetPasswordResponse.value = ResetPasswordResponse(error = "An error occurred.")
+                }
+            })
+    }
     private val _updateResult = MutableLiveData<Boolean>()
     val updateResult: LiveData<Boolean>
         get() = _updateResult

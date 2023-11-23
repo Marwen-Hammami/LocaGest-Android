@@ -8,6 +8,13 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.FacebookSdk
+import com.facebook.appevents.AppEventsLogger
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import tn.sim.locagest.models.User
 import tn.sim.locagest.R
 import tn.sim.locagest.viewmodel.UserViewModel
@@ -22,6 +29,7 @@ import com.google.android.material.textfield.TextInputLayout
 class SignUpActivity : AppCompatActivity() {
     private lateinit var viewModel: UserViewModel
     private lateinit var mGoogleSignInClient: GoogleSignInClient
+    private lateinit var callbackManager: CallbackManager
 
     companion object {
         private const val RC_SIGN_IN = 9001
@@ -30,7 +38,9 @@ class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sign_up)
-        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
+        FacebookSdk.sdkInitialize(applicationContext)
+        AppEventsLogger.activateApp(application)
+        viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         val usernameTextInputLayout: TextInputLayout = findViewById(R.id.usernameTextInputLayout)
         val emailTextInputLayout: TextInputLayout = findViewById(R.id.emailTextInputLayout)
@@ -52,31 +62,71 @@ class SignUpActivity : AppCompatActivity() {
         viewModel.createdUser.observe(this) { user ->
             if (user != null) {
                 Log.d("SIGN_UP_BUTTON", "User created successfully: $user")
-//                val intent = Intent(this, ProfileActivity::class.java).apply {
-//                    putExtra("userId", user.id)
-//                }
+                val intent = Intent(this, ProfileActivity::class.java).apply {
+                    putExtra("userId", user._id)
+                }
                 startActivity(intent)
             } else {
                 Log.d("SIGN_UP_BUTTON", "User creation failed")
             }
         }
 
+        callbackManager = CallbackManager.Factory.create()
+
+        val facebookLoginButton: ImageView = findViewById(R.id.facebookLogo)
+        facebookLoginButton.setOnClickListener {
+            // Trigger Facebook login
+            LoginManager.getInstance()
+                .logInWithReadPermissions(this, listOf("email", "public_profile"))
+        }
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+            object : FacebookCallback<LoginResult> {
+                override fun onSuccess(loginResult: LoginResult) {
+                    val accessToken = loginResult.accessToken
+                    // Use the access token to make requests to the Facebook API
+                    // You can retrieve user information from the accessToken if needed
+                }
+
+                override fun onCancel() {
+                    // Handle canceled Facebook login
+                }
+
+                override fun onError(error: FacebookException) {
+                    // Handle error in Facebook login
+                }
+            })
+
         signUpButton.setOnClickListener {
             val username = usernameTextInputLayout.editText?.text.toString()
             val email = emailTextInputLayout.editText?.text.toString()
             val password = passwordTextInputLayout.editText?.text.toString()
 
-            val user = User(null, username, email, password, null, null, null, "GOOD", null, null,"client",false, "path/to/img.png")
+            val user = User(
+                "",
+                username,
+                email,
+                password,
+                null,
+                null,
+                null,
+                "GOOD",
+                null,
+                null,
+                "client",
+                null
+            )
             viewModel.createUser(user)
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        callbackManager.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_SIGN_IN) {
             val result = data?.let { Auth.GoogleSignInApi.getSignInResultFromIntent(it) }
-            if (result != null) {
+            if (result != null && result.isSuccess) {
                 handleSignInResult(result)
             }
         }
@@ -106,15 +156,28 @@ class SignUpActivity : AppCompatActivity() {
             emailTextInputLayout.editText?.setText(email)
             passwordTextInputLayout.editText?.setText(password)
 
-            val user = User(null, username, email, password, null, null, null, "GOOD", null, null,"client",false, "path/to/img.png")
+            val user = User(
+                "",
+                username,
+                email,
+                password,
+                null,
+                null,
+                null,
+                "GOOD",
+                null,
+                null,
+                "client",
+                null
+            )
             viewModel.createUser(user)
 
             viewModel.createdUser.observe(this) { createdUser ->
                 if (createdUser != null) {
                     Log.d("SIGN_UP_BUTTON", "User created successfully: $createdUser")
-//                    val intent = Intent(this, ProfileActivity::class.java).apply {
-//                        putExtra("userId", createdUser.id)
-//                    }
+                    val intent = Intent(this, ProfileActivity::class.java).apply {
+                        putExtra("userId", createdUser._id)
+                    }
                     startActivity(intent)
                 } else {
                     Log.d("SIGN_UP_BUTTON", "User creation failed")
@@ -125,3 +188,4 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 }
+

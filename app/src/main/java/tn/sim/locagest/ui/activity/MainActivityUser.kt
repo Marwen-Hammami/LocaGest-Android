@@ -7,6 +7,6 @@ import tn.sim.locagest.R
 class MainActivityUser : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.sign_up)
+        setContentView(R.layout.login)
     }
 }

@@ -1,4 +1,4 @@
-package tn.sim.locagest.models
+package com.example.model
 
 data class SignInInfo(
     val email: String,

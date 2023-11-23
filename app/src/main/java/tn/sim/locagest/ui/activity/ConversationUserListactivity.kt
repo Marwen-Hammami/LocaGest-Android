@@ -19,12 +19,12 @@ class ConversationUserListactivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val listUsers = arrayListOf<User>(
-            User("123456789","username","youremail@gmail.com", "12345678", "Ahmed", "Tounsi", 123456789, "GOOD", "Client", 3, "client", true, "path/to/img.png"),
-            User("123456789","username","youremail@gmail.com", "12345678", "Samir", "Hammami", 123456789, "GOOD", "Client", 3, "client", false, "path/to/img.png"),
-            User("123456789","username","youremail@gmail.com", "12345678", "Amira", "Jrad", 123456789, "GOOD", "Client", 3, "client", true, "path/to/img.png"),
-            User("123456789","username","youremail@gmail.com", "12345678", "Khaled", "Arbi", 123456789, "GOOD", "Client", 3, "client", false, "path/to/img.png"),
-            User("123456789","username","youremail@gmail.com", "12345678", "Youssef", "Hammami", 123456789, "GOOD", "Client", 3, "client", false, "path/to/img.png"),
-            User("123456789","username","youremail@gmail.com", "12345678", "Maher", "Shiri", 123456789, "GOOD", "Client", 3, "client", true, "path/to/img.png"),
+            User("123456789","username","youremail@gmail.com", "12345678", "Ahmed", "Tounsi", "123456789", "GOOD", "Client", 3, "client", null),
+            User("123456789","username","youremail@gmail.com", "12345678", "Samir", "Hammami", "123456789", "GOOD", "Client", 3, "client", null),
+            User("123456789","username","youremail@gmail.com", "12345678", "Amira", "Jrad", "123456789", "GOOD", "Client", 3, "client", null),
+            User("123456789","username","youremail@gmail.com", "12345678", "Khaled", "Arbi", "123456789", "GOOD", "Client", 3, "client", null),
+            User("123456789","username","youremail@gmail.com", "12345678", "Youssef", "Hammami", "123456789", "GOOD", "Client", 3, "client", null),
+            User("123456789","username","youremail@gmail.com", "12345678", "Maher", "Shiri", "123456789", "GOOD", "Client", 3, "client", null),
         )
 
         val myAdapter = ConversationUserListAdapter(listUsers)

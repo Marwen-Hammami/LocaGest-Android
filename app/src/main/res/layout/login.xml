@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.activity.SignInActivity">
+    tools:context="com.example.view.SignInActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your username" />
+            android:hint="Enter your email" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
