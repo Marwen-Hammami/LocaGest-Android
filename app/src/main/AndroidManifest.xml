@@ -85,6 +85,7 @@
 
         <!-- Chat Activities -->
         <activity android:name=".ui.activity.CallingActivity" />
+<!--        <activity android:name=".ui.MainActivityChat" />-->
     </application>
 
 </manifest>
