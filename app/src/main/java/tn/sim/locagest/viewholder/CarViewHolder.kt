@@ -18,15 +18,16 @@ import tn.sim.locagest.ui.activity.detail_voiture
         binding.buttonDetails.setOnClickListener {
 
                 // Créer une instance de la classe Car avec des données spécifiques
-                val voiture = Car("2578 TU 237", "Dacia", "Logan", "Essence", "Manuelle","Disponible")
+
 
                 // Créer un Intent pour passer les données à DetailVoitureActivity
                 val intent = Intent(context, detail_voiture::class.java)
-                intent.putExtra("IMMATRICULATION", voiture.immatriculation)
-                intent.putExtra("MARQUE", voiture.marque)
-                intent.putExtra("MODELE", voiture.modele)
-                intent.putExtra("BOITE", voiture.boite)
-                intent.putExtra("CARBURANT", voiture.carburant)
+                intent.putExtra("IMMATRICULATION", car.immatriculation)
+                intent.putExtra("MARQUE", car.marque)
+                intent.putExtra("MODELE", car.modele)
+                intent.putExtra("BOITE", car.boite)
+                intent.putExtra("CARBURANT", car.carburant)
+                intent.putExtra("STATUT", car.disponibility)
 
                 // Démarrer l'activité DetailVoitureActivity avec l'Intent
                 context.startActivity(intent)

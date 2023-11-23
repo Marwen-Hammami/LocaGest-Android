@@ -1,7 +1,9 @@
 package tn.sim.locagest.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+
 import tn.sim.locagest.databinding.DetailVoitureBinding
 import tn.sim.locagest.models.Car
 
@@ -13,6 +15,9 @@ class detail_voiture : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DetailVoitureBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.Retourne.setOnClickListener {
+            onBackPressed()
+        }
 
         // Récupérer les données passées depuis l'intent
         val immatriculation = intent.getStringExtra("IMMATRICULATION")
@@ -29,5 +34,29 @@ class detail_voiture : AppCompatActivity() {
         binding.textViewStatut.text = "Statut : $disponibility"
         binding.textViewBoite.text = "Boîte : $boite"
         binding.textViewCarburant.text = "Carburant : $carburant"
+
+        binding.btnModifier.setOnClickListener {
+            // Redirection vers l'interface modifier_voiture
+            val car = Car(
+                immatriculation = immatriculation ?: "",
+                marque = marque ?: "",
+                modele = modele ?: "",
+                disponibility = disponibility ?: "",
+                boite = boite ?: "",
+                carburant = carburant ?: ""
+            )
+            val intent = Intent(this@detail_voiture, modifier_voiture::class.java)
+            // on cliquant sur se bouton je veux envoyer tout les information a cett intent
+            intent.putExtra("car", car)
+            startActivity(intent)
+        }
+
+
+    }
+    override fun onBackPressed() {
+
+
+        // Appeler la méthode super.onBackPressed() pour fermer l'activité actuelle
+        super.onBackPressed()
     }
 }

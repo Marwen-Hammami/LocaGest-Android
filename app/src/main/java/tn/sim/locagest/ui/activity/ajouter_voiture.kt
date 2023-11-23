@@ -27,6 +27,10 @@ class ajouter_voiture : AppCompatActivity() {
         binding = AjouterVoitureBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.Return.setOnClickListener {
+            onBackPressed()
+        }
+
         binding.btnAddCar.setOnClickListener {
             val immatriculation = binding.ImmatriculationText.text.toString()
             val marque = binding.editTextMarque.text.toString()
@@ -65,5 +69,11 @@ class ajouter_voiture : AppCompatActivity() {
     private fun isValidImmatriculationFormat(immatriculation: String): Boolean {
         val pattern = Pattern.compile("\\d{1,4}TU\\d{1,3}")
         return pattern.matcher(immatriculation).matches()
+    }
+    override fun onBackPressed() {
+
+
+        // Appeler la méthode super.onBackPressed() pour fermer l'activité actuelle
+        super.onBackPressed()
     }
 }

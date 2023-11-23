@@ -35,6 +35,7 @@ class page_entretien : AppCompatActivity() {
             val intent = Intent(this, ajouter_entretien::class.java)
             startActivity(intent)
         }
+        binding.imageView11.setOnClickListener { onBackPressed() }
 
     }
 
@@ -59,5 +60,11 @@ class page_entretien : AppCompatActivity() {
         binding.recyclerView2.adapter = carAdapter
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView2.layoutManager = layoutManager
+    }
+    override fun onBackPressed() {
+
+
+        // Appeler la méthode super.onBackPressed() pour fermer l'activité actuelle
+        super.onBackPressed()
     }
 }

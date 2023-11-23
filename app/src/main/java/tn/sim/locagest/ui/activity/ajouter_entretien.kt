@@ -16,6 +16,10 @@ class ajouter_entretien : AppCompatActivity() {
         binding = AjouterEntretienBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.Returned.setOnClickListener {
+            onBackPressed()
+        }
+
         binding.btnAddEntretien.setOnClickListener {
             val cout = binding.Cout.text.toString()
             val titre = binding.Titre.toString()
@@ -47,5 +51,10 @@ class ajouter_entretien : AppCompatActivity() {
     private fun isValidCoutFormat(cout: String): Boolean {
         val pattern = Pattern.compile("\\d+DT")
         return pattern.matcher(cout).matches()
+    }
+    override fun onBackPressed() {
+
+        // Appeler la méthode super.onBackPressed() pour fermer l'activité actuelle
+        super.onBackPressed()
     }
 }

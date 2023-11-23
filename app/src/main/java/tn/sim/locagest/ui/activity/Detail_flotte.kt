@@ -35,6 +35,9 @@ class detail_flotte: AppCompatActivity() {
             val intent = Intent(this, ajouter_voiture::class.java)
             startActivity(intent)
         }
+        binding.Retour.setOnClickListener {
+            onBackPressed()
+        }
     }
     private fun initViewModel() {
         listMessagess = mutableListOf()
@@ -62,4 +65,11 @@ class detail_flotte: AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
     }
+    override fun onBackPressed() {
+
+
+        // Appeler la méthode super.onBackPressed() pour fermer l'activité actuelle
+        super.onBackPressed()
+    }
+
 }

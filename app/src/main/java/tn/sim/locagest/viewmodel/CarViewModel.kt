@@ -58,6 +58,27 @@ class CarViewModel: ViewModel() {
             }
         })
     }
+    fun updateCar(immatriculation: String, updatedCar: Car) {
+        val retroInstance = RetroInstance.getRetroInstance().create(FlotteService::class.java)
+        val call = retroInstance.updateCar(immatriculation, updatedCar)
+        call.enqueue(object : Callback<Car> {
+            override fun onResponse(call: Call<Car>, response: Response<Car>) {
+                if (response.isSuccessful) {
+                    createLiveData.postValue(response.body())
+                } else {
+                    createLiveData.postValue(null)
+                }
+            }
+
+            override fun onFailure(call: Call<Car>, t: Throwable?) {
+                createLiveData.postValue(null)
+                if (t != null) {
+                    Log.d("MyApp", "Car update error: " + t.message.toString())
+                }
+            }
+        })
+    }
+
 
     fun createMessage(mess: Car){
         val retroInstance = RetroInstance.getRetroInstance().create(FlotteService::class.java)
