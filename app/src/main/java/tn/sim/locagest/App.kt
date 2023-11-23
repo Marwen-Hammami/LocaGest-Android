@@ -5,7 +5,9 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import tn.sim.locagest.api.HistoriqueService
+import tn.sim.locagest.api.PaiementService
 import tn.sim.locagest.api.ReservationService
 
 class App :Application() {
@@ -31,6 +33,7 @@ class App :Application() {
 
         val ReservationServiceRetroInstance = getRetroInstance().create(ReservationService::class.java)
         val HistoriqueServiceRetroInstance = getRetroInstance().create(HistoriqueService::class.java)
+        val PaiementServiceRetroInstance = getRetroInstance().create(PaiementService::class.java)
     }
 
 }
