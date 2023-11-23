@@ -1,3 +1,4 @@
+/*
 package com.chihebsapplication.app.modules.fichesreparation.ui
 
 import android.os.Handler
@@ -61,3 +62,4 @@ class FichesReparationActivity :
 
     }
   }
+*/

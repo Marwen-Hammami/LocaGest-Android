@@ -11,33 +11,37 @@ data class AjoutDesOutilsModel(
   var txtAjouterdesout: String? =
       MyApp.getInstance().resources.getString(R.string.msg_ajouter_des_out)
   ,
+
   /**
    * TODO Replace with dynamic value
    */
-  var txtNameexampleco: String? = MyApp.getInstance().resources.getString(R.string.lbl_stock)
+  var txtNameexampleco: String? = MyApp.getInstance().resources.getString(R.string.lbl_nom_d_outils)
   ,
   /**
    * TODO Replace with dynamic value
    */
-  var txtNameexamplecoOne: String? = MyApp.getInstance().resources.getString(R.string.lbl_marque)
+  var txtStockexampleco: String? = MyApp.getInstance().resources.getString(R.string.lbl_stock)
   ,
   /**
    * TODO Replace with dynamic value
    */
-  var txtLanguage: String? = MyApp.getInstance().resources.getString(R.string.lbl_prix)
+  var txtMarqueexampleco: String? = MyApp.getInstance().resources.getString(R.string.lbl_marque)
   ,
   /**
    * TODO Replace with dynamic value
    */
-  var txtNameexamplecoTwo: String? =
+  var txtPriceexampleco: String? = MyApp.getInstance().resources.getString(R.string.lbl_prix)
+  ,
+  /**
+   * TODO Replace with dynamic value
+   */
+  var txtTypeexampleco: String? = MyApp.getInstance().resources.getString(R.string.lbl_type_d_outils)
+  ,
+  /**
+   * TODO Replace with dynamic value
+   */
+  var txtImageexampleco: String? =
       MyApp.getInstance().resources.getString(R.string.lbl_upload_image)
   ,
-  /**
-   * TODO Replace with dynamic value
-   */
-  var etGroupSevenValue: String? = null,
-  /**
-   * TODO Replace with dynamic value
-   */
-  var etGroupEightValue: String? = null
+
 )

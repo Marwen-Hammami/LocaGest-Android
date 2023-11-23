@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
-    <data>
-        <variable name="ajoutDesOutilsVM" type="com.chihebsapplication.app.modules.ajoutdesoutils.data.viewmodel.AjoutDesOutilsVM"/>
-    </data>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout android:gravity="center_horizontal"
         android:id="@+id/linearAjoutdesoutil"
         android:layout_height="match_parent"
@@ -34,8 +37,9 @@
                     android:gravity="center_horizontal"
                     android:letterSpacing="0.01"
                     android:singleLine="true"
-                    android:text="@{ajoutDesOutilsVM.ajoutDesOutilsModel.txtAjouterdesout}"
-                    tools:text="@string/msg_ajouter_des_out" />
+                    android:minLines="2"
+                    android:text="Modifier cette outil"
+                    />
 
                 <LinearLayout
                     android:id="@+id/linearColumngroupseven"
@@ -66,7 +70,7 @@
                         android:paddingEnd="@dimen/_30pxh"
                         android:paddingBottom="@dimen/_9pxv"
                         android:singleLine="true"
-                        android:text="@{ajoutDesOutilsVM.ajoutDesOutilsModel.txtNameexampleco}"
+                        android:text="Nom Outil"
                         android:textColorHint="@color/gray_400"
                         tools:ignore="Autofill" />
 
@@ -87,7 +91,7 @@
                         android:paddingEnd="@dimen/_30pxh"
                         android:paddingBottom="@dimen/_9pxv"
                         android:singleLine="true"
-                        android:text="@{ajoutDesOutilsVM.ajoutDesOutilsModel.txtStockexampleco}"
+                        android:text="Stock"
                         android:textColorHint="@color/gray_400"
                         tools:ignore="Autofill" />
 
@@ -108,7 +112,7 @@
                         android:paddingEnd="@dimen/_30pxh"
                         android:paddingBottom="@dimen/_9pxv"
                         android:singleLine="true"
-                        android:text="@{ajoutDesOutilsVM.ajoutDesOutilsModel.txtMarqueexampleco}"
+                        android:text="Marque"
                         android:textColorHint="@color/gray_400"
                         tools:ignore="Autofill" />
 
@@ -129,7 +133,7 @@
                         android:paddingEnd="@dimen/_30pxh"
                         android:paddingBottom="@dimen/_9pxv"
                         android:singleLine="true"
-                        android:text="@{ajoutDesOutilsVM.ajoutDesOutilsModel.txtPriceexampleco}"
+                        android:text="Prix"
                         android:textColorHint="@color/gray_400"
                         tools:ignore="Autofill" />
 
@@ -150,7 +154,7 @@
                         android:paddingEnd="@dimen/_30pxh"
                         android:paddingBottom="@dimen/_9pxv"
                         android:singleLine="true"
-                        android:text="@{ajoutDesOutilsVM.ajoutDesOutilsModel.txtTypeexampleco}"
+                        android:text="Type"
                         android:textColorHint="@color/gray_400"
                         tools:ignore="Autofill" />
 
@@ -163,10 +167,10 @@
                         tools:ignore="ContentDescription" tools:src="@drawable/img_page1"/>
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnAjouter"
+                        android:id="@+id/btnModifier"
                         style="@style/btnSolidRounded"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_marginStart="@dimen/_17pxh"
                         android:layout_marginTop="@dimen/_12pxv"
                         android:layout_marginEnd="@dimen/_17pxh"
@@ -178,9 +182,9 @@
                         android:paddingEnd="@dimen/_30pxh"
                         android:paddingBottom="@dimen/_12pxv"
                         android:singleLine="true"
-                        android:text="@string/lbl_ajouter"
+                        android:text="@string/lbl_modifier"
                         android:textAllCaps="false"
-                        tools:text="@string/lbl_ajouter" />
+                         />
                 </LinearLayout>
 
 
@@ -188,4 +192,5 @@
 
         </FrameLayout>
     </LinearLayout>
+</ScrollView>
 </layout>

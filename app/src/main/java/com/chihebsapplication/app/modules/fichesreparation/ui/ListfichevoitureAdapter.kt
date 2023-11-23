@@ -1,3 +1,4 @@
+/*
 package com.chihebsapplication.app.modules.fichesreparation.ui
 
 import android.view.LayoutInflater
@@ -61,3 +62,4 @@ class ListfichevoitureAdapter(
     }
   }
 }
+*/

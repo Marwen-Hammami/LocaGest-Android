@@ -16,6 +16,7 @@
 <string name="lbl_livrer_voiture">Livrer voiture</string>
 <string name="lbl_upload_image">Upload image</string>
 <string name="lbl_ajouter">Ajouter</string>
+    <string name="lbl_modifier">Modifier</string>
 <string name="lbl_stock">Stock</string>
 <string name="lbl_livr">Livré</string>
 <string name="msg_ajouter_r_parat">Ajouter réparations</string>

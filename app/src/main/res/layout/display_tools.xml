@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearAjoutdesoutil"
+        style="@style/groupStylewhite_A700"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" />
+
+    <FrameLayout
+        android:id="@+id/frameStackajouterdesout"
+        style="@style/groupStylegray_50"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="start" />
+
+    <LinearLayout
+        android:id="@+id/linearColumnajouterdesout"
+        style="@style/groupStyleteal_400"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="top|start"
+        android:layout_marginBottom="@dimen/_10pxv"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btnAjouter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtAjouterdesout"
+            style="@style/txtAkayaKanadakaregular40"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_45pxh"
+            android:layout_marginTop="@dimen/_34pxv"
+            android:layout_marginEnd="@dimen/_45pxh"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:letterSpacing="0.01"
+            android:singleLine="true"
+            android:text="Liste Tools" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerListTools"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+
+            android:layout_weight="1"
+            android:orientation="vertical" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAjouter"
+        style="@style/btnSolidRounded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_17pxh"
+        android:layout_marginTop="@dimen/_12pxv"
+        android:layout_marginEnd="@dimen/_17pxh"
+        android:layout_marginBottom="@dimen/_20pxv"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:paddingStart="@dimen/_30pxh"
+        android:paddingTop="@dimen/_12pxv"
+        android:paddingEnd="@dimen/_30pxh"
+        android:paddingBottom="@dimen/_12pxv"
+        android:singleLine="true"
+        android:text="@string/lbl_ajouter"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
