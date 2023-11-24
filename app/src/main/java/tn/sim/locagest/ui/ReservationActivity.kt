@@ -1,6 +1,7 @@
 package tn.sim.locagest.ui
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +26,7 @@ import tn.sim.locagest.viewmodel.ReservationViewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import kotlin.properties.Delegates
 
 class ReservationActivity : Fragment() {
 
@@ -44,6 +47,9 @@ class ReservationActivity : Fragment() {
     lateinit var  startTime:String
     lateinit var  endDate:String
     lateinit var  endTime:String
+    private lateinit var totalAmountValue: TextView
+
+
 
     lateinit var reservationViewModel: ReservationViewModel
 
@@ -53,7 +59,7 @@ class ReservationActivity : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ActivityReservationBinding.inflate(layoutInflater)
+        binding = ActivityReservationBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -72,6 +78,8 @@ class ReservationActivity : Fragment() {
         radioHourlyRate = binding.radioHourlyRate
         radioDailyRate = binding.radioDailyRate
         btnRes = binding.btnReserve
+
+
 
 
         // Remplir les champs TextView avec des valeurs statiques
@@ -99,6 +107,7 @@ class ReservationActivity : Fragment() {
             showTimePickerDialog(btnEndTime)
         }
 
+
         radioGroup.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.radio_hourly_rate -> {
@@ -118,13 +127,57 @@ class ReservationActivity : Fragment() {
                 endDate,
                 startTime,
                 endTime,
-                30F
+                calculateTotalAmount(),
             )
             reservationViewModel.createReservation(res)
-            Toast.makeText(requireContext(),"the reservation has been added" ,Toast.LENGTH_LONG).show()
-            gotToHistoryListView()
+
+            val paiementFragment = PaiementActivity()
+
+            val bundle = Bundle()
+            bundle.putFloat("prix", res.Total)
+            paiementFragment.arguments = bundle
+
+            // Now start the fragment
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, paiementFragment)
+            transaction.addToBackStack(null) // Optional, if you want to add the transaction to the back stack
+            transaction.commit()
+            // Affiche le tarif total dans le TextView
+           // totalAmountValue.text = getString(R.string.total_amount, calculateTotalAmount())
+
+
+            // Redirige vers l'interface de paiement
+           // (activity as MainActivityReservation).binding.bottomNavigationView.selectedItemId = R.id.action_paiement
+
+           // Toast.makeText(requireContext(),"the reservation has been added" ,Toast.LENGTH_LONG).show()
+           // gotToHistoryListView()
+        }
+
+
+    }
+
+
+    private fun calculateTotalAmount(): Float {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+        val startDateAndTime = "$startDate $startTime"
+        val endDateAndTime = "$endDate $endTime"
+        val startDateTime = dateFormat.parse(startDateAndTime)
+        val endDateTime = dateFormat.parse(endDateAndTime)
+
+        val diffInMilliseconds = endDateTime.time - startDateTime.time
+        val diffInHours = diffInMilliseconds / (60 * 60 * 1000)
+
+        val hourlyRate = 10F //
+        val dailyRate = 100F //
+
+        return if (radioHourlyRate.isChecked) {
+            diffInHours * hourlyRate
+        } else {
+            val diffInDays = diffInMilliseconds / (24 * 60 * 60 * 1000)
+            diffInDays * dailyRate
         }
     }
+
 
     private fun gotToHistoryListView(){
         (activity as MainActivityReservation).binding.bottomNavigationView.selectedItemId = R.id.action_historique

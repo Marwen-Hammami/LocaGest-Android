@@ -27,6 +27,11 @@
     <string name="item_methods">Methodes de paiements</string>
     <string name="payer">Payer</string>
 
+    <!-- Reservations -->
+    <string name="total_amount">Montant total à payer : $%.2f</string>
+
+
+
 
     <!--  Inputs | Labels | Buttons -->
     <string name="input_suffix_Email">\@esprit.tn</string>

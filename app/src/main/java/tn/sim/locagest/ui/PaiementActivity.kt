@@ -30,7 +30,14 @@ class PaiementActivity : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = ActivityPaiementBinding.inflate(layoutInflater)
+
+
+        val total = arguments?.getFloat("prix", 0F) // Default value is 0.0
+        binding.totalAmountValue.text = total.toString()
+
         return binding.root
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
