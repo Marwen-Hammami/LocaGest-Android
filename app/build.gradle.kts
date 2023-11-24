@@ -99,12 +99,23 @@ dependencies {
     implementation ("com.facebook.android:facebook-android-sdk:16.2.0")
     implementation ("com.facebook.android:facebook-login:16.2.0")
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
+<<<<<<< HEAD
     implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.1")
     implementation ("com.google.android.gms:play-services-auth:20.7.0")
     implementation("com.google.android.material:material:1.10.0")
     implementation ("androidx.biometric:biometric:1.2.0")
+=======
+    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+    implementation ("com.google.android.gms:play-services-auth:20.0.0")
+    implementation("com.google.android.material:material:1.9.0")
+>>>>>>> b65c06a26219384845eb2d345b9a31c801289d56
 
     //SocketIo
     implementation ("io.socket:socket.io-client:2.1.0")
 
+    // Map
+    implementation("com.mapbox.maps:android:10.4.3") {
+        exclude("group_name", "module_name")
+    }
+    implementation("com.google.android.gms:play-services-location:18.0.0")
 }

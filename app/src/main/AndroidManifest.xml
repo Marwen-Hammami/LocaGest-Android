@@ -9,7 +9,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+=======
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+>>>>>>> b65c06a26219384845eb2d345b9a31c801289d56
 
 
 
@@ -38,10 +43,22 @@
         android:theme="@style/Theme.LocaGest"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
+
+        <activity android:name=".ui.activity.AgenceListActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.ManageAgenceActivity"/>
+        <activity android:name=".ui.activity.AgenceDetailsActivity"/>
+
         <activity
-            android:name=".ui.activity.SignInActivity"
+            android:name=".MainActivityFlotte"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -93,11 +110,51 @@
             android:value="658622339904-d01cng1fjai9vigsvj9e85senu6il9vl.apps.googleusercontent.com" />
 
 
-       
+        <!-- Flotte activities-->
+        <activity
+            android:name=".MainActivityFlotte"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.activity.dashboard"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.activity.detail_flotte"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.ajouter_voiture"
+            android:exported='false'/>
+        <activity
+            android:name=".ui.activity.cardview_voiture"
+            android:exported='false'/>
+        <activity
+            android:name=".ui.activity.detail_voiture"
+            android:exported='false'/>
+        <activity
+            android:name=".ui.activity.page_entretien"
+            android:exported='false'/>
+        <activity
+            android:name=".ui.activity.ajouter_entretien"
+            android:exported='false'/>
+        <activity
+            android:name=".ui.activity.modifier_voiture"
+            android:exported='false'/>
 
 
         <!-- Chat Activities -->
         <activity android:name=".ui.activity.CallingActivity" />
+<!--        <activity android:name=".ui.MainActivityChat" />-->
     </application>
 
 </manifest>
