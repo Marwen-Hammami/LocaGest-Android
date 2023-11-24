@@ -9,12 +9,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<<<<<<< HEAD
-    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-=======
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
->>>>>>> b65c06a26219384845eb2d345b9a31c801289d56
 
 
 
