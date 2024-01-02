@@ -10,15 +10,13 @@ import tn.sim.locagest.api.FlotteService
 import tn.sim.locagest.api.retrofit.RetroInstance
 import tn.sim.locagest.models.Car
 
-class CarViewModel: ViewModel() {
+class CarViewModel : ViewModel() {
     lateinit var recyclerListData: MutableLiveData<List<Car>?>
     lateinit var createLiveData: MutableLiveData<Car?>
-//    lateinit var deleteLiveData: MutableLiveData<Boolean>
 
     init {
         recyclerListData = MutableLiveData()
         createLiveData = MutableLiveData()
-//        deleteLiveData = MutableLiveData()
     }
 
     fun getCarsObservable(): MutableLiveData<List<Car>?> {
@@ -28,10 +26,6 @@ class CarViewModel: ViewModel() {
     fun getCreateNewMessageObservable(): MutableLiveData<Car?> {
         return createLiveData
     }
-
-//    fun deleteMessageObservable(): MutableLiveData<Boolean> {
-//        return deleteLiveData
-//    }
 
     fun getCars() {
         val retroInstance = RetroInstance.getRetroInstance().create(FlotteService::class.java)
@@ -58,6 +52,7 @@ class CarViewModel: ViewModel() {
             }
         })
     }
+
     fun updateCar(immatriculation: String, updatedCar: Car) {
         val retroInstance = RetroInstance.getRetroInstance().create(FlotteService::class.java)
         val call = retroInstance.updateCar(immatriculation, updatedCar)
@@ -79,8 +74,7 @@ class CarViewModel: ViewModel() {
         })
     }
 
-
-    fun createMessage(mess: Car){
+    fun createMessage(mess: Car) {
         val retroInstance = RetroInstance.getRetroInstance().create(FlotteService::class.java)
         val call = retroInstance.createCar(mess)
         call.enqueue(object : Callback<Car> {
@@ -90,19 +84,40 @@ class CarViewModel: ViewModel() {
             ) {
                 if (response.isSuccessful) {
                     createLiveData.postValue(response.body())
-                }else {
+                } else {
                     createLiveData.postValue(null)
                 }
-
             }
 
             override fun onFailure(call: Call<Car>, t: Throwable?) {
                 createLiveData.postValue(null)
                 if (t != null) {
-                    Log.d("MyApp", "Message create: "+ t.message.toString())
+                    Log.d("MyApp", "Message create: " + t.message.toString())
                 }
             }
         })
     }
 
+    fun deleteCar(immatriculation: String) {
+        val retroInstance = RetroInstance.getRetroInstance().create(FlotteService::class.java)
+        val call = retroInstance.deleteCar(immatriculation)
+        call.enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    // Suppression réussie
+                    // Vous pouvez gérer ici tout traitement supplémentaire après la suppression
+                    // Par exemple, recharger la liste de voitures après la suppression
+                    getCars()
+                } else {
+                    // La suppression a échoué, gérer les erreurs ici
+                    // ...
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                // Erreur lors de la requête de suppression
+                // ...
+            }
+        })
+    }
 }

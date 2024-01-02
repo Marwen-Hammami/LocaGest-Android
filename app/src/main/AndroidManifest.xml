@@ -54,7 +54,9 @@
         <activity
             android:name=".ui.activity.modifier_voiture"
             android:exported='false'/>
-
+        <activity
+            android:name=".ui.activity.geolocalisation"
+            android:exported='false'/>
     </application>
 
 </manifest>

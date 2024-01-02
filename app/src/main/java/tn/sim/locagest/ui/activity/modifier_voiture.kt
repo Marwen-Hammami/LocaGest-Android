@@ -1,6 +1,5 @@
 package tn.sim.locagest.ui.activity
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -25,40 +24,37 @@ class modifier_voiture : AppCompatActivity() {
         binding = ModifierVoitureBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         binding.button4.setOnClickListener {
             val immatriculation = binding.imm.editText?.text.toString()
-            val marque = binding.textInputLayout2.editText?.text.toString()
-            val modele = binding.textInputLayout3.editText?.text.toString()
-            val carburant = binding.textInputLayout4.editText?.text.toString()
-            val boite = binding.boiteField.text.toString()
+            val marque = binding.marque.editText?.text.toString()
+            val modele = binding.modele.editText?.text.toString()
+            val carburant = binding.carburant.editText?.text.toString()
+            val boite = binding.boite.editText?.text.toString()
 
             if (immatriculation.isNotEmpty() && marque.isNotEmpty() && modele.isNotEmpty() && carburant.isNotEmpty() && boite.isNotEmpty()) {
-                if (true) {
+                if (true) { // You might want to replace this condition with the appropriate validation
                     val car = Car(immatriculation, marque, modele, carburant, boite, disponibility = "Disponible")
 
-                    // Afficher un indicateur de chargement
-                    // Exemple : showLoadingIndicator()
-
-                    carService.updateCar(immatriculation,car).enqueue(object : Callback<Car> {
+                    carService.updateCar(immatriculation, car).enqueue(object : Callback<Car> {
                         override fun onResponse(call: Call<Car>, response: Response<Car>) {
                             // Cacher l'indicateur de chargement
                             // Exemple : hideLoadingIndicator()
 
                             response.body()?.let {
                                 Toast.makeText(this@modifier_voiture, "Voiture modifiée avec succès", Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this@modifier_voiture, page_entretien::class.java))
                             } ?: run {
                                 Toast.makeText(this@modifier_voiture, "Erreur lors de la modification de la voiture", Toast.LENGTH_SHORT).show()
                             }
+
+                            // Navigate to the page_entretien activity
+                            startActivity(Intent(this@modifier_voiture, detail_flotte::class.java))
                         }
 
                         override fun onFailure(call: Call<Car>, t: Throwable) {
                             // Cacher l'indicateur de chargement en cas d'échec
                             // Exemple : hideLoadingIndicator()
 
-                            Toast.makeText(this@modifier_voiture, "Erreur réseau", Toast.LENGTH_SHORT).show()
+                            // Toast.makeText(this@modifier_voiture, "Erreur réseau", Toast.LENGTH_SHORT).show()
                         }
                     })
                 } else {
@@ -72,7 +68,6 @@ class modifier_voiture : AppCompatActivity() {
         binding.imageView5.setOnClickListener {
             onBackPressed()
         }
-
     }
 
     private fun isValidImmatriculationFormat(immatriculation: String): Boolean {

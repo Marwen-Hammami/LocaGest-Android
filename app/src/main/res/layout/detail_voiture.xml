@@ -101,4 +101,13 @@
         app:layout_constraintBottom_toTopOf="@+id/btnModifier"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2"
+        app:srcCompat="@drawable/dacia_logan_2021" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

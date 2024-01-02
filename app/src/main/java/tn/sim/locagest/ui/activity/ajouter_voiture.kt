@@ -43,19 +43,23 @@ class ajouter_voiture : AppCompatActivity() {
                     val car = Car(immatriculation, marque, modele, carburant, boite, disponibility = "Disponible")
                     println(car)
 
-
                     carService.createCar(car).enqueue(object : Callback<Car> {
                         override fun onResponse(call: Call<Car>, response: Response<Car>) {
-                            response.takeIf { it.isSuccessful }?.body()?.let {
-                                Toast.makeText(this@ajouter_voiture, "Voiture ajoutée avec succès", Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(this@ajouter_voiture, detail_flotte::class.java))
-                            } ?: Toast.makeText(this@ajouter_voiture, "Erreur lors de l'ajout de la voiture", Toast.LENGTH_SHORT).show()
+                            // Do nothing on response
                         }
 
                         override fun onFailure(call: Call<Car>, t: Throwable) {
-                            Toast.makeText(this@ajouter_voiture, "Erreur réseau", Toast.LENGTH_SHORT).show()
+                            // Handle network error if needed
+                            // Toast.makeText(this@ajouter_voiture, "Erreur réseau", Toast.LENGTH_SHORT).show()
                         }
                     })
+
+                    // Navigate to the detail_flotte activity
+                    Toast.makeText(this@ajouter_voiture, "Voiture ajoutée avec succès", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@ajouter_voiture, detail_flotte::class.java))
+                    // Finish the current activity
+                    finish()
+
                 } else {
                     Toast.makeText(this@ajouter_voiture, "Format d'immatriculation incorrect", Toast.LENGTH_SHORT).show()
                 }
@@ -70,9 +74,8 @@ class ajouter_voiture : AppCompatActivity() {
         val pattern = Pattern.compile("\\d{1,4}TU\\d{1,3}")
         return pattern.matcher(immatriculation).matches()
     }
+
     override fun onBackPressed() {
-
-
         // Appeler la méthode super.onBackPressed() pour fermer l'activité actuelle
         super.onBackPressed()
     }

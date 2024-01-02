@@ -3,18 +3,24 @@ package tn.sim.locagest.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-
+import androidx.lifecycle.ViewModelProvider
 import tn.sim.locagest.databinding.DetailVoitureBinding
 import tn.sim.locagest.models.Car
+import tn.sim.locagest.viewmodel.CarViewModel
 
 class detail_voiture : AppCompatActivity() {
 
     private lateinit var binding: DetailVoitureBinding
+    private lateinit var carViewModel: CarViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DetailVoitureBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Initialiser le ViewModel
+        carViewModel = ViewModelProvider(this).get(CarViewModel::class.java)
+
         binding.Retourne.setOnClickListener {
             onBackPressed()
         }
@@ -46,16 +52,27 @@ class detail_voiture : AppCompatActivity() {
                 carburant = carburant ?: ""
             )
             val intent = Intent(this@detail_voiture, modifier_voiture::class.java)
-            // on cliquant sur se bouton je veux envoyer tout les information a cett intent
+            // on cliquant sur ce bouton, je veux envoyer toutes les informations à cet intent
             intent.putExtra("car", car)
             startActivity(intent)
         }
 
+        binding.btnSupprimer.setOnClickListener {
+            // Récupérer l'immatriculation de la voiture actuelle
+            val immatriculation = intent.getStringExtra("IMMATRICULATION")
+            println(immatriculation)
 
+            // Appeler la fonction deleteCar du ViewModel pour supprimer la voiture
+            if (immatriculation != null) {
+                carViewModel.deleteCar(immatriculation)
+            }
+
+            // Retourner en arrière après la suppression
+            onBackPressed()
+        }
     }
+
     override fun onBackPressed() {
-
-
         // Appeler la méthode super.onBackPressed() pour fermer l'activité actuelle
         super.onBackPressed()
     }

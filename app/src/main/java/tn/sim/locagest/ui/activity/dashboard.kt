@@ -26,6 +26,11 @@ class dashboard : AppCompatActivity() {
             val intent3 = Intent(this, page_entretien::class.java )
             startActivity(intent3)
         }
+        binding.imageView9.setOnClickListener{
+            Log.w("d","d")
+            val intent4 = Intent(this, geolocalisation::class.java )
+            startActivity(intent4)
+        }
 
 
     }
