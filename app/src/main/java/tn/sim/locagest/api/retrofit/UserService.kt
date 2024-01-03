@@ -15,8 +15,8 @@ interface UserService {
     @POST("User/signup")
     fun createUser(@Body user: User): Call<User>
 
-    /* @GET("user/")
-     fun getAllUsers(): Call<List<User>>*/
+    @GET("User/get/{id}")
+    fun getUserById(@Path("id") userId: String): Call<User>
 
     @PUT("User/{id}")
     fun updateUser(@Path("id") id: String, @Body user: User): Call<User>
@@ -45,7 +45,4 @@ interface UserService {
         @Field("otpCode") otpCode: String,
         @Field("newPassword") newPassword: String
     ): Call<ResetPasswordResponse>
-
-    @GET("User/{id}")
-    fun getUserById(@Path("id") userId: String): Call<User>
 }

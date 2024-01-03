@@ -12,18 +12,6 @@
     tools:context="tn.sim.locagest.ui.activity.SignInActivity">
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="289dp"
-        android:src="@drawable/logo_pdm" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Welcome to the best rental car "
-        android:layout_marginTop="16dp"
-        android:textSize="12sp"
-        android:textColor="@color/bleu"
-        android:gravity="center" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameTextInputLayout"
@@ -110,6 +98,5 @@
         android:textSize="12sp"
         android:textColor="@color/bleu"
         android:gravity="center" />
-
 
 </LinearLayout>

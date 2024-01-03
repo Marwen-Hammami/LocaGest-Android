@@ -13,8 +13,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import tn.sim.locagest.R
-import tn.sim.locagest.viewmodel.UserViewModel
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
@@ -26,6 +24,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.auth.api.signin.GoogleSignInResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.material.textfield.TextInputLayout
+import tn.sim.locagest.R
+import tn.sim.locagest.viewmodel.UserViewModel
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var viewModel: UserViewModel
@@ -95,7 +95,7 @@ class SignInActivity : AppCompatActivity() {
                     Log.d("SIGN_IN_OBSERVER", "User ID: $userId")
 
                     // Navigate to ProfileActivity and pass the user token and user ID
-                    val intent = Intent(this@SignInActivity, ProfileActivity::class.java).apply {
+                    val intent = Intent(this@SignInActivity, UserProfile::class.java).apply {
                         putExtra("userToken", userToken)
                         putExtra("userId", userId)
                     }
@@ -212,7 +212,7 @@ class SignInActivity : AppCompatActivity() {
             val intent = Intent(this@SignInActivity, ProfileActivity::class.java)
             intent.putExtra("userToken", account?.idToken)
             startActivity(intent)
-            finish() // Optional: Finish the current activity if needed
+            //finish() // Optional: Finish the current activity if needed
         } else {
             // Handle Google sign-in failure
             Log.e("GOOGLE_SIGN_IN", "Google sign-in failed: ${result.status.statusMessage}")

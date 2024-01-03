@@ -219,7 +219,7 @@ class ConversationOneActivity : AppCompatActivity() {
         val appSign: String = "c855361eabefa96a3cbe617ffaf228d73272c68c029a260774d38b3448af8e7f" // yourAppSign
 
         val callInvitationConfig = ZegoUIKitPrebuiltCallInvitationConfig()
-        callInvitationConfig.notifyWhenAppRunningInBackgroundOrQuit = true
+       // callInvitationConfig.notifyWhenAppRunningInBackgroundOrQuit = true
         val notificationConfig = ZegoNotificationConfig()
         notificationConfig.sound = "zego_uikit_sound_call"
         notificationConfig.channelID = otherusername

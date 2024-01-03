@@ -7,7 +7,7 @@
     android:padding="16dp"
     android:background="@drawable/gradient_background"
 
-    tools:context=".ProfileActivity">
+    tools:context=".UserProfile">
 
     <ImageView
         android:id="@+id/imageView3"

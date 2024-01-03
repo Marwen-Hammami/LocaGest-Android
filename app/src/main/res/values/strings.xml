@@ -2,18 +2,7 @@
     <string name="mapbox_access_token">pk.eyJ1IjoibWFoZXJhbGkiLCJhIjoiY2wyZXRvMXc5MDQwbzNlbnpod2l3Nm9sMSJ9.HIzNbLYMYAhRFr9c9FxlkQ</string>
 
     <string name="app_name">LocaGest</string>
-
-
-    <string name="facebook_app_id">953964639575730</string>
-    <string name="fb_login_protocol_scheme">c3980f43626416ee1b60f8b254e222dd</string>
-    <string name="facebook_client_token">w5G662mc4o81BUzLaFO2xjZlnHw=</string>
-    <string-array name="language_options">
-        <item>English</item>
-        <item>French</item>
-        <item>German</item>
-        <!-- Add more language options as needed -->
-    </string-array>
-    ```
+    <string name="facebook_app_id">263445033367830</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
