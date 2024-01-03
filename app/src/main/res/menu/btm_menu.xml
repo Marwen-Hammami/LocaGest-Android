@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Car"
+        android:icon="@drawable/ic_car"
+        android:id="@+id/CarPage"/>
+
+    <item android:title="User"
+        android:icon="@drawable/ic_user"
+        android:id="@+id/UserPage"/>
+    <item android:title="Reservation"
+        android:icon="@drawable/ic_res"
+        android:id="@+id/ResPage"/>
+    <item android:title="Chat"
+        android:icon="@drawable/ic_chat"
+        android:id="@+id/ChatPage" />
+
+    <item android:title="Agence"
+        android:icon="@drawable/ic_agence"
+        android:id="@+id/AgencePage"/>
+
+    <item android:title="Garage"
+        android:icon="@drawable/kolleb"
+        android:id="@+id/GaragePage"/>
+</menu>
