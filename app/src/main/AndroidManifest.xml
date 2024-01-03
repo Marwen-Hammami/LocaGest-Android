@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
+
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:allowBackup="true"
@@ -8,12 +27,78 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LocaGest"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <activity android:name=".ui.activity.SignInActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.ManageAgenceActivity"/>
+        <activity android:name=".ui.activity.AgenceDetailsActivity"/>
+
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivityFlotte"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+    <activity android:name=".ui.activity.SignUpActivity" />
+    <activity android:name=".ui.activity.ForgotPasswordActivity" />
+    <activity android:name=".ui.activity.NewPasswordActivity" />
+    <activity android:name=".ui.activity.ProfileActivity" />
+    <activity android:name=".ui.activity.UserProfile" />
+        <activity
+            android:name=".ui.PaiementActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.ReservationActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activity.ConversationOneActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+        
+        <!-- Usr activities-->
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.google.android.gms.auth.GOOGLE_SIGN_IN_API_KEY"
+            android:value="658622339904-d01cng1fjai9vigsvj9e85senu6il9vl.apps.googleusercontent.com" />
+
+
+        <!-- Flotte activities-->
+        <activity
+            android:name=".MainActivityFlotte"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +107,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activity.dashboard"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,6 +115,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.activity.detail_flotte"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.ajouter_voiture"
+            android:exported='false'/>
+        <activity
+            android:name=".ui.activity.cardview_voiture"
+            android:exported='false'/>
+        <activity
+            android:name=".ui.activity.detail_voiture"
+            android:exported='false'/>
+        <activity
+            android:name=".ui.activity.page_entretien"
+            android:exported='false'/>
+        <activity
+            android:name=".ui.activity.ajouter_entretien"
+            android:exported='false'/>
+        <activity
+            android:name=".ui.activity.modifier_voiture"
+            android:exported='false'/>
+
+
+        <!-- Chat Activities -->
+        <activity android:name=".ui.activity.CallingActivity" />
+<!--        <activity android:name=".ui.MainActivityChat" />-->
     </application>
 
 </manifest>

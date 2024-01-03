@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <!-- Trust anchors for specific domains (if needed) -->
+            <!--<certificates src="@raw/my_certificate"/>-->
+        </trust-anchors>
+    </base-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">facebook.com</domain>
+        <domain includeSubdomains="true">graph.facebook.com</domain>
+        <!-- Add more domains as needed -->
+    </domain-config>
+</network-security-config>
