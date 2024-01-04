@@ -144,7 +144,7 @@ class SignInActivity : AppCompatActivity() {
 
                     Log.d("FACEBOOK_LOGIN", "Facebook login successful, UserID: $userId ")
                     // Navigate to ProfileActivity
-                    val intent = Intent(this@SignInActivity, ProfileActivity::class.java)
+                    val intent = Intent(this@SignInActivity, UserProfile::class.java)
                     intent.putExtra("userToken", accessToken.token)
                     startActivity(intent)
                     // finish() // Optional: Finish the current activity if needed

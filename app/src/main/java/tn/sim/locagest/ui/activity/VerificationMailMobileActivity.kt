@@ -6,9 +6,10 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import tn.sim.locagest.R
 
 class VerificationMailMobileActivity : AppCompatActivity() {
-   /* private lateinit var codeEditText: EditText
+    private lateinit var codeEditText: EditText
     private lateinit var verifyButton: Button
     private lateinit var resendMessageTextView: TextView
 
@@ -53,5 +54,5 @@ class VerificationMailMobileActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
-    }*/
+    }
 }
