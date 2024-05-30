@@ -1,0 +1,125 @@
+<!-- res/layout/activity_profile.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/gradient_background"
+
+    tools:context=".UserProfile">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="387dp"
+        android:layout_height="155dp"
+        app:srcCompat="@drawable/testt" />
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/client" />
+
+    <TextView
+        android:id="@+id/usernameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Username"
+        android:textColor="#2196F3"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/usernameTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:text="Email"
+        android:textColor="#00BCD4" />
+
+    <TextView
+        android:id="@+id/firstNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emailTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:text="First Name"
+        android:textColor="#00BCD4" />
+
+    <TextView
+        android:id="@+id/lastNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/firstNameTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:text="Last Name"
+        android:textColor="#00BCD4" />
+
+    <TextView
+        android:id="@+id/creditCardNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/firstNameTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:text="Settings"
+        android:textColor="#2196F3"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Switch
+        android:id="@+id/notificationSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_below="@id/creditCardNumberTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:checked="true"
+        android:text="Notifications"
+        android:textColor="#2196F3" />
+
+    <Switch
+        android:id="@+id/nightModeSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notificationSwitch"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp"
+        android:checked="false"
+        android:text="Night Mode"
+        android:textColor="#2196F3" />
+
+    <Spinner
+        android:id="@+id/languageSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nightModeSwitch"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
+    ```
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/languageSpinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Edit profile"
+        android:textColor="#FFFFFF"
+        android:paddingVertical="12dp">
+
+    </Button>
+</RelativeLayout>
