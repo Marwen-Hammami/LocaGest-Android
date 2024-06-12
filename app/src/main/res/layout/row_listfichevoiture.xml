@@ -52,7 +52,7 @@
                 android:layout_width="100dp"
                 android:scaleType="fitXY"
                 imageRes="@{@drawable/img_oval}"
-                tools:ignore="ContentDescription" tools:src="@drawable/img_oval"/>
+                tools:ignore="ContentDescription" />
             <LinearLayout android:gravity="start"
                 android:id="@+id/linearColumnjohnnyrios"
                 android:layout_height="wrap_content"
@@ -68,7 +68,15 @@
                     android:singleLine="true"
                     android:text="Exemple"
                     style="@style/txtAkayaKanadakaregular15" tools:text="@string/msg_chiheb_ben_abde"/>
-
+                <TextView android:ellipsize="end"
+                    android:id="@+id/txtDesc"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:layout_marginStart="@dimen/_1pxh"
+                    android:layout_width="match_parent"
+                    android:singleLine="true"
+                    android:text="Exemple"
+                    style="@style/txtAkayaKanadakaregular15" tools:text="@string/msg_chiheb_ben_abde"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -85,4 +93,5 @@
             android:singleLine="true"
             style="@style/txtPoppinsmedium13" tools:text="@string/lbl_en_cours"/>
     </FrameLayout>
+
 </layout>

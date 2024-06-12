@@ -32,127 +32,21 @@
                         android:scaleType="fitXY"
                         android:src="@drawable/img_arrowleft"
                         tools:ignore="ContentDescription" tools:src="@drawable/img_arrowleft"/>
-                    <LinearLayout android:id="@+id/linearColumndone"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_43pxv"
-                        android:layout_marginEnd="@dimen/_6pxh"
-                        android:layout_marginStart="@dimen/_10pxh"
-                        android:layout_marginTop="@dimen/_11pxv"
-                        android:layout_weight="0.97"
-                        android:layout_width="0dp" android:orientation="vertical">
-                        <TextView android:ellipsize="end"
-                            android:id="@+id/txtDone"
-                            android:layout_gravity="end"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_9pxh"
-                            android:layout_marginStart="@dimen/_281pxh"
-                            android:layout_width="wrap_content"
-                            android:letterSpacing="0.02"
-                            android:singleLine="true"
-                            android:text="@{fichesReparationVM.fichesReparationModel.txtDone}"
-                            style="@style/txtAkayaKanadakaregular19" tools:text="@string/lbl_done"/>
-                        <FrameLayout
-                            android:id="@+id/frameStackpaymentmethod"
-                            android:layout_gravity="start"
-                            android:layout_height="@dimen/_71pxv"
-                            android:layout_marginTop="@dimen/_10pxv" android:layout_width="@dimen/_331pxh">
-                            <TextView android:ellipsize="end"
-                                android:gravity="top|start"
-                                android:id="@+id/txtPaymentMethod"
-                                android:layout_gravity="top|start"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/_10pxv"
-                                android:layout_marginEnd="@dimen/_10pxh"
-                                android:layout_width="match_parent"
-                                android:letterSpacing="0.01"
-                                android:singleLine="true"
-                                android:text="@{fichesReparationVM.fichesReparationModel.txtPaymentMethod}"
-                                style="@style/txtAkayaKanadakaregular40" tools:text="@string/msg_fiches_r_parati"/>
-                            <LinearLayout android:id="@+id/linearDate"
-                                android:layout_gravity="bottom|end"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_10pxh"
-                                android:layout_marginTop="@dimen/_10pxv"
-                                android:layout_width="wrap_content"
-                                android:orientation="horizontal" style="@style/groupStyleblack_900_0ccornerRadius">
-                                <TextView android:ellipsize="end"
-                                    android:id="@+id/txtNovCounter"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="@dimen/_7pxv"
-                                    android:layout_marginStart="@dimen/_19pxh"
-                                    android:layout_marginTop="@dimen/_6pxv"
-                                    android:layout_weight="0.8"
-                                    android:layout_width="0dp"
-                                    android:letterSpacing="0.01"
-                                    android:singleLine="true"
-                                    android:text="@{fichesReparationVM.fichesReparationModel.txtNovCounter}"
-                                    style="@style/txtAbyssinicaSILregular17" tools:text="@string/lbl_nov_1_2023"/>
-                                <ImageView
-                                    android:id="@+id/imageArrowdown"
-                                    android:layout_height="@dimen/_23pxh"
-                                    android:layout_marginBottom="@dimen/_6pxv"
-                                    android:layout_marginEnd="@dimen/_11pxh"
-                                    android:layout_marginStart="@dimen/_27pxh"
-                                    android:layout_marginTop="@dimen/_7pxv"
-                                    android:layout_width="@dimen/_23pxh"
-                                    android:scaleType="fitXY"
-                                    android:src="@drawable/img_arrowdown"
-                                    tools:ignore="ContentDescription" tools:src="@drawable/img_arrowdown"/>
-                            </LinearLayout>
-                        </FrameLayout>
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout android:id="@+id/linearColumnenCours"
-                    android:layout_gravity="bottom|center"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_15pxh"
-                    android:layout_marginStart="@dimen/_15pxh"
-                    android:layout_marginTop="@dimen/_10pxv"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical" style="@style/groupStylewhite_A700cornerRadius">
-                    <LinearLayout android:gravity="start"
-                        android:id="@+id/linearRowenCours"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="@dimen/_29pxv"
-                        android:layout_marginEnd="@dimen/_34pxh"
-                        android:layout_marginStart="@dimen/_34pxh"
-                        android:layout_marginTop="@dimen/_26pxv"
+                    <TextView
+                        android:id="@+id/txtPaymentMethod"
+                        style="@style/txtAkayaKanadakaregular40"
                         android:layout_width="match_parent"
-                        android:orientation="horizontal" style="@style/groupStylecornerRadius">
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:id="@+id/btnEnCours"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_1pxv"
-                            android:layout_weight="0.5"
-                            android:layout_width="0dp"
-                            android:paddingBottom="@dimen/_7pxv"
-                            android:paddingEnd="@dimen/_30pxh"
-                            android:paddingStart="@dimen/_30pxh"
-                            android:paddingTop="@dimen/_7pxv"
-                            android:singleLine="true"
-                            android:text="@string/lbl_en_cours"
-                            android:textAllCaps="false"
-                            style="@style/btnSolidRounded_1" tools:text="@string/lbl_en_cours"/>
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:ellipsize="end"
-                            android:gravity="center"
-                            android:id="@+id/btnLivr"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/_1pxv"
-                            android:layout_marginStart="@dimen/_15pxh"
-                            android:layout_weight="0.5"
-                            android:layout_width="0dp"
-                            android:paddingBottom="@dimen/_7pxv"
-                            android:paddingEnd="@dimen/_30pxh"
-                            android:paddingStart="@dimen/_30pxh"
-                            android:paddingTop="@dimen/_7pxv"
-                            android:singleLine="true"
-                            android:text="@string/lbl_livr"
-                            android:textAllCaps="false"
-                            style="@style/btnSolidRounded_2" tools:text="@string/lbl_livr"/>
-                    </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_45pxh"
+                        android:layout_marginTop="@dimen/_34pxv"
+                        android:layout_marginEnd="@dimen/_45pxh"
+                        android:ellipsize="end"
+                        android:gravity="center_horizontal"
+                        android:letterSpacing="0.01"
+                        android:singleLine="true"
+                        android:text="Liste reparation" />
+
+
                 </LinearLayout>
             </FrameLayout>
             <androidx.recyclerview.widget.RecyclerView
@@ -197,5 +91,27 @@
                     style="@style/txtAkayaKanadakaregular17_1" tools:text="@string/msg_ajouter_r_parat"/>
             </LinearLayout>
         </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAjouter"
+            style="@style/btnSolidRounded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_17pxh"
+            android:layout_marginTop="@dimen/_12pxv"
+            android:layout_marginEnd="@dimen/_17pxh"
+            android:layout_marginBottom="@dimen/_20pxv"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_12pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingBottom="@dimen/_12pxv"
+            android:singleLine="true"
+            android:text="@string/lbl_ajouter"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
     </LinearLayout>
+
 </layout>

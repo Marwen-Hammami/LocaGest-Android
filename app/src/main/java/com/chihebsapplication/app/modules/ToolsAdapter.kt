@@ -12,6 +12,7 @@ import com.chihebsapplication.app.models.Tool
 import com.chihebsapplication.app.service.ApiService.BASE_URL
 
 
+
 class ToolsAdapter(var context: Context, val ToolList: MutableList<Tool>) :
     RecyclerView.Adapter<ToolViewHolder>() {
 
@@ -27,7 +28,7 @@ class ToolsAdapter(var context: Context, val ToolList: MutableList<Tool>) :
         val tool = ToolList[position]
 
         Glide.with(holder.ToolPic).load(BASE_URL+"uploads/"+tool.image).placeholder(R.drawable.imageload)
-            .override(100, 100).error(R.drawable.notfoundd).into(holder.ToolPic)
+            .override(25, 25).error(R.drawable.notfoundd).into(holder.ToolPic)
 
         holder.Name.text = tool.name
         holder.marque.text = tool.marque

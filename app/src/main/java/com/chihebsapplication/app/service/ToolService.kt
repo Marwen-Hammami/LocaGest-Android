@@ -30,6 +30,7 @@ interface ToolService {
                  @Path("stock")stock : Number,@Path("price")price : Number,
                 @Path("marque")marque : String,@Path("type")type : String,
 
+
                 ): Call<ToolResponse>
 
 

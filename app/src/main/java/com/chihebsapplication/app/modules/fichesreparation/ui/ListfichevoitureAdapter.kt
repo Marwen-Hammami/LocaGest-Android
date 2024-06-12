@@ -1,65 +1,39 @@
-/*
-package com.chihebsapplication.app.modules.fichesreparation.ui
 
+package com.chihebsapplication.app.modules
+
+import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.chihebsapplication.app.R
-import com.chihebsapplication.app.databinding.RowListfichevoitureBinding
-import com.chihebsapplication.app.modules.fichesreparation.`data`.model.ListfichevoitureRowModel
+import com.chihebsapplication.app.models.Distribution
+import com.chihebsapplication.app.modules.fichesreparation.data.model.ListfichevoitureRowModel
+import com.chihebsapplication.app.modules.fichesreparation.ui.DisViewHolder
 import kotlin.Int
-import kotlin.collections.List
 
-class ListfichevoitureAdapter(
-  var list: List<ListfichevoitureRowModel>
-) : RecyclerView.Adapter<ListfichevoitureAdapter.RowListfichevoitureVH>() {
-  private var clickListener: OnItemClickListener? = null
+class ListfichevoitureAdapter(var context: Context,val list: MutableList<Distribution>) :
+    RecyclerView.Adapter<DisViewHolder>() {
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RowListfichevoitureVH {
-    val view=LayoutInflater.from(parent.context).inflate(R.layout.row_listfichevoiture,parent,false)
-    return RowListfichevoitureVH(view)
-  }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DisViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.row_listfichevoiture, parent, false)
 
-  override fun onBindViewHolder(holder: RowListfichevoitureVH, position: Int) {
-    val listfichevoitureRowModel = ListfichevoitureRowModel()
-    // TODO uncomment following line after integration with data source
-    // val listfichevoitureRowModel = list[position]
-    holder.binding.listfichevoitureRowModel = listfichevoitureRowModel
-  }
-
-  override fun getItemCount(): Int = 2
-  // TODO uncomment following line after integration with data source
-  // return list.size
-
-  public fun updateData(newData: List<ListfichevoitureRowModel>) {
-    list = newData
-    notifyDataSetChanged()
-  }
-
-  fun setOnItemClickListener(clickListener: OnItemClickListener) {
-    this.clickListener = clickListener
-  }
-
-  interface OnItemClickListener {
-    fun onItemClick(
-      view: View,
-      position: Int,
-      item: ListfichevoitureRowModel
-    ) {
+        return DisViewHolder(view)
     }
-  }
 
-  inner class RowListfichevoitureVH(
-    view: View
-  ) : RecyclerView.ViewHolder(view) {
-    val binding: RowListfichevoitureBinding = RowListfichevoitureBinding.bind(itemView)
-    init {
-      binding.btnLivrerVoiture.setOnClickListener {
-        // TODO replace with value from datasource
-        clickListener?.onItemClick(it, adapterPosition, ListfichevoitureRowModel())
-      }
+    override fun onBindViewHolder(holder: DisViewHolder, position: Int) {
+        val item = list[position]
+
+        holder.typeRepair.text = item.typeRepair
+        holder.pieces.text = item.pieces
+        holder.cars.text = item.cars
+        holder.description.text = item.description
+        holder.technicien.text = item.technicien
+        holder.startDate.text = item.startDate.toString()
+        holder.endDate.text = item.endDate.toString()
+        holder.statusCar.text = item.statusCar
     }
-  }
+
+    override fun getItemCount() = list.size
 }
-*/
+
